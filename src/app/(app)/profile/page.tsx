@@ -97,12 +97,20 @@ export default function ProfilePage() {
     console.log("Logging out...");
     await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate API call
 
+    // Invalidate session client-side if necessary, e.g., remove cookie
+    // document.cookie = "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
     toast({
       title: "Logged Out",
       description: "You have been successfully logged out.",
     });
-    router.push("/login");
+
+    // Force a hard refresh to ensure middleware reruns and redirects
+    window.location.href = "/login";
+
+    // router.push("/login"); // Standard push might be intercepted by middleware if state isn't fully cleared
   };
+
 
    const getUserInitials = (name: string | undefined): string => {
      if (!name) return "..";
@@ -145,6 +153,7 @@ export default function ProfilePage() {
                 <Skeleton className="h-16 w-16 rounded-full" />
              ) : (
                <Avatar className="h-16 w-16 text-xl">
+                  {/* Update placeholder image path if necessary */}
                   <AvatarImage src="/placeholder-user.jpg" alt={userProfile?.name} data-ai-hint="user avatar large"/>
                   <AvatarFallback>{getUserInitials(userProfile?.name)}</AvatarFallback>
                </Avatar>
@@ -168,22 +177,34 @@ export default function ProfilePage() {
            <div className="flex items-center gap-3 p-3 bg-secondary rounded-md">
                <Check className="h-6 w-6 text-green-600 shrink-0"/>
                <div>
-                   <p className="font-semibold">{isLoadingResults ? <Skeleton className="h-5 w-8 inline-block"/> : completedPracticeTests}</p>
+                   {isLoadingResults ? (
+                     <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                   ) : (
+                     <p className="font-semibold">{completedPracticeTests}</p>
+                   )}
                    <p className="text-sm text-muted-foreground">Practice Tests Completed</p>
                </div>
            </div>
            <div className="flex items-center gap-3 p-3 bg-secondary rounded-md">
                <X className="h-6 w-6 text-red-600 shrink-0"/>
                <div>
-                   <p className="font-semibold">{isLoadingResults ? <Skeleton className="h-5 w-8 inline-block"/> : completedFinalTests}</p>
-                   <p className="text-sm text-muted-foreground">Final Tests Completed</p>
+                  {isLoadingResults ? (
+                    <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                  ) : (
+                    <p className="font-semibold">{completedFinalTests}</p>
+                  )}
+                  <p className="text-sm text-muted-foreground">Final Tests Completed</p>
                </div>
            </div>
            <div className="flex items-center gap-3 p-3 bg-secondary rounded-md">
                <BarChart className="h-6 w-6 text-blue-600 shrink-0"/>
                 <div>
                    {/* Placeholder for potential future stats */}
-                   <p className="font-semibold">--</p>
+                    {isLoadingResults ? (
+                      <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                     ) : (
+                       <p className="font-semibold">--</p>
+                    )}
                    <p className="text-sm text-muted-foreground">Average Score</p>
                </div>
            </div>
