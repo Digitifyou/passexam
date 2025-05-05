@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from "@/components/ui/badge"; // Import Badge
 import { CheckCircle, XCircle, HelpCircle, ArrowLeft } from 'lucide-react';
 
 // Types (Assume these might come from a get_results.php call or are reconstructed)
@@ -198,7 +199,12 @@ function ReviewPageComponent() {
           setResultDetails(result);
         } else {
            console.error(`Base data for test ID ${testId} not found or query params missing.`);
-           throw new Error("Result data not found or summary data missing.");
+           // Updated to throw a more specific error when base data is missing
+           if(!baseData) {
+                throw new Error(`Could not find test details for ID ${testId}.`);
+           } else {
+                throw new Error("Result summary data missing.");
+           }
         }
       } catch (err) {
         console.error("Failed to fetch results:", err);
@@ -396,3 +402,5 @@ function ReviewPageLoadingSkeleton() {
     );
 }
 
+
+      
