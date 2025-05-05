@@ -75,18 +75,62 @@ export default function QuizPage() {
                 { id: 1011, question: "What does NAV stand for?", options: [{id: 'a', text: 'Net Asset Value'}, {id: 'b', text:'New Account Volume'}, {id: 'c', text:'National Association of Ventures'}], correct_answer: 'a' },
                 { id: 1012, question: "Which fund type aims to replicate a market index?", options: [{id: 'a', text:'Actively Managed Fund'}, {id: 'b', text:'Index Fund'}, {id: 'c', text:'Hedge Fund'}], correct_answer: 'b' },
             ]},
+             "102": { id: 102, title: "Practice Test 2", test_type: 'practice', questions: [
+                { id: 1021, question: "What is an Expense Ratio?", options: [{id: 'a', text: 'Annual fee charged by funds'}, {id: 'b', text:'Ratio of profits to losses'}, {id: 'c', text:'Measure of market volatility'}], correct_answer: 'a' },
+            ]},
+             "103": { id: 103, title: "Practice Test 3", test_type: 'practice', questions: [
+                 { id: 1031, question: "What is a Load Fee?", options: [{id: 'a', text: 'Sales charge on mutual funds'}, {id: 'b', text:'Fee for heavy items'}, {id: 'c', text:'Server load balancer cost'}], correct_answer: 'a' },
+             ]},
+             "104": { id: 104, title: "Practice Test 4", test_type: 'practice', questions: [
+                 { id: 1041, question: "Difference between Open-End and Closed-End funds?", options: [{id: 'a', text: 'Share issuance/redemption'}, {id: 'b', text:'Investment strategy'}, {id: 'c', text:'Fund manager location'}], correct_answer: 'a' },
+             ]},
+             "105": { id: 105, title: "Practice Test 5", test_type: 'practice', questions: [
+                 { id: 1051, question: "What does KYC mean in finance?", options: [{id: 'a', text: 'Know Your Customer'}, {id: 'b', text:'Keep Your Capital'}, {id: 'c', text:'Key Yield Calculation'}], correct_answer: 'a' },
+             ]},
              "106": { id: 106, title: "Final Mock Test", test_type: 'final', duration: 60, questions: [ // Short duration for testing
                 { id: 1061, question: "What is a primary market?", options: [{id: 'a', text:'Where existing securities are traded'}, {id: 'b', text:'Where new securities are issued'}, {id: 'c', text:'A type of supermarket'}], correct_answer: 'b' },
                 { id: 1062, question: "What is SIP?", options: [{id: 'a', text:'Stock Incentive Plan'}, {id: 'b', text:'Systematic Investment Plan'}, {id: 'c', text:'Securities Issuance Protocol'}], correct_answer: 'b' },
                 { id: 1063, question: "Which document is used in IPO filing?", options: [{id: 'a', text:"Red Herring Prospectus"}, {id: 'b', text:"NAV Statement"}, {id: 'c', text:"Offer Note"}, {id: 'd', text:"KYC Form"}], correct_answer: "a" }
             ]},
-            // Add more mock tests as needed based on dashboard data...
+            // Section 2 Tests
              "201": { id: 201, title: "Options Practice 1", test_type: 'practice', questions: [
                 { id: 2011, question: "What gives the buyer the right, but not the obligation, to buy an asset?", options: [{id: 'a', text:'Put Option'}, {id: 'b', text:'Call Option'}, {id: 'c', text:'Future Contract'}], correct_answer: 'b' },
+             ]},
+             "202": { id: 202, title: "Futures Practice 1", test_type: 'practice', questions: [
+                 { id: 2021, question: "What is a Futures Contract?", options: [{id: 'a', text: 'Agreement to buy/sell at a future date'}, {id: 'b', text:'Option to buy in the future'}, {id: 'c', text:'Prediction of future prices'}], correct_answer: 'a' },
+             ]},
+             "203": { id: 203, title: "Options Practice 2", test_type: 'practice', questions: [
+                 { id: 2031, question: "What is a Strike Price?", options: [{id: 'a', text: 'The price the option can be exercised'}, {id: 'b', text:'The current market price'}, {id: 'c', text:'The price when option expires'}], correct_answer: 'a' },
+             ]},
+             "204": { id: 204, title: "Futures Practice 2", test_type: 'practice', questions: [
+                 { id: 2041, question: "What is Initial Margin?", options: [{id: 'a', text: 'Collateral to open a futures position'}, {id: 'b', text:'First profit made'}, {id: 'c', text:'Initial price of the contract'}], correct_answer: 'a' },
+             ]},
+             "205": { id: 205, title: "Derivatives Combo", test_type: 'practice', questions: [
+                 { id: 2051, question: "Which derivative involves obligation for both parties?", options: [{id: 'a', text: 'Option'}, {id: 'b', text:'Future'}, {id: 'c', text:'Swap'}], correct_answer: 'b' }, // Futures and Swaps both have obligations, picking one
              ]},
               "206": { id: 206, title: "Final Mock Derivatives", test_type: 'final', duration: 90, questions: [
                  { id: 2061, question: "What is 'Hedging'?", options: [{id: 'a', text:'Speculating on price movements'}, {id: 'b', text:'Reducing risk of adverse price movements'}, {id: 'c', text:'Arbitraging price differences'}], correct_answer: 'b' },
                  { id: 2062, question: "What is 'Margin' in futures trading?", options: [{id: 'a', text:'Profit from a trade'}, {id: 'b', text:'Brokerage commission'}, {id: 'c', text:'Good faith deposit'}], correct_answer: 'c' },
+             ]},
+            // Section 3 Tests
+             "301": { id: 301, title: "Market Concepts PT 1", test_type: 'practice', questions: [
+                 { id: 3011, question: "What is a Bull Market?", options: [{id: 'a', text: 'Prices are rising'}, {id: 'b', text:'Prices are falling'}, {id: 'c', text:'Prices are stagnant'}], correct_answer: 'a' },
+             ]},
+             "302": { id: 302, title: "Trading Strategies PT 1", test_type: 'practice', questions: [
+                 { id: 3021, question: "What is Short Selling?", options: [{id: 'a', text: 'Selling borrowed shares expecting price drop'}, {id: 'b', text:'Selling shares quickly'}, {id: 'c', text:'Selling shares for a short period'}], correct_answer: 'a' },
+             ]},
+             "303": { id: 303, title: "Market Concepts PT 2", test_type: 'practice', questions: [
+                 { id: 3031, question: "What is Market Capitalization?", options: [{id: 'a', text: 'Total value of a company\'s shares'}, {id: 'b', text:'Total capital raised by a market'}, {id: 'c', text:'Capital city of a market'}], correct_answer: 'a' },
+             ]},
+             "304": { id: 304, title: "Trading Strategies PT 2", test_type: 'practice', questions: [
+                 { id: 3041, question: "What is Diversification?", options: [{id: 'a', text: 'Spreading investments across assets'}, {id: 'b', text:'Investing in diverse companies'}, {id: 'c', text:'Changing investment strategy'}], correct_answer: 'a' },
+             ]},
+             "305": { id: 305, title: "Equity Valuation Basics", test_type: 'practice', questions: [
+                 { id: 3051, question: "What is P/E Ratio?", options: [{id: 'a', text: 'Price-to-Earnings Ratio'}, {id: 'b', text:'Profit-to-Equity Ratio'}, {id: 'c', text:'Potential-Earnings Ratio'}], correct_answer: 'a' },
+             ]},
+             "306": { id: 306, title: "Final Mock Equity", test_type: 'final', duration: 120, questions: [
+                 { id: 3061, question: "What is an IPO?", options: [{id: 'a', text:'Initial Public Offering'}, {id: 'b', text:'Internal Profit Operation'}, {id: 'c', text:'Investment Portfolio Option'}], correct_answer: 'a' },
+                 { id: 3062, question: "What is a Dividend?", options: [{id: 'a', text:'Distribution of profits to shareholders'}, {id: 'b', text:'A type of bond'}, {id: 'c', text:'A market index'}], correct_answer: 'a' },
              ]},
         };
 
@@ -106,11 +150,14 @@ export default function QuizPage() {
             setTimeLeft(fetchedTest.duration);
           }
         } else {
-          throw new Error("Test not found");
+          console.error(`Test data for ID ${testId} not found in mock DB.`);
+          throw new Error(`Test with ID ${testId} could not be loaded.`); // More specific error
         }
       } catch (err) {
         console.error("Failed to fetch test:", err);
-        setError("Could not load the test. Please go back and try again.");
+        // Use the error message thrown or a generic one
+        const message = err instanceof Error ? err.message : "Could not load the test. Please go back and try again.";
+        setError(message);
       } finally {
         setIsLoading(false);
       }
@@ -185,7 +232,7 @@ export default function QuizPage() {
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
+      setCurrentQuestionIndex(prev => prev + 1);
     }
   };
 
@@ -196,7 +243,7 @@ export default function QuizPage() {
    };
 
   const handleSubmit = useCallback(async () => {
-     if (isSubmitting) return;
+     if (isSubmitting || !testDetails) return; // Added check for testDetails
      setIsSubmitting(true);
      setShowSubmitConfirm(false); // Close confirmation dialog
 
@@ -210,26 +257,28 @@ export default function QuizPage() {
        // --- MOCK RESULT CALCULATION ---
        let correctCount = 0;
        let incorrectCount = 0;
-       testDetails?.questions.forEach(q => {
+       testDetails.questions.forEach(q => { // Use testDetails directly
          const userAnswer = answers[q.id];
-         if (userAnswer?.selectedOption !== null) {
+         if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) { // Check for undefined too
             if (userAnswer.selectedOption === q.correct_answer) {
                 correctCount++;
             } else {
                 incorrectCount++;
             }
+         } else {
+            incorrectCount++; // Count unanswered as incorrect
          }
          // Note: In a real scenario, is_correct would be set by the backend
          // For practice mode, it's already set. For final, backend calculates.
          // We might need to update `answers` state here based on backend response if needed.
        });
-       const totalQuestions = testDetails?.questions.length || 0;
+       const totalQuestions = testDetails.questions.length; // Use testDetails directly
        const score = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
 
        const mockResult = {
          score: score.toFixed(0),
          correctAnswers: correctCount,
-         incorrectAnswers: incorrectCount,
+         incorrectAnswers: totalQuestions - correctCount, // Calculate incorrect based on total and correct
          totalQuestions: totalQuestions,
          // The full review data would likely come from this API or a separate get_results.php call
          // For now, we'll pass the necessary data directly to the review page via state or query params
@@ -304,14 +353,15 @@ export default function QuizPage() {
   }
 
   // Error state
-  if (error) {
+  if (error || !testDetails) { // Add check for !testDetails here too
     return (
        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
           <Alert variant="destructive" className="max-w-lg">
              <AlertCircle className="h-4 w-4" />
              <AlertTitle>Error Loading Test</AlertTitle>
              <AlertDescription>
-                {error} <Button variant="link" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+                {error || "Test data could not be loaded."} {/* Provide a default message if error is null but testDetails is still null */}
+                <Button variant="link" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
              </AlertDescription>
           </Alert>
        </div>
@@ -319,17 +369,17 @@ export default function QuizPage() {
   }
 
   // Quiz display
-  const currentQuestion = testDetails?.questions[currentQuestionIndex];
-  const currentAnswer = answers[currentQuestion?.id ?? -1];
-  const progress = testDetails ? ((currentQuestionIndex + 1) / testDetails.questions.length) * 100 : 0;
-  const isPractice = testDetails?.test_type === 'practice';
-  const isFinal = testDetails?.test_type === 'final';
-  const isLastQuestion = testDetails ? currentQuestionIndex === testDetails.questions.length - 1 : false;
+  const currentQuestion = testDetails.questions[currentQuestionIndex]; // Safe to access directly now
+  const currentAnswer = answers[currentQuestion.id]; // Safe to access directly now
+  const progress = ((currentQuestionIndex + 1) / testDetails.questions.length) * 100;
+  const isPractice = testDetails.test_type === 'practice';
+  const isFinal = testDetails.test_type === 'final';
+  const isLastQuestion = currentQuestionIndex === testDetails.questions.length - 1;
 
   return (
      <div className="container py-8">
         <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold">{testDetails?.title}</h1>
+            <h1 className="text-2xl font-bold">{testDetails.title}</h1>
             {isFinal && timeLeft !== null && (
                 <div className={`flex items-center space-x-2 p-2 rounded-md ${timeLeft < 60 ? 'text-destructive font-semibold animate-pulse' : 'text-muted-foreground'}`}>
                     <TimerIcon className="h-5 w-5" />
@@ -347,8 +397,8 @@ export default function QuizPage() {
                   <CardTitle>Questions</CardTitle>
               </CardHeader>
               <CardContent className="grid grid-cols-5 gap-2">
-                  {testDetails?.questions.map((q, index) => {
-                      const answered = answers[q.id]?.selectedOption !== null;
+                  {testDetails.questions.map((q, index) => {
+                      const answered = answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined; // Check for undefined too
                       const isCurrent = index === currentQuestionIndex;
                       let statusClass = "bg-secondary hover:bg-muted"; // Default
                       if(isCurrent) statusClass = "bg-primary text-primary-foreground ring-2 ring-ring ring-offset-2";
@@ -374,30 +424,31 @@ export default function QuizPage() {
           <div className="md:col-span-3">
             <Card>
               <CardHeader>
-                <CardTitle>Question {currentQuestionIndex + 1} of {testDetails?.questions.length}</CardTitle>
+                <CardTitle>Question {currentQuestionIndex + 1} of {testDetails.questions.length}</CardTitle>
                 <CardDescription className="pt-4 text-lg text-foreground">
-                  {currentQuestion?.question}
+                  {currentQuestion.question}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <RadioGroup
                   value={currentAnswer?.selectedOption?.toString() ?? ""}
-                  onValueChange={(value) => handleAnswerSelect(currentQuestion!.id, value)}
+                  onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                   className="space-y-3"
                   // Disable options if it's practice mode and answer is already given
-                  disabled={isPractice && currentAnswer?.selectedOption !== null}
+                  disabled={isPractice && currentAnswer?.selectedOption !== null && currentAnswer?.selectedOption !== undefined} // Check for undefined
                 >
-                  {currentQuestion?.options.map((option) => {
+                  {currentQuestion.options.map((option) => {
                     const isSelected = currentAnswer?.selectedOption === option.id;
                     const isCorrectAnswer = currentQuestion.correct_answer === option.id;
                     let optionStateClass = "";
+                     const isAnsweredInPractice = isPractice && currentAnswer?.selectedOption !== null && currentAnswer?.selectedOption !== undefined; // Check for undefined
 
                     // Apply styling only in practice mode *after* an answer is selected
-                    if (isPractice && currentAnswer?.selectedOption !== null) {
+                    if (isAnsweredInPractice) {
                        if (isSelected) {
-                           optionStateClass = currentAnswer.isCorrect ? "border-green-500 bg-green-100/50" : "border-red-500 bg-red-100/50";
+                           optionStateClass = currentAnswer.isCorrect ? "border-green-500 bg-green-100/50 dark:bg-green-900/30" : "border-red-500 bg-red-100/50 dark:bg-red-900/30";
                        } else if (isCorrectAnswer) {
-                           optionStateClass = "border-green-500 bg-green-100/50"; // Highlight correct if user chose wrong
+                           optionStateClass = "border-green-500 bg-green-100/50 dark:bg-green-900/30"; // Highlight correct if user chose wrong
                        }
                     }
 
@@ -405,15 +456,15 @@ export default function QuizPage() {
                       <Label
                         key={option.id}
                         htmlFor={`option-${option.id}`}
-                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors ${optionStateClass} ${isPractice && currentAnswer?.selectedOption !== null ? 'cursor-not-allowed opacity-80' : ''}`}
+                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors ${optionStateClass} ${isAnsweredInPractice ? 'cursor-not-allowed opacity-80' : ''}`}
                       >
                         <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} />
                         <span>{option.text}</span>
                          {/* Optional: Show check/cross in practice mode */}
-                         {isPractice && currentAnswer?.selectedOption !== null && isSelected && (
+                         {isAnsweredInPractice && isSelected && (
                              currentAnswer.isCorrect ? <CheckCircle className="h-5 w-5 text-green-600 ml-auto" /> : <XCircle className="h-5 w-5 text-red-600 ml-auto" />
                          )}
-                         {isPractice && currentAnswer?.selectedOption !== null && !isSelected && isCorrectAnswer && (
+                         {isAnsweredInPractice && !isSelected && isCorrectAnswer && (
                             <CheckCircle className="h-5 w-5 text-green-600 ml-auto opacity-70" /> // Mark correct answer if user was wrong
                          )}
                       </Label>
@@ -433,7 +484,7 @@ export default function QuizPage() {
                  {isLastQuestion ? (
                     <Button
                         onClick={() => setShowSubmitConfirm(true)}
-                        className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                        className="bg-primary hover:bg-primary/90" // Use primary for submit button
                         disabled={isSubmitting}
                     >
                        {isSubmitting ? "Submitting..." : "Submit Test"}
@@ -455,7 +506,7 @@ export default function QuizPage() {
               <AlertDialogTitle>Submit your test?</AlertDialogTitle>
               <AlertDialogDescription>
                  Are you sure you want to submit your answers? You won't be able to change them after submission.
-                 {isFinal && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
+                 {isFinal && timeLeft !== null && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -471,3 +522,4 @@ export default function QuizPage() {
      </div>
   );
 }
+
