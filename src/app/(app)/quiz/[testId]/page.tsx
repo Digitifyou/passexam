@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -14,6 +15,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
 import quizData from '@/data/quiz-questions.json'; // Import the JSON data
+import { cn } from "@/lib/utils";
+
 
 // Types (replace with actual types from backend or derive from JSON structure)
 interface QuestionOption {
@@ -48,6 +51,11 @@ const testsDatabase: Record<string, TestDetails> = quizData;
 // Helper function to shuffle an array (Fisher-Yates)
 // Ensures the shuffling happens client-side after hydration
 const shuffleArray = <T>(array: T[]): T[] => {
+  // Ensure this runs only on the client
+  if (typeof window === 'undefined') {
+     console.warn("Shuffle attempted on server, returning original array.");
+     return array;
+  }
   let currentIndex = array.length, randomIndex;
   // While there remain elements to shuffle.
   while (currentIndex !== 0) {
@@ -77,10 +85,19 @@ export default function QuizPage() {
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]); // Store shuffled subset
+  const [isClient, setIsClient] = useState(false); // Track client-side mount
+
+
+   // Effect to track client-side mounting
+   useEffect(() => {
+     setIsClient(true);
+   }, []);
+
 
   // Fetch test details and select questions
   useEffect(() => {
-    if (!testId) return;
+     // Only run on client after mount and if testId exists
+    if (!isClient || !testId) return;
 
     const fetchTest = async () => {
       setIsLoading(true);
@@ -102,8 +119,8 @@ export default function QuizPage() {
            let selectedQuestions: Question[] = [];
            if (fetchedTest.questions && Array.isArray(fetchedTest.questions) && fetchedTest.questions.length > 0) {
              const allQuestions = fetchedTest.questions;
-             // Ensure shuffle happens client-side
-             const shuffledAll = shuffleArray([...allQuestions]);
+             // Ensure shuffle happens client-side - call shuffleArray here
+             const shuffledAll = shuffleArray([...allQuestions]); // Shuffle a copy
              const targetQuestionCount = fetchedTest.test_type === 'final' ? 50 : 25;
 
              if (shuffledAll.length >= targetQuestionCount) {
@@ -123,11 +140,11 @@ export default function QuizPage() {
            // Update test details state with the base info
            setTestDetails({
                ...fetchedTest,
-               questions: [], // Initially empty, will be set by shuffledQuestions state
+               questions: [], // Base details don't hold the selected questions
            });
 
            // Set the selected shuffled questions state
-           setShuffledQuestions(selectedQuestions);
+           setShuffledQuestions(selectedQuestions); // This state holds the active questions
 
             // --- End Question Selection Logic ---
 
@@ -135,10 +152,18 @@ export default function QuizPage() {
           const initialAnswers: Record<number, Answer> = {};
            if (selectedQuestions.length > 0) {
               selectedQuestions.forEach(q => {
-                initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
+                 // Safety check for question ID
+                 if (q && q.id !== undefined && q.id !== null) {
+                    initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
+                 } else {
+                    console.error("Encountered a question without a valid ID during answer initialization:", q);
+                 }
               });
+           } else {
+               console.log("No questions selected, initializing empty answers.");
            }
            setAnswers(initialAnswers);
+
 
           // Start timer for final tests
           if (fetchedTest.test_type === 'final' && fetchedTest.duration) {
@@ -149,7 +174,8 @@ export default function QuizPage() {
           }
         } else {
           console.error(`Test data for ID ${testId} not found in JSON data.`);
-           setError(`Test details for ID ${testId} not found. Please return to the dashboard.`);
+           // Throw error to be caught below and displayed to user
+           throw new Error(`Test details for ID ${testId} not found. Please return to the dashboard.`);
         }
       } catch (err) {
         console.error("Failed to load test:", err);
@@ -161,12 +187,12 @@ export default function QuizPage() {
     };
 
     fetchTest();
-  }, [testId]); // Only depends on testId
+  }, [testId, isClient]); // Add isClient dependency
 
    // Timer logic for final tests
   useEffect(() => {
      // Ensure we have testDetails *and* a valid timeLeft to start the timer
-    if (testDetails?.test_type !== 'final' || timeLeft === null || timeLeft <= 0 || isLoading) {
+    if (testDetails?.test_type !== 'final' || timeLeft === null || timeLeft <= 0 || isLoading || !isClient) {
       return;
     }
 
@@ -186,7 +212,7 @@ export default function QuizPage() {
 
     return () => clearInterval(timer); // Cleanup interval on unmount or dependency change
      // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [testDetails, timeLeft, isLoading, isSubmitting]); // Add isLoading and isSubmitting dependencies
+  }, [testDetails, timeLeft, isLoading, isSubmitting, isClient]); // Add isClient
 
   const handleTimeUp = () => {
     if (isSubmitting) return; // Prevent duplicate submissions
@@ -200,6 +226,11 @@ export default function QuizPage() {
 
 
   const handleAnswerSelect = (questionId: number, selectedOption: string | number) => {
+     // Ensure questionId is valid before updating state
+     if (questionId === undefined || questionId === null) {
+         console.error("Attempted to select answer for invalid question ID:", questionId);
+         return;
+     }
     setAnswers(prev => ({
       ...prev,
       [questionId]: { questionId, selectedOption },
@@ -243,20 +274,27 @@ export default function QuizPage() {
        // --- CLIENT-SIDE RESULT CALCULATION ---
        let correctCount = 0;
        shuffledQuestions.forEach(q => {
-         const userAnswer = answers[q.id];
-         if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) {
-            if (String(userAnswer.selectedOption) === String(q.correct_answer)) {
-                correctCount++;
-            }
-         }
+         // Ensure question and its ID are valid before accessing answers
+          if (q && q.id !== undefined && q.id !== null) {
+             const userAnswer = answers[q.id];
+             if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) {
+                // Compare as strings for flexibility (e.g., 'a' vs 'a')
+                if (String(userAnswer.selectedOption) === String(q.correct_answer)) {
+                    correctCount++;
+                }
+             }
+          } else {
+             console.error("Encountered invalid question during result calculation:", q);
+          }
        });
        const totalQuestions = shuffledQuestions.length; // Use the actual count of displayed questions
        const score = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+       const incorrectCount = totalQuestions - correctCount;
 
        const result = {
          score: score.toString(),
          correctAnswers: correctCount,
-         incorrectAnswers: totalQuestions - correctCount,
+         incorrectAnswers: incorrectCount, // Calculate incorrect count
          totalQuestions: totalQuestions,
        };
         // --- END CLIENT-SIDE RESULT CALCULATION ---
@@ -298,8 +336,8 @@ export default function QuizPage() {
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  // Loading state
-  if (isLoading) {
+  // Loading state (also check for client side mount)
+  if (isLoading || !isClient) {
     return (
       <div className="container py-8">
          <Skeleton className="h-8 w-3/4 mb-6" />
@@ -345,11 +383,20 @@ export default function QuizPage() {
    }
 
   // Quiz display - Ensure currentQuestion is accessed safely
-  const currentQuestion = shuffledQuestions[currentQuestionIndex];
-  // Handle case where currentQuestion might be undefined briefly during state transitions
-  if (!currentQuestion) {
-     // Optionally return a specific loading state or null
-     return <div className="container py-8 text-center">Loading question...</div>;
+   const currentQuestion = shuffledQuestions[currentQuestionIndex];
+   // Check if currentQuestion or its ID is valid
+   if (!currentQuestion || currentQuestion.id === undefined || currentQuestion.id === null) {
+       console.error("Invalid current question or question ID:", currentQuestion);
+       // Attempt to recover or show error
+       if (shuffledQuestions.length > 0 && currentQuestionIndex < shuffledQuestions.length) {
+          // Maybe try moving to the next valid question? Or show a specific error.
+          return <div className="container py-8 text-center text-destructive">Error displaying question {currentQuestionIndex + 1}. Invalid data.</div>;
+       } else {
+          // If no valid questions left, maybe trigger error state
+          setError("Encountered invalid question data during quiz.");
+          // Rerender will show the error alert from above
+          return null;
+       }
    }
 
   const currentAnswer = answers[currentQuestion.id];
@@ -379,27 +426,31 @@ export default function QuizPage() {
               </CardHeader>
               <CardContent className="grid grid-cols-5 gap-2 max-h-[60vh] overflow-y-auto pr-2">
                   {shuffledQuestions.map((q, index) => {
-                      const answered = answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
+                       // Safety check for question ID
+                       const questionIdValid = q && q.id !== undefined && q.id !== null;
+                       const answered = questionIdValid && answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
                       const isCurrent = index === currentQuestionIndex;
                        // Determine button styles based on state
-                       const variant: "default" | "secondary" | "outline" | "accent" = isCurrent
-                         ? "default" // Primary color for current
-                         : answered
-                         ? "accent" // Accent color for answered (use accent theme color)
-                         : "outline"; // Outline for unanswered
+                        let variant: "default" | "secondary" | "outline" | "accent" | "ghost" = "outline"; // Default to outline
+                         if (isCurrent) {
+                            variant = "default"; // Primary for current
+                         } else if (answered) {
+                           // Use accent color defined in theme (globals.css)
+                            variant = "accent"; // Accent for answered
+                         }
 
-                       const additionalClasses = isCurrent ? "ring-2 ring-ring ring-offset-2" : answered ? "border-accent-foreground/50" : "";
+                        const additionalClasses = isCurrent ? "ring-2 ring-ring ring-offset-2" : answered ? "border-accent-foreground/50" : "";
 
 
                       return (
                           <Button
-                              key={q.id}
+                              key={questionIdValid ? q.id : `invalid-q-${index}`} // Use index as fallback key
                               variant={variant}
                               size="icon"
-                              className={`h-9 w-9 rounded-full transition-all duration-150 ${additionalClasses} `}
-                              onClick={() => goToQuestion(index)}
+                              className={`h-9 w-9 rounded-full transition-all duration-150 ${additionalClasses} ${!questionIdValid ? 'opacity-50 cursor-not-allowed' : ''}`}
+                              onClick={() => questionIdValid && goToQuestion(index)}
                               aria-label={`Go to question ${index + 1}`}
-                              disabled={isSubmitting} // Disable navigation buttons while submitting
+                              disabled={isSubmitting || !questionIdValid} // Disable navigation buttons while submitting or if ID invalid
                           >
                               {index + 1}
                           </Button>
@@ -419,7 +470,9 @@ export default function QuizPage() {
               </CardHeader>
               <CardContent>
                 <RadioGroup
-                  value={currentAnswer?.selectedOption?.toString() ?? ""}
+                   // Ensure currentAnswer and its selectedOption are checked before accessing toString()
+                   // Also provide a default empty string value if null/undefined
+                   value={currentAnswer?.selectedOption?.toString() ?? ""}
                   onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                   className="space-y-3"
                   disabled={isSubmitting} // Disable interaction while submitting
@@ -428,12 +481,15 @@ export default function QuizPage() {
                       <Label
                         key={option.id}
                         htmlFor={`option-${option.id}`}
+                        // Apply cn utility for conditional classes
                         className={cn(
-                           "flex items-center space-x-3 p-4 border rounded-md transition-colors duration-150",
-                           "hover:bg-accent/50 dark:hover:bg-accent/30", // Hover effect
-                           "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20", // Checked state
-                           isSubmitting ? 'cursor-not-allowed opacity-70' : 'cursor-pointer' // Disabled state
-                         )}
+                          "flex items-center space-x-3 p-4 border rounded-md transition-colors duration-150",
+                          "hover:bg-accent/50 dark:hover:bg-accent/30", // Consistent hover
+                          // Use has-[:checked] pseudo-class for better state handling with ShadCN components
+                          "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20",
+                           // More explicit disabled styling
+                           isSubmitting ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
+                        )}
                       >
                         <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting} />
                         <span>{option.text}</span>
