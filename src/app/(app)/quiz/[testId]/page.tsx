@@ -117,6 +117,7 @@ export default function QuizPage() {
         if (fetchedTest) {
            // --- Question Selection Logic ---
            let selectedQuestions: Question[] = [];
+           // Ensure questions exist and is an array before proceeding
            if (fetchedTest.questions && Array.isArray(fetchedTest.questions) && fetchedTest.questions.length > 0) {
              const allQuestions = fetchedTest.questions;
              // Ensure shuffle happens client-side - call shuffleArray here
@@ -132,9 +133,12 @@ export default function QuizPage() {
              }
            } else {
                console.warn(`Test data for ID ${testId} has no questions or questions are not in the expected format.`);
-               setError(`Test data for ID ${testId} has no questions.`);
+               // Set error state instead of throwing immediately
+               setError(`Test data for ID ${testId} is missing questions or has an invalid format.`);
+               // Set loading to false as we've determined the state
                setIsLoading(false);
-               return; // Stop further processing
+               // Return early to prevent further processing on invalid data
+               return;
            }
 
            // Update test details state with the base info
@@ -161,6 +165,12 @@ export default function QuizPage() {
               });
            } else {
                console.log("No questions selected, initializing empty answers.");
+               // If no questions were selected (e.g., due to insufficient count warning above), set error.
+               if (!error) { // Avoid overwriting existing errors (like missing questions array)
+                   setError(`Could not select any questions for test ID ${testId}. The test might be empty or misconfigured.`);
+               }
+               setIsLoading(false);
+               return; // Stop if no questions could be processed
            }
            setAnswers(initialAnswers);
 
@@ -173,16 +183,20 @@ export default function QuizPage() {
             setTimeLeft(duration);
           }
         } else {
-          console.error(`Test data for ID ${testId} not found in JSON data.`);
+           console.error(`Test data for ID ${testId} not found in JSON data.`);
            // Throw error to be caught below and displayed to user
-           throw new Error(`Test details for ID ${testId} not found. Please return to the dashboard.`);
+           // Use a more user-friendly message
+           throw new Error(`Test details for ID ${testId} could not be found. It might be unavailable. Please return to the dashboard.`);
         }
       } catch (err) {
         console.error("Failed to load test:", err);
         const message = err instanceof Error ? err.message : "Could not load the test. Please go back and try again.";
         setError(message);
       } finally {
-        setIsLoading(false);
+        // Only set loading to false if it hasn't been set already (e.g., by error handling within try block)
+        if (isLoading) {
+            setIsLoading(false);
+        }
       }
     };
 
@@ -390,12 +404,35 @@ export default function QuizPage() {
        // Attempt to recover or show error
        if (shuffledQuestions.length > 0 && currentQuestionIndex < shuffledQuestions.length) {
           // Maybe try moving to the next valid question? Or show a specific error.
-          return <div className="container py-8 text-center text-destructive">Error displaying question {currentQuestionIndex + 1}. Invalid data.</div>;
+          setError("Error displaying current question due to invalid data. Please contact support if this persists.");
+          return ( // Re-render to show the error in the Alert above
+                <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+                   <Alert variant="destructive" className="max-w-lg">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>Error Displaying Question</AlertTitle>
+                      <AlertDescription>
+                         {error}
+                         <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+                      </AlertDescription>
+                   </Alert>
+                </div>
+             );
        } else {
           // If no valid questions left, maybe trigger error state
-          setError("Encountered invalid question data during quiz.");
+          setError("Encountered invalid question data and could not continue the quiz.");
           // Rerender will show the error alert from above
-          return null;
+           return ( // Re-render to show the error in the Alert above
+                <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+                   <Alert variant="destructive" className="max-w-lg">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>Quiz Error</AlertTitle>
+                      <AlertDescription>
+                         {error}
+                         <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+                      </AlertDescription>
+                   </Alert>
+                </div>
+             );
        }
    }
 
@@ -431,7 +468,7 @@ export default function QuizPage() {
                        const answered = questionIdValid && answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
                       const isCurrent = index === currentQuestionIndex;
                        // Determine button styles based on state
-                        let variant: "default" | "secondary" | "outline" | "accent" | "ghost" = "outline"; // Default to outline
+                        let variant: "default" | "secondary" | "outline" | "accent" | "ghost" | "link" | null | undefined = "outline"; // Default to outline
                          if (isCurrent) {
                             variant = "default"; // Primary for current
                          } else if (answered) {
@@ -475,7 +512,7 @@ export default function QuizPage() {
                    value={currentAnswer?.selectedOption?.toString() ?? ""}
                   onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                   className="space-y-3"
-                  disabled={isSubmitting} // Disable interaction while submitting
+                  // disabled={isSubmitting} // Interaction should not be disabled while submitting as user might still navigate
                 >
                   {currentQuestion.options.map((option) => (
                       <Label
@@ -487,11 +524,11 @@ export default function QuizPage() {
                           "hover:bg-accent/50 dark:hover:bg-accent/30", // Consistent hover
                           // Use has-[:checked] pseudo-class for better state handling with ShadCN components
                           "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20",
-                           // More explicit disabled styling
-                           isSubmitting ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
+                           // More explicit disabled styling - disable only if actually submitting or timed out
+                           (isSubmitting || timeLeft === 0) ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
                         )}
                       >
-                        <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting} />
+                        <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting || timeLeft === 0} />
                         <span>{option.text}</span>
                       </Label>
                     )
