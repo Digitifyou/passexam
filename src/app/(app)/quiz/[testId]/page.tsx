@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -11,9 +12,10 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
-import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react'; // Removed CheckCircle, XCircle
+import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
+import quizData from '@/data/quiz-questions.json'; // Import the JSON data
 
-// Types (replace with actual types from backend)
+// Types (replace with actual types from backend or derive from JSON structure)
 interface QuestionOption {
   id: string | number; // Unique ID for the radio item value
   text: string;
@@ -40,6 +42,9 @@ interface Answer {
   selectedOption: string | number | null;
 }
 
+// Type assertion for the imported JSON data
+const testsDatabase: Record<string, TestDetails> = quizData;
+
 export default function QuizPage() {
   const params = useParams();
   const router = useRouter();
@@ -55,7 +60,7 @@ export default function QuizPage() {
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fetch test details and questions
+  // Fetch test details and questions from JSON
   useEffect(() => {
     if (!testId) return;
 
@@ -63,79 +68,10 @@ export default function QuizPage() {
       setIsLoading(true);
       setError(null);
       try {
-        // TODO: Replace with actual API call to get_questions.php?id=Y
-        console.log(`Fetching test details for ID: ${testId}`);
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        // Simulate async loading if needed (e.g., for potential future API calls)
+        // await new Promise(resolve => setTimeout(resolve, 50)); // Reduced delay
 
-        // --- MOCK API RESPONSE ---
-        // Find which mock test corresponds to testId
-        const mockTestsDB: Record<string, TestDetails> = {
-            // Section 1 Tests
-            "101": { id: 101, title: "Practice Test 1", test_type: 'practice', questions: [
-                { id: 1011, question: "What does NAV stand for?", options: [{id: 'a', text: 'Net Asset Value'}, {id: 'b', text:'New Account Volume'}, {id: 'c', text:'National Association of Ventures'}], correct_answer: 'a' },
-                { id: 1012, question: "Which fund type aims to replicate a market index?", options: [{id: 'a', text:'Actively Managed Fund'}, {id: 'b', text:'Index Fund'}, {id: 'c', text:'Hedge Fund'}], correct_answer: 'b' },
-            ]},
-             "102": { id: 102, title: "Practice Test 2", test_type: 'practice', questions: [
-                { id: 1021, question: "What is an Expense Ratio?", options: [{id: 'a', text: 'Annual fee charged by funds'}, {id: 'b', text:'Ratio of profits to losses'}, {id: 'c', text:'Measure of market volatility'}], correct_answer: 'a' },
-            ]},
-             "103": { id: 103, title: "Practice Test 3", test_type: 'practice', questions: [
-                 { id: 1031, question: "What is a Load Fee?", options: [{id: 'a', text: 'Sales charge on mutual funds'}, {id: 'b', text:'Fee for heavy items'}, {id: 'c', text:'Server load balancer cost'}], correct_answer: 'a' },
-             ]},
-             "104": { id: 104, title: "Practice Test 4", test_type: 'practice', questions: [
-                 { id: 1041, question: "Difference between Open-End and Closed-End funds?", options: [{id: 'a', text: 'Share issuance/redemption'}, {id: 'b', text:'Investment strategy'}, {id: 'c', text:'Fund manager location'}], correct_answer: 'a' },
-             ]},
-             "105": { id: 105, title: "Practice Test 5", test_type: 'practice', questions: [
-                 { id: 1051, question: "What does KYC mean in finance?", options: [{id: 'a', text: 'Know Your Customer'}, {id: 'b', text:'Keep Your Capital'}, {id: 'c', text:'Key Yield Calculation'}], correct_answer: 'a' },
-             ]},
-             "106": { id: 106, title: "Final Mock Test", test_type: 'final', duration: 60, questions: [ // Short duration for testing
-                { id: 1061, question: "What is a primary market?", options: [{id: 'a', text:'Where existing securities are traded'}, {id: 'b', text:'Where new securities are issued'}, {id: 'c', text:'A type of supermarket'}], correct_answer: 'b' },
-                { id: 1062, question: "What is SIP?", options: [{id: 'a', text:'Stock Incentive Plan'}, {id: 'b', text:'Systematic Investment Plan'}, {id: 'c', text:'Securities Issuance Protocol'}], correct_answer: 'b' },
-                { id: 1063, question: "Which document is used in IPO filing?", options: [{id: 'a', text:"Red Herring Prospectus"}, {id: 'b', text:"NAV Statement"}, {id: 'c', text:"Offer Note"}, {id: 'd', text:"KYC Form"}], correct_answer: "a" }
-            ]},
-            // Section 2 Tests
-             "201": { id: 201, title: "Options Practice 1", test_type: 'practice', questions: [
-                { id: 2011, question: "What gives the buyer the right, but not the obligation, to buy an asset?", options: [{id: 'a', text:'Put Option'}, {id: 'b', text:'Call Option'}, {id: 'c', text:'Future Contract'}], correct_answer: 'b' },
-             ]},
-             "202": { id: 202, title: "Futures Practice 1", test_type: 'practice', questions: [
-                 { id: 2021, question: "What is a Futures Contract?", options: [{id: 'a', text: 'Agreement to buy/sell at a future date'}, {id: 'b', text:'Option to buy in the future'}, {id: 'c', text:'Prediction of future prices'}], correct_answer: 'a' },
-             ]},
-             "203": { id: 203, title: "Options Practice 2", test_type: 'practice', questions: [
-                 { id: 2031, question: "What is a Strike Price?", options: [{id: 'a', text: 'The price the option can be exercised'}, {id: 'b', text:'The current market price'}, {id: 'c', text:'The price when option expires'}], correct_answer: 'a' },
-             ]},
-             "204": { id: 204, title: "Futures Practice 2", test_type: 'practice', questions: [
-                 { id: 2041, question: "What is Initial Margin?", options: [{id: 'a', text: 'Collateral to open a futures position'}, {id: 'b', text:'First profit made'}, {id: 'c', text:'Initial price of the contract'}], correct_answer: 'a' },
-             ]},
-             "205": { id: 205, title: "Derivatives Combo", test_type: 'practice', questions: [
-                 { id: 2051, question: "Which derivative involves obligation for both parties?", options: [{id: 'a', text: 'Option'}, {id: 'b', text:'Future'}, {id: 'c', text:'Swap'}], correct_answer: 'b' }, // Futures and Swaps both have obligations, picking one
-             ]},
-              "206": { id: 206, title: "Final Mock Derivatives", test_type: 'final', duration: 90, questions: [
-                 { id: 2061, question: "What is 'Hedging'?", options: [{id: 'a', text:'Speculating on price movements'}, {id: 'b', text:'Reducing risk of adverse price movements'}, {id: 'c', text:'Arbitraging price differences'}], correct_answer: 'b' },
-                 { id: 2062, question: "What is 'Margin' in futures trading?", options: [{id: 'a', text:'Profit from a trade'}, {id: 'b', text:'Brokerage commission'}, {id: 'c', text:'Good faith deposit'}], correct_answer: 'c' },
-             ]},
-            // Section 3 Tests
-             "301": { id: 301, title: "Market Concepts PT 1", test_type: 'practice', questions: [
-                 { id: 3011, question: "What is a Bull Market?", options: [{id: 'a', text: 'Prices are rising'}, {id: 'b', text:'Prices are falling'}, {id: 'c', text:'Prices are stagnant'}], correct_answer: 'a' },
-             ]},
-             "302": { id: 302, title: "Trading Strategies PT 1", test_type: 'practice', questions: [
-                 { id: 3021, question: "What is Short Selling?", options: [{id: 'a', text: 'Selling borrowed shares expecting price drop'}, {id: 'b', text:'Selling shares quickly'}, {id: 'c', text:'Selling shares for a short period'}], correct_answer: 'a' },
-             ]},
-             "303": { id: 303, title: "Market Concepts PT 2", test_type: 'practice', questions: [
-                 { id: 3031, question: "What is Market Capitalization?", options: [{id: 'a', text: 'Total value of a company\'s shares'}, {id: 'b', text:'Total capital raised by a market'}, {id: 'c', text:'Capital city of a market'}], correct_answer: 'a' },
-             ]},
-             "304": { id: 304, title: "Trading Strategies PT 2", test_type: 'practice', questions: [
-                 { id: 3041, question: "What is Diversification?", options: [{id: 'a', text: 'Spreading investments across assets'}, {id: 'b', text:'Investing in diverse companies'}, {id: 'c', text:'Changing investment strategy'}], correct_answer: 'a' },
-             ]},
-             "305": { id: 305, title: "Equity Valuation Basics", test_type: 'practice', questions: [
-                 { id: 3051, question: "What is P/E Ratio?", options: [{id: 'a', text: 'Price-to-Earnings Ratio'}, {id: 'b', text:'Profit-to-Equity Ratio'}, {id: 'c', text:'Potential-Earnings Ratio'}], correct_answer: 'a' },
-             ]},
-             "306": { id: 306, title: "Final Mock Equity", test_type: 'final', duration: 120, questions: [
-                 { id: 3061, question: "What is an IPO?", options: [{id: 'a', text:'Initial Public Offering'}, {id: 'b', text:'Internal Profit Operation'}, {id: 'c', text:'Investment Portfolio Option'}], correct_answer: 'a' },
-                 { id: 3062, question: "What is a Dividend?", options: [{id: 'a', text:'Distribution of profits to shareholders'}, {id: 'b', text:'A type of bond'}, {id: 'c', text:'A market index'}], correct_answer: 'a' },
-             ]},
-        };
-
-         const fetchedTest = mockTestsDB[testId];
-        // --- END MOCK API RESPONSE ---
+        const fetchedTest = testsDatabase[testId];
 
         if (fetchedTest) {
           setTestDetails(fetchedTest);
@@ -150,14 +86,13 @@ export default function QuizPage() {
             setTimeLeft(fetchedTest.duration);
           }
         } else {
-          console.error(`Test data for ID ${testId} not found in mock DB.`);
-          // Throw specific error for review page to catch
-          throw new Error(`Test details for ID ${testId} not found. Please return to the dashboard.`);
+          console.error(`Test data for ID ${testId} not found in JSON data.`);
+           // Use the specific error message
+          setError(`Test details for ID ${testId} not found. Please return to the dashboard.`);
         }
       } catch (err) {
-        console.error("Failed to fetch test:", err);
-        // Use the error message thrown or a generic one
-        const message = err instanceof Error ? err.message : "Could not load the test. Please go back and try again.";
+        console.error("Failed to load test from JSON:", err);
+        const message = "Could not load the test. Please go back and try again.";
         setError(message);
       } finally {
         setIsLoading(false);
@@ -165,7 +100,7 @@ export default function QuizPage() {
     };
 
     fetchTest();
-  }, [testId]); // Removed router from dependency array, only needed on submit/error
+  }, [testId]); // Only depends on testId
 
    // Timer logic for final tests
   useEffect(() => {
@@ -203,7 +138,6 @@ export default function QuizPage() {
       ...prev,
       [questionId]: { questionId, selectedOption },
     }));
-    // Removed immediate feedback logic for practice tests
   };
 
 
@@ -215,7 +149,6 @@ export default function QuizPage() {
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      // Corrected: should be prev - 1
       setCurrentQuestionIndex(prev => prev - 1);
     }
   };
@@ -234,44 +167,43 @@ export default function QuizPage() {
      console.log("Submitting answers:", answers);
 
      try {
-       // TODO: Replace with actual API call to submit_answers.php
-       // The API should calculate the score and return results
-       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate submission
+       // TODO: Replace with actual API call to submit_answers.php (if needed)
+       // The API should calculate the score and return results, or calculation can happen client-side
+       // For now, calculation happens client-side after simulated delay
+       await new Promise(resolve => setTimeout(resolve, 500)); // Simulate submission delay
 
-       // --- MOCK RESULT CALCULATION ---
+       // --- CLIENT-SIDE RESULT CALCULATION ---
        let correctCount = 0;
-       let incorrectCount = 0;
        testDetails.questions.forEach(q => {
          const userAnswer = answers[q.id];
+         // Ensure userAnswer and selectedOption are not null/undefined before comparing
          if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) {
-            if (userAnswer.selectedOption === q.correct_answer) {
+            // Convert both to string for reliable comparison if types might differ (e.g., number vs string)
+            if (String(userAnswer.selectedOption) === String(q.correct_answer)) {
                 correctCount++;
-            } else {
-                incorrectCount++;
             }
-         } else {
-            incorrectCount++; // Count unanswered as incorrect
          }
+         // Unanswered questions are implicitly incorrect based on correctCount
        });
        const totalQuestions = testDetails.questions.length;
-       const score = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
+       const score = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0; // Round score
 
-       const mockResult = {
-         score: score.toFixed(0),
+       const result = {
+         score: score.toString(), // Score as string
          correctAnswers: correctCount,
-         incorrectAnswers: totalQuestions - correctCount, // Calculate incorrect based on total and correct
+         incorrectAnswers: totalQuestions - correctCount,
          totalQuestions: totalQuestions,
        };
-        // --- END MOCK RESULT CALCULATION ---
+        // --- END CLIENT-SIDE RESULT CALCULATION ---
 
 
        toast({
          title: "Test Submitted!",
-         description: `Your score: ${mockResult.score}%`,
+         description: `Your score: ${result.score}%`,
        });
 
        // Redirect to Review Page (pass necessary data)
-       router.push(`/review/${testId}?score=${mockResult.score}&correct=${mockResult.correctAnswers}&incorrect=${mockResult.incorrectAnswers}&total=${mockResult.totalQuestions}`);
+       router.push(`/review/${testId}?score=${result.score}&correct=${result.correctAnswers}&incorrect=${result.incorrectAnswers}&total=${result.totalQuestions}`);
 
 
      } catch (err) {
@@ -281,12 +213,9 @@ export default function QuizPage() {
           title: "Submission Failed",
           description: "Could not submit your answers. Please try again.",
         });
-        setIsSubmitting(false);
+     } finally {
+         setIsSubmitting(false); // Ensure submitting state is reset on error
      }
-    // setIsSubmitting is set to false inside the finally block of the original try/catch,
-    // but since we navigate away on success, we might not need to set it back explicitly here.
-    // However, if the push fails or the user navigates back, it should be reset.
-    // For simplicity, let's assume navigation succeeds and remove setIsSubmitting(false) here.
 
   }, [answers, isSubmitting, router, testId, testDetails, toast]);
 
@@ -337,8 +266,8 @@ export default function QuizPage() {
              <AlertTitle>Error Loading Test</AlertTitle>
              <AlertDescription>
                 {error || "Test data could not be loaded."}
-                {/* Ensure router is available before pushing */}
-                <Button variant="link" onClick={() => router?.push('/dashboard')}>Go back to Dashboard</Button>
+                {/* Provide a button to go back */}
+                <Button variant="link" className="p-0 h-auto mt-2" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
              </AlertDescription>
           </Alert>
        </div>
@@ -376,16 +305,16 @@ export default function QuizPage() {
                   {testDetails.questions.map((q, index) => {
                       const answered = answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
                       const isCurrent = index === currentQuestionIndex;
-                      let statusClass = "bg-secondary hover:bg-muted"; // Default
-                      if(isCurrent) statusClass = "bg-primary text-primary-foreground ring-2 ring-ring ring-offset-2";
-                      else if (answered) statusClass = "bg-accent/50 hover:bg-accent/70 border border-accent";
+                      let statusClass = "bg-secondary hover:bg-muted border"; // Default unselected
+                      if(isCurrent) statusClass = "bg-primary text-primary-foreground ring-2 ring-ring ring-offset-2 border-primary"; // Current question
+                      else if (answered) statusClass = "bg-accent/50 hover:bg-accent/70 border border-accent"; // Answered
 
                       return (
                           <Button
                               key={q.id}
                               variant="outline"
                               size="icon"
-                              className={`h-9 w-9 rounded-full ${statusClass}`}
+                              className={`h-9 w-9 rounded-full transition-colors ${statusClass}`}
                               onClick={() => goToQuestion(index)}
                               aria-label={`Go to question ${index + 1}`}
                           >
@@ -410,19 +339,17 @@ export default function QuizPage() {
                   value={currentAnswer?.selectedOption?.toString() ?? ""}
                   onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                   className="space-y-3"
-                  // Options are never disabled during the test now
-                  disabled={isSubmitting}
+                  disabled={isSubmitting} // Disable interaction while submitting
                 >
                   {currentQuestion.options.map((option) => (
                       <Label
                         key={option.id}
                         htmlFor={`option-${option.id}`}
-                        // Removed dynamic styling based on correctness, simplified hover effect
-                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
+                        // Simplified styling, relies on Radix state for checked indication
+                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors has-[:checked]:bg-primary/10 has-[:checked]:border-primary ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
                       >
                         <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting} />
                         <span>{option.text}</span>
-                         {/* Removed immediate feedback icons (CheckCircle, XCircle) */}
                       </Label>
                     )
                   )}
@@ -440,8 +367,8 @@ export default function QuizPage() {
                  {isLastQuestion ? (
                     <Button
                         onClick={() => setShowSubmitConfirm(true)}
-                        className="bg-primary hover:bg-primary/90" // Use primary for submit button
-                        disabled={isSubmitting}
+                        className="bg-primary hover:bg-primary/90"
+                        disabled={isSubmitting} // Disable while submitting
                     >
                        {isSubmitting ? "Submitting..." : "Submit Test"}
                     </Button>
@@ -469,6 +396,7 @@ export default function QuizPage() {
               <Button variant="outline" onClick={() => setShowSubmitConfirm(false)} disabled={isSubmitting}>
                 Cancel
               </Button>
+              {/* Changed AlertDialogAction to Button to handle disable state */}
               <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
                  {isSubmitting ? "Submitting..." : "Confirm Submit"}
               </Button>
