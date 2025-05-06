@@ -29,7 +29,8 @@ export default function LoginPage() {
 
     // --- MOCK API RESPONSE ---
     // Replace this block with fetch logic
-    const mockSuccess = email === "user@example.com" && password === "password";
+    // Allow both user@example.com and admin@example.com with password 'password' for testing
+    const mockSuccess = (email === "user@example.com" || email === "admin@example.com") && password === "password";
     // --- END MOCK API RESPONSE ---
 
     if (mockSuccess) {
@@ -56,7 +57,7 @@ export default function LoginPage() {
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account.
+            Enter your email below to login to your account. Use user@example.com or admin@example.com with password 'password'.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleLogin}>
@@ -82,6 +83,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                 disabled={isLoading}
+                placeholder="password"
               />
             </div>
           </CardContent>
