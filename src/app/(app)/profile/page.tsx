@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -70,19 +71,42 @@ export default function ProfilePage() {
       setIsLoadingResults(true);
       // setError(null); // Don't reset error if profile failed
       try {
-        // TODO: Replace with actual API call to get_user_results.php (uses session)
-         await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate fetch
-        // --- MOCK RESULTS RESPONSE ---
+        // TODO: Replace 'http://your-php-backend.com/api/get_user_results.php' with your actual API endpoint.
+        // This endpoint should return an array of UserTestResult objects.
+        // It should also handle PHP session to fetch results for the logged-in user.
+        // const response = await fetch('http://your-php-backend.com/api/get_user_results.php', {
+        //   method: 'GET',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     // Cookies should be sent automatically by the browser if the backend is on the same domain
+        //     // or if credentials are included for cross-origin requests.
+        //   },
+        // });
+
+        // if (!response.ok) {
+        //   const errorData = await response.json().catch(() => ({ message: "Failed to fetch results" }));
+        //   throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        // }
+
+        // const data: UserTestResult[] = await response.json();
+        // setTestResults(data);
+        
+        // --- USING MOCK DATA UNTIL API IS IMPLEMENTED ---
+        // To restore previous mock behavior for development if API is not ready:
+        console.warn("Using mock data for test results. Implement API call to get_user_results.php.");
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate fetch
         const mockResults: UserTestResult[] = [
           { id: 1, testId: 106, testName: "Final Mock Test", sectionTitle: "Mutual Funds Basics", testType: 'final', score: 67, correctCount: 2, totalQuestions: 3, submittedAt: "2024-07-28T10:30:00Z" },
           { id: 2, testId: 101, testName: "Practice Test 1", sectionTitle: "Mutual Funds Basics", testType: 'practice', score: 50, correctCount: 1, totalQuestions: 2, submittedAt: "2024-07-27T15:00:00Z" },
           { id: 3, testId: 201, testName: "Options Practice 1", sectionTitle: "Derivatives Explained", testType: 'practice', score: 100, correctCount: 1, totalQuestions: 1, submittedAt: "2024-07-26T09:15:00Z" },
         ];
-        // --- END MOCK RESULTS RESPONSE ---
         setTestResults(mockResults);
+        // --- END MOCK DATA SECTION ---
+
       } catch (err) {
         console.error("Failed to fetch results:", err);
-        setError(prev => prev ? prev + " Also failed to load test results." : "Could not load test results.");
+        const message = err instanceof Error ? err.message : "Could not load test results.";
+        setError(prev => prev ? `${prev} Also failed to load test results: ${message}` : `Could not load test results: ${message}`);
       } finally {
         setIsLoadingResults(false);
       }
@@ -95,9 +119,22 @@ export default function ProfilePage() {
   const handleLogout = async () => {
     // TODO: Replace with actual API call to logout.php
     console.log("Logging out...");
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate API call
+    
+    // Simulate API call to logout.php
+    // try {
+    //   const response = await fetch('http://your-php-backend.com/api/logout.php', { method: 'POST' });
+    //   if (!response.ok) {
+    //     // Handle logout error from backend if necessary
+    //     console.error("Logout failed on backend");
+    //   }
+    // } catch (apiError) {
+    //   console.error("API call to logout.php failed:", apiError);
+    // }
+    await new Promise((resolve) => setTimeout(resolve, 500)); 
+
 
     // Invalidate session client-side if necessary, e.g., remove cookie
+    // This is typically handled by HttpOnly cookies set by the server, but as a fallback:
     // document.cookie = "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     toast({
@@ -178,7 +215,7 @@ export default function ProfilePage() {
                <Check className="h-6 w-6 text-green-600 shrink-0"/>
                <div>
                    {isLoadingResults ? (
-                     <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                     <Skeleton className="h-5 w-8 inline-block"/>
                    ) : (
                      <p className="font-semibold">{completedPracticeTests}</p>
                    )}
@@ -189,7 +226,7 @@ export default function ProfilePage() {
                <X className="h-6 w-6 text-red-600 shrink-0"/>
                <div>
                   {isLoadingResults ? (
-                    <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                    <Skeleton className="h-5 w-8 inline-block"/>
                   ) : (
                     <p className="font-semibold">{completedFinalTests}</p>
                   )}
@@ -201,7 +238,7 @@ export default function ProfilePage() {
                 <div>
                    {/* Placeholder for potential future stats */}
                     {isLoadingResults ? (
-                      <div className="font-semibold"><Skeleton className="h-5 w-8 inline-block"/></div>
+                       <Skeleton className="h-5 w-8 inline-block"/>
                      ) : (
                        <p className="font-semibold">--</p>
                     )}
@@ -275,3 +312,4 @@ export default function ProfilePage() {
     </div>
   );
 }
+
