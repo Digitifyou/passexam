@@ -36,7 +36,7 @@ interface TestDetails {
   questions: Question[];
 }
 
-// Updated Answer type: Removed isCorrect
+// Updated Answer type
 interface Answer {
   questionId: number;
   selectedOption: string | number | null;
@@ -69,17 +69,22 @@ export default function QuizPage() {
       setError(null);
       try {
         // Simulate async loading if needed (e.g., for potential future API calls)
-        // await new Promise(resolve => setTimeout(resolve, 50)); // Reduced delay
+        await new Promise(resolve => setTimeout(resolve, 50)); // Reduced delay
 
         const fetchedTest = testsDatabase[testId];
 
         if (fetchedTest) {
           setTestDetails(fetchedTest);
-          // Initialize answers state
+          // Initialize answers state only if questions exist
           const initialAnswers: Record<number, Answer> = {};
-          fetchedTest.questions.forEach(q => {
-            initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
-          });
+          if (fetchedTest.questions && Array.isArray(fetchedTest.questions)) {
+              fetchedTest.questions.forEach(q => {
+                initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
+              });
+          } else {
+             console.warn(`Test data for ID ${testId} has no questions.`);
+             // You might want to set an error or handle this case differently
+          }
           setAnswers(initialAnswers);
           // Start timer for final tests
           if (fetchedTest.test_type === 'final' && fetchedTest.duration) {
@@ -87,12 +92,12 @@ export default function QuizPage() {
           }
         } else {
           console.error(`Test data for ID ${testId} not found in JSON data.`);
-           // Use the specific error message
           setError(`Test details for ID ${testId} not found. Please return to the dashboard.`);
         }
       } catch (err) {
-        console.error("Failed to load test from JSON:", err);
-        const message = "Could not load the test. Please go back and try again.";
+        console.error("Failed to load test:", err);
+        // Use the error message if it's an Error instance, otherwise use a generic message
+        const message = err instanceof Error ? err.message : "Could not load the test. Please go back and try again.";
         setError(message);
       } finally {
         setIsLoading(false);
@@ -142,7 +147,7 @@ export default function QuizPage() {
 
 
   const goToNextQuestion = () => {
-    if (testDetails && currentQuestionIndex < testDetails.questions.length - 1) {
+    if (testDetails && testDetails.questions && currentQuestionIndex < testDetails.questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     }
   };
@@ -154,13 +159,13 @@ export default function QuizPage() {
   };
 
    const goToQuestion = (index: number) => {
-     if (testDetails && index >= 0 && index < testDetails.questions.length) {
+     if (testDetails && testDetails.questions && index >= 0 && index < testDetails.questions.length) {
        setCurrentQuestionIndex(index);
      }
    };
 
   const handleSubmit = useCallback(async () => {
-     if (isSubmitting || !testDetails) return;
+     if (isSubmitting || !testDetails || !testDetails.questions) return;
      setIsSubmitting(true);
      setShowSubmitConfirm(false); // Close confirmation dialog
 
@@ -258,14 +263,14 @@ export default function QuizPage() {
   }
 
   // Error state
-  if (error || !testDetails) {
+  if (error || !testDetails || !testDetails.questions || testDetails.questions.length === 0) {
     return (
        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
           <Alert variant="destructive" className="max-w-lg">
              <AlertCircle className="h-4 w-4" />
              <AlertTitle>Error Loading Test</AlertTitle>
              <AlertDescription>
-                {error || "Test data could not be loaded."}
+                {error || "Test data could not be loaded or the test has no questions."}
                 {/* Provide a button to go back */}
                 <Button variant="link" className="p-0 h-auto mt-2" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
              </AlertDescription>

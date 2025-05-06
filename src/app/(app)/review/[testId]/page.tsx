@@ -28,6 +28,12 @@ interface ReviewQuestion extends Question {
   is_correct: boolean; // Was the user's answer correct?
 }
 
+interface TestDetails {
+  id: number;
+  title: string;
+  questions: Question[];
+}
+
 interface TestResultDetails {
   testId: number;
   testTitle: string;
@@ -38,14 +44,17 @@ interface TestResultDetails {
   questions: ReviewQuestion[]; // Includes user's selection and correctness
 }
 
-// Type assertion for the imported JSON data
-const testsDatabase: Record<string, Omit<TestResultDetails, 'score' | 'correctAnswers' | 'incorrectAnswers' | 'questions'> & { questions: Question[] }> = quizData;
+// Type assertion for the imported JSON data - keys are test IDs (strings)
+const testsDatabase: Record<string, TestDetails> = quizData;
 
 
 // Helper to simulate user answers based on the fetched questions and score
 // In a real app, user answers would ideally come from the backend or be stored/passed securely.
 // This simulation is for demonstration purposes.
 const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): ReviewQuestion[] => {
+  if (!baseQuestions || baseQuestions.length === 0) {
+      return []; // Return empty array if no base questions
+  }
   const totalQuestions = baseQuestions.length;
   // Calculate the target number of correct answers based on the score
   const targetCorrectCount = Math.round((scorePercent / 100) * totalQuestions);
@@ -54,14 +63,16 @@ const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): R
   // Shuffle questions to randomize which ones are answered correctly/incorrectly
   const shuffledQuestions = [...baseQuestions].sort(() => Math.random() - 0.5);
 
-  const reviewQuestions = shuffledQuestions.map(q => {
+  const reviewQuestions: ReviewQuestion[] = []; // Initialize explicitly
+
+  shuffledQuestions.forEach(q => {
     let selected_option: string | number | null = null;
     let is_correct = false;
     const shouldAttemptAnswer = Math.random() < 0.98; // Simulate 2% unanswered rate
 
     if (shouldAttemptAnswer) {
       // Decide if this answer should be correct based on remaining needed correct answers
-      const remainingQuestions = totalQuestions - (reviewQuestions ? reviewQuestions.length : 0);
+      const remainingQuestions = totalQuestions - reviewQuestions.length;
       const remainingCorrectNeeded = targetCorrectCount - currentCorrectCount;
       const probabilityCorrect = remainingQuestions > 0 ? remainingCorrectNeeded / remainingQuestions : 0;
 
@@ -87,11 +98,11 @@ const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): R
       is_correct = false; // Unanswered is incorrect
     }
 
-    return {
+    reviewQuestions.push({ // Push the created object
       ...q,
       selected_option: selected_option,
       is_correct: is_correct,
-    };
+    });
   });
 
    // Re-sort questions back to their original order based on ID
@@ -137,7 +148,7 @@ function ReviewPageComponent() {
 
         const baseData = testsDatabase[testId];
 
-        if (baseData && hasQueryParams) {
+        if (baseData && baseData.questions && hasQueryParams) {
            // Simulate user answers based on the fetched base questions and the passed score
            const scorePercentage = parseInt(score!, 10); // Use actual score from query params
            const reviewQuestions = simulateUserAnswers(baseData.questions, scorePercentage);
@@ -163,8 +174,8 @@ function ReviewPageComponent() {
           };
           setResultDetails(result);
         } else {
-           console.error(`Base data for test ID ${testId} not found or query params missing.`);
-           setError(`Could not find test details for ID ${testId}.`);
+           console.error(`Base data for test ID ${testId} not found, questions missing, or query params missing.`);
+           setError(`Could not find test details or questions for ID ${testId}.`);
         }
       } catch (err) {
         console.error("Failed to process results:", err);
@@ -181,6 +192,11 @@ function ReviewPageComponent() {
 
    const getOptionText = (question: ReviewQuestion, optionId: string | number | null): string => {
       if(optionId === null) return "Not Answered";
+      // Ensure question.options is an array before using find
+      if (!Array.isArray(question.options)) {
+          console.error("Question options are not an array:", question);
+          return "Invalid Options";
+      }
       const option = question.options.find(opt => String(opt.id) === String(optionId)); // Compare as strings
       return option?.text ?? "Unknown Option";
    }
@@ -191,13 +207,13 @@ function ReviewPageComponent() {
   }
 
   // Error State
-  if (error || !resultDetails) {
+  if (error || !resultDetails || !resultDetails.questions || resultDetails.questions.length === 0) {
      return (
        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
           <Alert variant="destructive" className="max-w-lg">
              <AlertTitle>Error Loading Results</AlertTitle>
              <AlertDescription>
-                {error || "Could not load result details."}
+                {error || "Could not load result details or the test has no questions."}
                  <Button variant="link" className="p-0 h-auto mt-2" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
              </AlertDescription>
           </Alert>
@@ -265,7 +281,7 @@ function ReviewPageComponent() {
                <CardDescription className="pt-3 text-base text-foreground">{q.question}</CardDescription>
              </CardHeader>
              <CardContent className="space-y-3">
-               {q.options.map(option => {
+               {Array.isArray(q.options) && q.options.map(option => { // Check if options is an array
                  const isSelected = String(q.selected_option) === String(option.id);
                  const isCorrectAnswer = String(q.correct_answer) === String(option.id);
                  let highlightClass = "border-muted bg-background"; // Default
@@ -356,4 +372,3 @@ function ReviewPageLoadingSkeleton() {
       </div>
     );
 }
-

@@ -5,24 +5,26 @@
     "test_type": "practice",
     "questions": [
       {
-        "id": 1011,
-        "question": "What does NAV stand for?",
+        "id": 10101,
+        "question": "What is the primary purpose of Mutual Funds?",
         "options": [
-          { "id": "a", "text": "Net Asset Value" },
-          { "id": "b", "text": "New Account Volume" },
-          { "id": "c", "text": "National Association of Ventures" }
-        ],
-        "correct_answer": "a"
-      },
-      {
-        "id": 1012,
-        "question": "Which fund type aims to replicate a market index?",
-        "options": [
-          { "id": "a", "text": "Actively Managed Fund" },
-          { "id": "b", "text": "Index Fund" },
-          { "id": "c", "text": "Hedge Fund" }
+          { "id": "a", "text": "Guaranteed high returns" },
+          { "id": "b", "text": "Pooling money to invest in securities" },
+          { "id": "c", "text": "Short-term lending" },
+          { "id": "d", "text": "Currency trading" }
         ],
         "correct_answer": "b"
+      },
+      {
+        "id": 10102,
+        "question": "What does NAV stand for in the context of Mutual Funds?",
+        "options": [
+          { "id": "a", "text": "Net Asset Value" },
+          { "id": "b", "text": "National Asset Value" },
+          { "id": "c", "text": "Net Achieved Value" },
+          { "id": "d", "text": "Nominal Asset Valuation" }
+        ],
+        "correct_answer": "a"
       }
     ]
   },
@@ -32,14 +34,15 @@
     "test_type": "practice",
     "questions": [
       {
-        "id": 1021,
-        "question": "What is an Expense Ratio?",
+        "id": 10201,
+        "question": "Which type of mutual fund primarily invests in stocks?",
         "options": [
-          { "id": "a", "text": "Annual fee charged by funds" },
-          { "id": "b", "text": "Ratio of profits to losses" },
-          { "id": "c", "text": "Measure of market volatility" }
+          { "id": "a", "text": "Debt Fund" },
+          { "id": "b", "text": "Equity Fund" },
+          { "id": "c", "text": "Hybrid Fund" },
+          { "id": "d", "text": "Liquid Fund" }
         ],
-        "correct_answer": "a"
+        "correct_answer": "b"
       }
     ]
   },
@@ -49,48 +52,62 @@
     "test_type": "practice",
     "questions": [
       {
-        "id": 1031,
-        "question": "What is a Load Fee?",
+        "id": 10301,
+        "question": "What is a Systematic Investment Plan (SIP)?",
         "options": [
-          { "id": "a", "text": "Sales charge on mutual funds" },
-          { "id": "b", "text": "Fee for heavy items" },
-          { "id": "c", "text": "Server load balancer cost" }
+          { "id": "a", "text": "A one-time investment" },
+          { "id": "b", "text": "A plan for withdrawing money" },
+          { "id": "c", "text": "Investing fixed amounts regularly" },
+          { "id": "d", "text": "A type of insurance" }
         ],
-        "correct_answer": "a"
+        "correct_answer": "c"
+      },
+      {
+        "id": 10302,
+        "question": "Who regulates Mutual Funds in India?",
+        "options": [
+          { "id": "a", "text": "RBI" },
+          { "id": "b", "text": "SEBI" },
+          { "id": "c", "text": "IRDAI" },
+          { "id": "d", "text": "PFRDA" }
+        ],
+        "correct_answer": "b"
       }
     ]
   },
-  "104": {
+   "104": {
     "id": 104,
     "title": "Practice Test 4",
     "test_type": "practice",
     "questions": [
       {
-        "id": 1041,
-        "question": "Difference between Open-End and Closed-End funds?",
+        "id": 10401,
+        "question": "What is an Expense Ratio in a mutual fund?",
         "options": [
-          { "id": "a", "text": "Share issuance/redemption" },
-          { "id": "b", "text": "Investment strategy" },
-          { "id": "c", "text": "Fund manager location" }
+          { "id": "a", "text": "The profit earned by the fund" },
+          { "id": "b", "text": "The annual fee charged to manage the fund" },
+          { "id": "c", "text": "The interest paid to investors" },
+          { "id": "d", "text": "The initial investment amount" }
         ],
-        "correct_answer": "a"
+        "correct_answer": "b"
       }
     ]
   },
-  "105": {
+   "105": {
     "id": 105,
     "title": "Practice Test 5",
     "test_type": "practice",
     "questions": [
       {
-        "id": 1051,
-        "question": "What does KYC mean in finance?",
+        "id": 10501,
+        "question": "What is the main advantage of diversification in mutual funds?",
         "options": [
-          { "id": "a", "text": "Know Your Customer" },
-          { "id": "b", "text": "Keep Your Capital" },
-          { "id": "c", "text": "Key Yield Calculation" }
+          { "id": "a", "text": "Guarantees profits" },
+          { "id": "b", "text": "Reduces risk" },
+          { "id": "c", "text": "Increases expense ratio" },
+          { "id": "d", "text": "Simplifies taxation" }
         ],
-        "correct_answer": "a"
+        "correct_answer": "b"
       }
     ]
   },
@@ -98,265 +115,303 @@
     "id": 106,
     "title": "Final Mock Test",
     "test_type": "final",
-    "duration": 60,
+    "duration": 1800,
     "questions": [
       {
-        "id": 1061,
-        "question": "What is a primary market?",
+        "id": 10601,
+        "question": "An open-ended mutual fund scheme allows investors to:",
         "options": [
-          { "id": "a", "text": "Where existing securities are traded" },
-          { "id": "b", "text": "Where new securities are issued" },
-          { "id": "c", "text": "A type of supermarket" }
-        ],
-        "correct_answer": "b"
-      },
-      {
-        "id": 1062,
-        "question": "What is SIP?",
-        "options": [
-          { "id": "a", "text": "Stock Incentive Plan" },
-          { "id": "b", "text": "Systematic Investment Plan" },
-          { "id": "c", "text": "Securities Issuance Protocol" }
-        ],
-        "correct_answer": "b"
-      },
-      {
-        "id": 1063,
-        "question": "Which document is used in IPO filing?",
-        "options": [
-          { "id": "a", "text": "Red Herring Prospectus" },
-          { "id": "b", "text": "NAV Statement" },
-          { "id": "c", "text": "Offer Note" },
-          { "id": "d", "text": "KYC Form" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "201": {
-    "id": 201,
-    "title": "Options Practice 1",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 2011,
-        "question": "What gives the buyer the right, but not the obligation, to buy an asset?",
-        "options": [
-          { "id": "a", "text": "Put Option" },
-          { "id": "b", "text": "Call Option" },
-          { "id": "c", "text": "Future Contract" }
-        ],
-        "correct_answer": "b"
-      }
-    ]
-  },
-  "202": {
-    "id": 202,
-    "title": "Futures Practice 1",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 2021,
-        "question": "What is a Futures Contract?",
-        "options": [
-          { "id": "a", "text": "Agreement to buy/sell at a future date" },
-          { "id": "b", "text": "Option to buy in the future" },
-          { "id": "c", "text": "Prediction of future prices" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "203": {
-    "id": 203,
-    "title": "Options Practice 2",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 2031,
-        "question": "What is a Strike Price?",
-        "options": [
-          { "id": "a", "text": "The price the option can be exercised" },
-          { "id": "b", "text": "The current market price" },
-          { "id": "c", "text": "The price when option expires" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "204": {
-    "id": 204,
-    "title": "Futures Practice 2",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 2041,
-        "question": "What is Initial Margin?",
-        "options": [
-          { "id": "a", "text": "Collateral to open a futures position" },
-          { "id": "b", "text": "First profit made" },
-          { "id": "c", "text": "Initial price of the contract" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "205": {
-    "id": 205,
-    "title": "Derivatives Combo",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 2051,
-        "question": "Which derivative involves obligation for both parties?",
-        "options": [
-          { "id": "a", "text": "Option" },
-          { "id": "b", "text": "Future" },
-          { "id": "c", "text": "Swap" }
-        ],
-        "correct_answer": "b"
-      }
-    ]
-  },
-  "206": {
-    "id": 206,
-    "title": "Final Mock Derivatives",
-    "test_type": "final",
-    "duration": 90,
-    "questions": [
-      {
-        "id": 2061,
-        "question": "What is 'Hedging'?",
-        "options": [
-          { "id": "a", "text": "Speculating on price movements" },
-          { "id": "b", "text": "Reducing risk of adverse price movements" },
-          { "id": "c", "text": "Arbitraging price differences" }
-        ],
-        "correct_answer": "b"
-      },
-      {
-        "id": 2062,
-        "question": "What is 'Margin' in futures trading?",
-        "options": [
-          { "id": "a", "text": "Profit from a trade" },
-          { "id": "b", "text": "Brokerage commission" },
-          { "id": "c", "text": "Good faith deposit" }
+          { "id": "a", "text": "Invest only during the New Fund Offer (NFO)" },
+          { "id": "b", "text": "Buy and sell units only on stock exchanges" },
+          { "id": "c", "text": "Buy and sell units on any business day at NAV-related prices" },
+          { "id": "d", "text": "Invest only in government securities" }
         ],
         "correct_answer": "c"
-      }
-    ]
-  },
-  "301": {
-    "id": 301,
-    "title": "Market Concepts PT 1",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 3011,
-        "question": "What is a Bull Market?",
-        "options": [
-          { "id": "a", "text": "Prices are rising" },
-          { "id": "b", "text": "Prices are falling" },
-          { "id": "c", "text": "Prices are stagnant" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "302": {
-    "id": 302,
-    "title": "Trading Strategies PT 1",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 3021,
-        "question": "What is Short Selling?",
-        "options": [
-          { "id": "a", "text": "Selling borrowed shares expecting price drop" },
-          { "id": "b", "text": "Selling shares quickly" },
-          { "id": "c", "text": "Selling shares for a short period" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "303": {
-    "id": 303,
-    "title": "Market Concepts PT 2",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 3031,
-        "question": "What is Market Capitalization?",
-        "options": [
-          { "id": "a", "text": "Total value of a company's shares" },
-          { "id": "b", "text": "Total capital raised by a market" },
-          { "id": "c", "text": "Capital city of a market" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "304": {
-    "id": 304,
-    "title": "Trading Strategies PT 2",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 3041,
-        "question": "What is Diversification?",
-        "options": [
-          { "id": "a", "text": "Spreading investments across assets" },
-          { "id": "b", "text": "Investing in diverse companies" },
-          { "id": "c", "text": "Changing investment strategy" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "305": {
-    "id": 305,
-    "title": "Equity Valuation Basics",
-    "test_type": "practice",
-    "questions": [
-      {
-        "id": 3051,
-        "question": "What is P/E Ratio?",
-        "options": [
-          { "id": "a", "text": "Price-to-Earnings Ratio" },
-          { "id": "b", "text": "Profit-to-Equity Ratio" },
-          { "id": "c", "text": "Potential-Earnings Ratio" }
-        ],
-        "correct_answer": "a"
-      }
-    ]
-  },
-  "306": {
-    "id": 306,
-    "title": "Final Mock Equity",
-    "test_type": "final",
-    "duration": 120,
-    "questions": [
-      {
-        "id": 3061,
-        "question": "What is an IPO?",
-        "options": [
-          { "id": "a", "text": "Initial Public Offering" },
-          { "id": "b", "text": "Internal Profit Operation" },
-          { "id": "c", "text": "Investment Portfolio Option" }
-        ],
-        "correct_answer": "a"
       },
       {
-        "id": 3062,
-        "question": "What is a Dividend?",
+        "id": 10602,
+        "question": "Which fund carries the highest risk among these?",
         "options": [
-          { "id": "a", "text": "Distribution of profits to shareholders" },
-          { "id": "b", "text": "A type of bond" },
-          { "id": "c", "text": "A market index" }
+          { "id": "a", "text": "Liquid Fund" },
+          { "id": "b", "text": "Sectoral Equity Fund" },
+          { "id": "c", "text": "Balanced Advantage Fund" },
+          { "id": "d", "text": "Short-term Debt Fund" }
         ],
-        "correct_answer": "a"
+        "correct_answer": "b"
+      },
+      {
+        "id": 10603,
+        "question": "What does 'Load' refer to in mutual funds?",
+        "options": [
+           { "id": "a", "text": "The minimum investment amount" },
+           { "id": "b", "text": "A fee charged at the time of entry or exit" },
+           { "id": "c", "text": "The fund manager's salary" },
+           { "id": "d", "text": "The tax applicable on returns" }
+        ],
+        "correct_answer": "b"
       }
     ]
-  }
+  },
+   "201": {
+      "id": 201,
+      "title": "Options Practice 1",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 20101,
+            "question": "What gives the buyer the right, but not the obligation, to buy an underlying asset?",
+            "options": [
+               { "id": "a", "text": "Call Option" },
+               { "id": "b", "text": "Put Option" },
+               { "id": "c", "text": "Futures Contract" },
+               { "id": "d", "text": "Forward Contract" }
+            ],
+            "correct_answer": "a"
+         }
+      ]
+   },
+   "202": {
+      "id": 202,
+      "title": "Futures Practice 1",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 20201,
+            "question": "What is a standardized contract traded on an exchange to buy or sell an asset at a future date?",
+            "options": [
+                { "id": "a", "text": "Option" },
+                { "id": "b", "text": "Forward" },
+                { "id": "c", "text": "Future" },
+                { "id": "d", "text": "Swap" }
+            ],
+            "correct_answer": "c"
+         }
+      ]
+   },
+    "203": {
+      "id": 203,
+      "title": "Options Practice 2",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 20301,
+            "question": "What is the 'strike price' of an option?",
+            "options": [
+               { "id": "a", "text": "The current market price" },
+               { "id": "b", "text": "The price at which the option was bought" },
+               { "id": "c", "text": "The price at which the underlying asset can be bought or sold" },
+               { "id": "d", "text": "The expiry date price" }
+            ],
+            "correct_answer": "c"
+         }
+      ]
+   },
+    "204": {
+      "id": 204,
+      "title": "Futures Practice 2",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 20401,
+            "question": "What is 'margin' in futures trading?",
+            "options": [
+               { "id": "a", "text": "The profit made on the contract" },
+               { "id": "b", "text": "The total value of the contract" },
+               { "id": "c", "text": "A good faith deposit required to trade" },
+               { "id": "d", "text": "The commission paid to the broker" }
+            ],
+            "correct_answer": "c"
+         }
+      ]
+   },
+    "205": {
+      "id": 205,
+      "title": "Derivatives Combo",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 20501,
+            "question": "Derivatives derive their value from:",
+            "options": [
+               { "id": "a", "text": "Interest rates only" },
+               { "id": "b", "text": "An underlying asset" },
+               { "id": "c", "text": "Government bonds" },
+               { "id": "d", "text": "Company profits" }
+            ],
+            "correct_answer": "b"
+         }
+      ]
+   },
+   "206": {
+      "id": 206,
+      "title": "Final Mock Derivatives",
+      "test_type": "final",
+      "duration": 2400,
+      "questions": [
+         {
+            "id": 20601,
+            "question": "Which derivative contract is typically customized between two parties?",
+            "options": [
+               { "id": "a", "text": "Futures Contract" },
+               { "id": "b", "text": "Forward Contract" },
+               { "id": "c", "text": "Call Option" },
+               { "id": "d", "text": "Index Option" }
+            ],
+            "correct_answer": "b"
+         },
+         {
+            "id": 20602,
+            "question": "Hedging using derivatives is primarily done to:",
+            "options": [
+                { "id": "a", "text": "Maximize profit" },
+                { "id": "b", "text": "Reduce or eliminate risk" },
+                { "id": "c", "text": "Speculate on price movements" },
+                { "id": "d", "text": "Increase leverage" }
+            ],
+            "correct_answer": "b"
+         },
+          {
+            "id": 20603,
+            "question": "The seller of a call option anticipates the price of the underlying asset will:",
+            "options": [
+               { "id": "a", "text": "Increase significantly" },
+               { "id": "b", "text": "Decrease or stay stable" },
+               { "id": "c", "text": "Be highly volatile" },
+               { "id": "d", "text": "Match the strike price exactly" }
+            ],
+            "correct_answer": "b"
+         }
+      ]
+   },
+    "301": {
+      "id": 301,
+      "title": "Market Concepts PT 1",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 30101,
+            "question": "What is the primary market?",
+            "options": [
+               { "id": "a", "text": "Where existing securities are traded" },
+               { "id": "b", "text": "Where new securities are issued" },
+               { "id": "c", "text": "Where derivatives are traded" },
+               { "id": "d", "text": "Where currencies are traded" }
+            ],
+            "correct_answer": "b"
+         }
+      ]
+   },
+   "302": {
+      "id": 302,
+      "title": "Trading Strategies PT 1",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 30201,
+            "question": "What is 'Short Selling'?",
+            "options": [
+               { "id": "a", "text": "Buying stocks for the short term" },
+               { "id": "b", "text": "Selling borrowed stocks hoping the price will fall" },
+               { "id": "c", "text": "Selling stocks immediately after buying" },
+               { "id": "d", "text": "Buying stocks with borrowed money" }
+            ],
+            "correct_answer": "b"
+         }
+      ]
+   },
+    "303": {
+      "id": 303,
+      "title": "Market Concepts PT 2",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 30301,
+            "question": "What is a 'Bull Market'?",
+            "options": [
+               { "id": "a", "text": "A market with falling prices" },
+               { "id": "b", "text": "A market with rising prices" },
+               { "id": "c", "text": "A market with stable prices" },
+               { "id": "d", "text": "A market with high volatility" }
+            ],
+            "correct_answer": "b"
+         }
+      ]
+   },
+   "304": {
+      "id": 304,
+      "title": "Trading Strategies PT 2",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 30401,
+            "question": "What does 'Arbitrage' involve?",
+            "options": [
+               { "id": "a", "text": "Long-term investing" },
+               { "id": "b", "text": "High-risk speculation" },
+               { "id": "c", "text": "Simultaneously buying and selling an asset in different markets to profit from price differences" },
+               { "id": "d", "text": "Investing based on company fundamentals" }
+            ],
+            "correct_answer": "c"
+         }
+      ]
+   },
+    "305": {
+      "id": 305,
+      "title": "Equity Valuation Basics",
+      "test_type": "practice",
+      "questions": [
+         {
+            "id": 30501,
+            "question": "What is the Price-to-Earnings (P/E) ratio used for?",
+            "options": [
+                { "id": "a", "text": "Measuring company debt" },
+                { "id": "b", "text": "Measuring company profitability" },
+                { "id": "c", "text": "Evaluating a company's current share price relative to its per-share earnings" },
+                { "id": "d", "text": "Calculating dividend yield" }
+            ],
+            "correct_answer": "c"
+         }
+      ]
+   },
+   "306": {
+      "id": 306,
+      "title": "Final Mock Equity",
+      "test_type": "final",
+      "duration": 1800,
+      "questions": [
+         {
+            "id": 30601,
+            "question": "An Initial Public Offering (IPO) occurs in the:",
+            "options": [
+               { "id": "a", "text": "Secondary Market" },
+               { "id": "b", "text": "Primary Market" },
+               { "id": "c", "text": "Derivatives Market" },
+               { "id": "d", "text": "Money Market" }
+            ],
+            "correct_answer": "b"
+         },
+         {
+            "id": 30602,
+            "question": "What is 'Market Capitalization'?",
+            "options": [
+               { "id": "a", "text": "Total company debt" },
+               { "id": "b", "text": "Total company assets" },
+               { "id": "c", "text": "Total market value of a company's outstanding shares" },
+               { "id": "d", "text": "Total annual revenue" }
+            ],
+            "correct_answer": "c"
+         },
+         {
+             "id": 30603,
+             "question": "A stop-loss order is designed to:",
+             "options": [
+                 { "id": "a", "text": "Guarantee a profit" },
+                 { "id": "b", "text": "Buy shares at the lowest price" },
+                 { "id": "c", "text": "Limit potential losses on a position" },
+                 { "id": "d", "text": "Execute a trade immediately" }
+             ],
+             "correct_answer": "c"
+         }
+      ]
+   }
 }
