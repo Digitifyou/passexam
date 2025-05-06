@@ -11,7 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
-import { TimerIcon, CheckCircle, XCircle, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
+import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react'; // Removed CheckCircle, XCircle
 
 // Types (replace with actual types from backend)
 interface QuestionOption {
@@ -34,10 +34,10 @@ interface TestDetails {
   questions: Question[];
 }
 
+// Updated Answer type: Removed isCorrect
 interface Answer {
   questionId: number;
   selectedOption: string | number | null;
-  isCorrect?: boolean; // Only used in practice mode for immediate feedback
 }
 
 export default function QuizPage() {
@@ -151,7 +151,8 @@ export default function QuizPage() {
           }
         } else {
           console.error(`Test data for ID ${testId} not found in mock DB.`);
-          throw new Error(`Test with ID ${testId} could not be loaded.`); // More specific error
+          // Throw specific error for review page to catch
+          throw new Error(`Test details for ID ${testId} not found. Please return to the dashboard.`);
         }
       } catch (err) {
         console.error("Failed to fetch test:", err);
@@ -164,7 +165,7 @@ export default function QuizPage() {
     };
 
     fetchTest();
-  }, [testId]);
+  }, [testId]); // Removed router from dependency array, only needed on submit/error
 
    // Timer logic for final tests
   useEffect(() => {
@@ -193,36 +194,18 @@ export default function QuizPage() {
       title: "Time's Up!",
       description: "Submitting your answers automatically.",
     });
-    handleSubmit();
+    handleSubmit(); // No await needed, handleSubmit is async but we don't wait for it here
   };
 
 
   const handleAnswerSelect = (questionId: number, selectedOption: string | number) => {
-    const currentQuestion = testDetails?.questions.find(q => q.id === questionId);
-    if (!currentQuestion) return;
-
-    let isCorrect: boolean | undefined = undefined;
-    if (testDetails?.test_type === 'practice') {
-      isCorrect = selectedOption === currentQuestion.correct_answer;
-      toast({
-         title: isCorrect ? "Correct!" : "Incorrect",
-         description: isCorrect ? "Well done!" : `The correct answer was: ${getOptionText(currentQuestion.correct_answer)}`,
-         variant: isCorrect ? "default" : "destructive",
-         duration: 3000,
-      });
-    }
-
     setAnswers(prev => ({
       ...prev,
-      [questionId]: { questionId, selectedOption, isCorrect },
+      [questionId]: { questionId, selectedOption },
     }));
+    // Removed immediate feedback logic for practice tests
   };
 
-   const getOptionText = (optionId: string | number): string => {
-    const question = testDetails?.questions[currentQuestionIndex];
-    const option = question?.options.find(opt => opt.id === optionId);
-    return option?.text || "Unknown";
-   }
 
   const goToNextQuestion = () => {
     if (testDetails && currentQuestionIndex < testDetails.questions.length - 1) {
@@ -232,7 +215,8 @@ export default function QuizPage() {
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev + 1);
+      // Corrected: should be prev - 1
+      setCurrentQuestionIndex(prev => prev - 1);
     }
   };
 
@@ -243,7 +227,7 @@ export default function QuizPage() {
    };
 
   const handleSubmit = useCallback(async () => {
-     if (isSubmitting || !testDetails) return; // Added check for testDetails
+     if (isSubmitting || !testDetails) return;
      setIsSubmitting(true);
      setShowSubmitConfirm(false); // Close confirmation dialog
 
@@ -257,9 +241,9 @@ export default function QuizPage() {
        // --- MOCK RESULT CALCULATION ---
        let correctCount = 0;
        let incorrectCount = 0;
-       testDetails.questions.forEach(q => { // Use testDetails directly
+       testDetails.questions.forEach(q => {
          const userAnswer = answers[q.id];
-         if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) { // Check for undefined too
+         if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) {
             if (userAnswer.selectedOption === q.correct_answer) {
                 correctCount++;
             } else {
@@ -268,11 +252,8 @@ export default function QuizPage() {
          } else {
             incorrectCount++; // Count unanswered as incorrect
          }
-         // Note: In a real scenario, is_correct would be set by the backend
-         // For practice mode, it's already set. For final, backend calculates.
-         // We might need to update `answers` state here based on backend response if needed.
        });
-       const totalQuestions = testDetails.questions.length; // Use testDetails directly
+       const totalQuestions = testDetails.questions.length;
        const score = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
 
        const mockResult = {
@@ -280,8 +261,6 @@ export default function QuizPage() {
          correctAnswers: correctCount,
          incorrectAnswers: totalQuestions - correctCount, // Calculate incorrect based on total and correct
          totalQuestions: totalQuestions,
-         // The full review data would likely come from this API or a separate get_results.php call
-         // For now, we'll pass the necessary data directly to the review page via state or query params
        };
         // --- END MOCK RESULT CALCULATION ---
 
@@ -292,15 +271,8 @@ export default function QuizPage() {
        });
 
        // Redirect to Review Page (pass necessary data)
-       // Using query params is simpler for this example
-       // In a real app, you might store results server-side and just pass the result ID
-        router.push(`/review/${testId}?score=${mockResult.score}&correct=${mockResult.correctAnswers}&incorrect=${mockResult.incorrectAnswers}&total=${mockResult.totalQuestions}`);
+       router.push(`/review/${testId}?score=${mockResult.score}&correct=${mockResult.correctAnswers}&incorrect=${mockResult.incorrectAnswers}&total=${mockResult.totalQuestions}`);
 
-       // Alternatively, pass state (might not work reliably across full page reloads)
-       // router.push({
-       //   pathname: `/review/${testId}`,
-       //   query: { /* results data */ },
-       // });
 
      } catch (err) {
         console.error("Failed to submit answers:", err);
@@ -311,6 +283,10 @@ export default function QuizPage() {
         });
         setIsSubmitting(false);
      }
+    // setIsSubmitting is set to false inside the finally block of the original try/catch,
+    // but since we navigate away on success, we might not need to set it back explicitly here.
+    // However, if the push fails or the user navigates back, it should be reset.
+    // For simplicity, let's assume navigation succeeds and remove setIsSubmitting(false) here.
 
   }, [answers, isSubmitting, router, testId, testDetails, toast]);
 
@@ -353,15 +329,16 @@ export default function QuizPage() {
   }
 
   // Error state
-  if (error || !testDetails) { // Add check for !testDetails here too
+  if (error || !testDetails) {
     return (
        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
           <Alert variant="destructive" className="max-w-lg">
              <AlertCircle className="h-4 w-4" />
              <AlertTitle>Error Loading Test</AlertTitle>
              <AlertDescription>
-                {error || "Test data could not be loaded."} {/* Provide a default message if error is null but testDetails is still null */}
-                <Button variant="link" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+                {error || "Test data could not be loaded."}
+                {/* Ensure router is available before pushing */}
+                <Button variant="link" onClick={() => router?.push('/dashboard')}>Go back to Dashboard</Button>
              </AlertDescription>
           </Alert>
        </div>
@@ -369,10 +346,9 @@ export default function QuizPage() {
   }
 
   // Quiz display
-  const currentQuestion = testDetails.questions[currentQuestionIndex]; // Safe to access directly now
-  const currentAnswer = answers[currentQuestion.id]; // Safe to access directly now
+  const currentQuestion = testDetails.questions[currentQuestionIndex];
+  const currentAnswer = answers[currentQuestion.id];
   const progress = ((currentQuestionIndex + 1) / testDetails.questions.length) * 100;
-  const isPractice = testDetails.test_type === 'practice';
   const isFinal = testDetails.test_type === 'final';
   const isLastQuestion = currentQuestionIndex === testDetails.questions.length - 1;
 
@@ -398,7 +374,7 @@ export default function QuizPage() {
               </CardHeader>
               <CardContent className="grid grid-cols-5 gap-2">
                   {testDetails.questions.map((q, index) => {
-                      const answered = answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined; // Check for undefined too
+                      const answered = answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
                       const isCurrent = index === currentQuestionIndex;
                       let statusClass = "bg-secondary hover:bg-muted"; // Default
                       if(isCurrent) statusClass = "bg-primary text-primary-foreground ring-2 ring-ring ring-offset-2";
@@ -434,42 +410,22 @@ export default function QuizPage() {
                   value={currentAnswer?.selectedOption?.toString() ?? ""}
                   onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                   className="space-y-3"
-                  // Disable options if it's practice mode and answer is already given
-                  disabled={isPractice && currentAnswer?.selectedOption !== null && currentAnswer?.selectedOption !== undefined} // Check for undefined
+                  // Options are never disabled during the test now
+                  disabled={isSubmitting}
                 >
-                  {currentQuestion.options.map((option) => {
-                    const isSelected = currentAnswer?.selectedOption === option.id;
-                    const isCorrectAnswer = currentQuestion.correct_answer === option.id;
-                    let optionStateClass = "";
-                     const isAnsweredInPractice = isPractice && currentAnswer?.selectedOption !== null && currentAnswer?.selectedOption !== undefined; // Check for undefined
-
-                    // Apply styling only in practice mode *after* an answer is selected
-                    if (isAnsweredInPractice) {
-                       if (isSelected) {
-                           optionStateClass = currentAnswer.isCorrect ? "border-green-500 bg-green-100/50 dark:bg-green-900/30" : "border-red-500 bg-red-100/50 dark:bg-red-900/30";
-                       } else if (isCorrectAnswer) {
-                           optionStateClass = "border-green-500 bg-green-100/50 dark:bg-green-900/30"; // Highlight correct if user chose wrong
-                       }
-                    }
-
-                    return (
+                  {currentQuestion.options.map((option) => (
                       <Label
                         key={option.id}
                         htmlFor={`option-${option.id}`}
-                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors ${optionStateClass} ${isAnsweredInPractice ? 'cursor-not-allowed opacity-80' : ''}`}
+                        // Removed dynamic styling based on correctness, simplified hover effect
+                        className={`flex items-center space-x-3 p-4 border rounded-md cursor-pointer hover:bg-accent/50 transition-colors ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
                       >
-                        <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} />
+                        <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting} />
                         <span>{option.text}</span>
-                         {/* Optional: Show check/cross in practice mode */}
-                         {isAnsweredInPractice && isSelected && (
-                             currentAnswer.isCorrect ? <CheckCircle className="h-5 w-5 text-green-600 ml-auto" /> : <XCircle className="h-5 w-5 text-red-600 ml-auto" />
-                         )}
-                         {isAnsweredInPractice && !isSelected && isCorrectAnswer && (
-                            <CheckCircle className="h-5 w-5 text-green-600 ml-auto opacity-70" /> // Mark correct answer if user was wrong
-                         )}
+                         {/* Removed immediate feedback icons (CheckCircle, XCircle) */}
                       </Label>
-                    );
-                  })}
+                    )
+                  )}
                 </RadioGroup>
               </CardContent>
               <CardFooter className="flex justify-between">
@@ -522,4 +478,3 @@ export default function QuizPage() {
      </div>
   );
 }
-
