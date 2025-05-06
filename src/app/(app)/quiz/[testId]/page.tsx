@@ -45,6 +45,22 @@ interface Answer {
 // Type assertion for the imported JSON data
 const testsDatabase: Record<string, TestDetails> = quizData;
 
+// Helper function to shuffle an array (Fisher-Yates)
+const shuffleArray = <T>(array: T[]): T[] => {
+  let currentIndex = array.length, randomIndex;
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+};
+
+
 export default function QuizPage() {
   const params = useParams();
   const router = useRouter();
@@ -74,25 +90,52 @@ export default function QuizPage() {
         const fetchedTest = testsDatabase[testId];
 
         if (fetchedTest) {
-          setTestDetails(fetchedTest);
-          // Initialize answers state only if questions exist
+           // --- Question Selection Logic ---
+           let selectedQuestions: Question[] = [];
+           if (fetchedTest.questions && Array.isArray(fetchedTest.questions) && fetchedTest.questions.length > 0) {
+             const allQuestions = fetchedTest.questions;
+             const targetQuestionCount = fetchedTest.test_type === 'final' ? 50 : 25;
+
+             if (allQuestions.length >= targetQuestionCount) {
+               selectedQuestions = shuffleArray([...allQuestions]).slice(0, targetQuestionCount);
+             } else {
+               console.warn(`Test ID ${testId} (${fetchedTest.test_type}) has only ${allQuestions.length} questions, less than the target ${targetQuestionCount}. Using all available questions.`);
+               selectedQuestions = shuffleArray([...allQuestions]); // Shuffle the available ones
+             }
+           } else {
+               console.warn(`Test data for ID ${testId} has no questions or questions are not in the expected format.`);
+               // Set error or handle as appropriate if no questions are found
+               setError(`Test data for ID ${testId} has no questions.`);
+               setIsLoading(false);
+               return; // Stop further processing
+           }
+
+           // Update test details with the selected questions
+           const finalTestDetails: TestDetails = {
+               ...fetchedTest,
+               questions: selectedQuestions,
+           };
+           setTestDetails(finalTestDetails);
+            // --- End Question Selection Logic ---
+
+
+          // Initialize answers state based on the selected questions
           const initialAnswers: Record<number, Answer> = {};
-          if (fetchedTest.questions && Array.isArray(fetchedTest.questions)) {
-              fetchedTest.questions.forEach(q => {
+           if (finalTestDetails.questions && Array.isArray(finalTestDetails.questions)) {
+              finalTestDetails.questions.forEach(q => {
                 initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
               });
-          } else {
-             console.warn(`Test data for ID ${testId} has no questions.`);
-             // You might want to set an error or handle this case differently
-          }
-          setAnswers(initialAnswers);
+           }
+           setAnswers(initialAnswers);
+
           // Start timer for final tests
-          if (fetchedTest.test_type === 'final' && fetchedTest.duration) {
-            setTimeLeft(fetchedTest.duration);
+          if (finalTestDetails.test_type === 'final' && finalTestDetails.duration) {
+            setTimeLeft(finalTestDetails.duration);
           }
         } else {
           console.error(`Test data for ID ${testId} not found in JSON data.`);
-          setError(`Test details for ID ${testId} not found. Please return to the dashboard.`);
+           // Throw an error specifically for test not found
+           setError(`Test details for ID ${testId} not found. Please return to the dashboard.`);
         }
       } catch (err) {
         console.error("Failed to load test:", err);
@@ -154,7 +197,7 @@ export default function QuizPage() {
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
+      setCurrentQuestionIndex(prev => prev + 1);
     }
   };
 

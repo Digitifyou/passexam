@@ -31,6 +31,7 @@ interface ReviewQuestion extends Question {
 interface TestDetails {
   id: number;
   title: string;
+  test_type: 'practice' | 'final'; // Added test_type
   questions: Question[];
 }
 
@@ -47,34 +48,56 @@ interface TestResultDetails {
 // Type assertion for the imported JSON data - keys are test IDs (strings)
 const testsDatabase: Record<string, TestDetails> = quizData;
 
+// Helper function to shuffle an array (Fisher-Yates)
+const shuffleArray = <T>(array: T[]): T[] => {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+};
+
 
 // Helper to simulate user answers based on the fetched questions and score
 // In a real app, user answers would ideally come from the backend or be stored/passed securely.
 // This simulation is for demonstration purposes.
 const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): ReviewQuestion[] => {
   if (!baseQuestions || baseQuestions.length === 0) {
+      console.warn("simulateUserAnswers called with no base questions.");
       return []; // Return empty array if no base questions
   }
-  const totalQuestions = baseQuestions.length;
-  // Calculate the target number of correct answers based on the score
+  const totalQuestions = baseQuestions.length; // Use the actual number of questions provided
+  // Calculate the target number of correct answers based on the score and *actual* question count
   const targetCorrectCount = Math.round((scorePercent / 100) * totalQuestions);
   let currentCorrectCount = 0;
 
+  console.log(`Simulating answers for ${totalQuestions} questions, targeting ${targetCorrectCount} correct for score ${scorePercent}%.`);
+
+
   // Shuffle questions to randomize which ones are answered correctly/incorrectly
-  const shuffledQuestions = [...baseQuestions].sort(() => Math.random() - 0.5);
+  // Use the original ID for sorting later, but shuffle the base array
+  const shuffledQuestionsWithOriginal = baseQuestions.map((q, index) => ({ ...q, originalIndex: index }));
+  shuffleArray(shuffledQuestionsWithOriginal);
 
-  const reviewQuestions: ReviewQuestion[] = []; // Initialize explicitly
 
-  shuffledQuestions.forEach(q => {
+  const reviewQuestionsMap: Map<number, ReviewQuestion> = new Map(); // Use Map for easier reordering
+
+
+  shuffledQuestionsWithOriginal.forEach((q, index) => {
     let selected_option: string | number | null = null;
     let is_correct = false;
     const shouldAttemptAnswer = Math.random() < 0.98; // Simulate 2% unanswered rate
 
     if (shouldAttemptAnswer) {
       // Decide if this answer should be correct based on remaining needed correct answers
-      const remainingQuestions = totalQuestions - reviewQuestions.length;
+      const remainingSimulations = shuffledQuestionsWithOriginal.length - index;
       const remainingCorrectNeeded = targetCorrectCount - currentCorrectCount;
-      const probabilityCorrect = remainingQuestions > 0 ? remainingCorrectNeeded / remainingQuestions : 0;
+      // Ensure probability is between 0 and 1
+      const probabilityCorrect = remainingSimulations > 0 ? Math.max(0, Math.min(1, remainingCorrectNeeded / remainingSimulations)) : 0;
+
 
       if (Math.random() < probabilityCorrect && currentCorrectCount < targetCorrectCount) {
         // Mark as correct
@@ -87,8 +110,9 @@ const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): R
         if (incorrectOptions.length > 0) {
           selected_option = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)].id;
         } else {
-          // Fallback if only correct option exists (edge case)
-          selected_option = q.correct_answer;
+          // Fallback if only correct option exists (edge case) or if all options are somehow correct
+          selected_option = q.options.length > 0 ? q.options[0].id : null; // Pick first option if available
+          console.warn(`Question ${q.id} has no incorrect options or only one option. Marking as incorrect with selection: ${selected_option}`);
         }
         is_correct = false;
       }
@@ -98,17 +122,34 @@ const simulateUserAnswers = (baseQuestions: Question[], scorePercent: number): R
       is_correct = false; // Unanswered is incorrect
     }
 
-    reviewQuestions.push({ // Push the created object
-      ...q,
-      selected_option: selected_option,
-      is_correct: is_correct,
-    });
+     const reviewQuestion: ReviewQuestion = {
+       ...q,
+       selected_option: selected_option,
+       is_correct: is_correct,
+     };
+     reviewQuestionsMap.set(q.originalIndex, reviewQuestion); // Store using original index
+
   });
 
-   // Re-sort questions back to their original order based on ID
-   reviewQuestions.sort((a, b) => a.id - b.id);
+    // Adjust if the simulation didn't reach the exact target count (due to randomness)
+    // This is a simple adjustment; more complex logic could redistribute correctness
+    const simulatedCorrectCount = Array.from(reviewQuestionsMap.values()).filter(q => q.is_correct).length;
+    if (simulatedCorrectCount !== targetCorrectCount) {
+        console.warn(`Simulation resulted in ${simulatedCorrectCount} correct answers, target was ${targetCorrectCount}. Randomness factor.`);
+        // Optional: Could add logic here to force flip some answers to match the target, but it might distort the review accuracy.
+        // For now, accept the minor deviation due to simulation randomness.
+    }
 
-  return reviewQuestions;
+
+   // Convert map back to array and sort by original index
+   const finalReviewQuestions = Array.from(reviewQuestionsMap.entries())
+                                     .sort((a, b) => a[0] - b[0]) // Sort by original index (key)
+                                     .map(entry => entry[1]); // Get the question object (value)
+
+
+   console.log("Final simulated questions:", finalReviewQuestions);
+
+  return finalReviewQuestions;
 };
 
 
@@ -149,18 +190,53 @@ function ReviewPageComponent() {
         const baseData = testsDatabase[testId];
 
         if (baseData && baseData.questions && hasQueryParams) {
-           // Simulate user answers based on the fetched base questions and the passed score
-           const scorePercentage = parseInt(score!, 10); // Use actual score from query params
-           const reviewQuestions = simulateUserAnswers(baseData.questions, scorePercentage);
 
-           // Verify the simulated answers match the counts from query params (optional sanity check)
-            const calculatedCorrect = reviewQuestions.filter(q => q.is_correct).length;
-            if (calculatedCorrect !== parseInt(correct!, 10)) {
-                console.warn(`Simulated correct count (${calculatedCorrect}) does not match query param (${correct}). Adjusting simulation or review logic may be needed.`);
-                // Depending on requirements, you might adjust simulation or trust query params.
-                // For now, we proceed using the query params for the summary card,
-                // but the detailed view uses the simulated answers.
+            // --- Determine actual questions shown in the test ---
+            // Since the quiz page now selects questions randomly, we need to replicate that *subset* here.
+            // The `simulateUserAnswers` function needs the *exact questions that were presented* to the user.
+            // Currently, we don't pass the actual questions list from the quiz page.
+            // For now, we'll simulate based on the *full* question set for the test type,
+            // acknowledging this might not perfectly match the user's specific test instance if fewer questions were available than the target.
+            // Ideally, the list of question IDs presented should be passed to the review page.
+
+            let questionsForReview: Question[] = [];
+            const allAvailableQuestions = baseData.questions;
+            const targetQuestionCount = baseData.test_type === 'final' ? 50 : 25;
+            const actualTotalFromParams = parseInt(total!, 10);
+
+            if(allAvailableQuestions.length >= actualTotalFromParams) {
+                // If enough questions exist, assume the number from params was the target count (or fewer if not enough were available)
+                // We need to pick a representative subset. Since we don't know *which* ones the user saw,
+                // we'll pick a random subset of the *correct size* from the base data for the simulation.
+                // This is an approximation.
+                questionsForReview = shuffleArray([...allAvailableQuestions]).slice(0, actualTotalFromParams);
+                console.log(`Review: Simulating based on ${actualTotalFromParams} random questions from the pool of ${allAvailableQuestions.length}.`);
+            } else {
+                // If fewer questions available than reported total, something is off. Use all available.
+                 console.warn(`Review: Total questions in params (${actualTotalFromParams}) > available questions (${allAvailableQuestions.length}). Using all ${allAvailableQuestions.length} available questions for simulation.`);
+                questionsForReview = shuffleArray([...allAvailableQuestions]);
             }
+            // --- End Determination of Questions ---
+
+
+           // Simulate user answers based on the *determined subset* of questions and the passed score
+           const scorePercentage = parseInt(score!, 10); // Use actual score from query params
+           const reviewQuestions = simulateUserAnswers(questionsForReview, scorePercentage);
+
+
+           // Verify the simulated answers match the counts from query params
+            const calculatedCorrect = reviewQuestions.filter(q => q.is_correct).length;
+            const expectedCorrect = parseInt(correct!, 10);
+             // Allow a small tolerance for simulation randomness if totals match
+            if (reviewQuestions.length === actualTotalFromParams && Math.abs(calculatedCorrect - expectedCorrect) > 1) {
+                console.warn(`SIMULATION MISMATCH: Simulated correct count (${calculatedCorrect}) significantly differs from query param (${correct}). Review logic needs refinement.`);
+                 // Override with query param counts for summary, but keep simulated details
+                 // This might lead to visual inconsistencies if the simulation is very off.
+            } else if (reviewQuestions.length !== actualTotalFromParams) {
+                 console.warn(`SIMULATION MISMATCH: Simulated question count (${reviewQuestions.length}) differs from query param total (${actualTotalFromParams}). Using query param totals.`);
+                 // Definitely use query params if total counts don't even match.
+            }
+
 
            // Construct the final result details object
           const result: TestResultDetails = {
