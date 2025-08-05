@@ -59,22 +59,99 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-secondary">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">Register</CardTitle>
-          <CardDescription>
-            Create a new account to start taking quizzes.
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleRegister}>
+    // <div className="flex min-h-screen items-center justify-center bg-secondary">
+    //   <Card className="w-full max-w-sm">
+    //     <CardHeader>
+    //       <CardTitle className="text-2xl">Register</CardTitle>
+    //       <CardDescription>
+    //         Create a new account to start taking quizzes.
+    //       </CardDescription>
+    //     </CardHeader>
+    //     <form onSubmit={handleRegister}>
+    //       <CardContent className="grid gap-4">
+    //          <div className="grid gap-2">
+    //           <Label htmlFor="name">Name</Label>
+    //           <Input
+    //             id="name"
+    //             type="text"
+    //             placeholder="John Doe"
+    //             required
+    //             value={name}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+    //             disabled={isLoading}
+    //           />
+    //         </div>
+    //         <div className="grid gap-2">
+    //           <Label htmlFor="email">Email</Label>
+    //           <Input
+    //             id="email"
+    //             type="email"
+    //             placeholder="m@example.com"
+    //             required
+    //             value={email}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+    //             disabled={isLoading}
+    //           />
+    //         </div>
+    //         <div className="grid gap-2">
+    //           <Label htmlFor="password">Password</Label>
+    //           <Input
+    //             id="password"
+    //             type="password"
+    //             required
+    //             value={password}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+    //             disabled={isLoading}
+    //           />
+    //         </div>
+    //          <div className="grid gap-2">
+    //           <Label htmlFor="confirm-password">Confirm Password</Label>
+    //           <Input
+    //             id="confirm-password"
+    //             type="password"
+    //             required
+    //             value={confirmPassword}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
+    //             disabled={isLoading}
+    //           />
+    //         </div>
+    //       </CardContent>
+    //       <CardFooter className="flex flex-col gap-4">
+    //         <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
+    //            {isLoading ? "Registering..." : "Sign up"}
+    //         </Button>
+    //          <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
+    //            <Link href="/login">Already have an account? Login</Link>
+    //          </Button>
+    //       </CardFooter>
+    //     </form>
+    //   </Card>
+    // </div>
+
+
+
+    <>
+        <section className='auth-welcome-top auth-welcome-top-login'>
+                  <CardHeader className="items-center">
+                    <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaste Pro</CardTitle>
+                    <CardDescription className="text-lg text-muted-foreground pt-2">
+                      Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
+                    </CardDescription>
+                 </CardHeader>
+        
+                 <article className='auth-welcome'>
+                  <aside className='auth-welcome-image'>
+                    <img src="/images/9319770_4136944.svg" alt="Not Found Image" />
+                  </aside>
+                  <aside className='auth-welcome-content'>
+                    <div>
+                     <form onSubmit={handleRegister}>
           <CardContent className="grid gap-4">
              <div className="grid gap-2">
-              <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="John Doe"
+                placeholder="Name"
                 required
                 value={name}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
@@ -82,30 +159,28 @@ export default function RegisterPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="Email"
                 required
                 value={email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 disabled={isLoading}
               />
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+             <div className="grid gap-2">
               <Input
-                id="password"
+                id="enter-password"
                 type="password"
                 required
-                value={password}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                value={confirmPassword}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
                 disabled={isLoading}
+                placeholder="Enter Password"
               />
             </div>
              <div className="grid gap-2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
               <Input
                 id="confirm-password"
                 type="password"
@@ -113,6 +188,7 @@ export default function RegisterPage() {
                 value={confirmPassword}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
                 disabled={isLoading}
+                placeholder="Confirm Password"
               />
             </div>
           </CardContent>
@@ -125,7 +201,10 @@ export default function RegisterPage() {
              </Button>
           </CardFooter>
         </form>
-      </Card>
-    </div>
+                    </div>
+                  </aside>
+                 </article>
+            </section>
+        </>
   );
 }

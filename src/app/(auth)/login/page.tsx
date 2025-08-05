@@ -52,22 +52,75 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-secondary">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account. Use user@example.com or admin@example.com with password 'password'.
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleLogin}>
+    // <div className="flex min-h-screen items-center justify-center bg-secondary">
+    //   <Card className="w-full max-w-sm">
+    //     <CardHeader>
+    //       <CardTitle className="text-2xl">Login</CardTitle>
+    //       <CardDescription>
+    //         Enter your email below to login to your account. Use user@example.com or admin@example.com with password 'password'.
+    //       </CardDescription>
+    //     </CardHeader>
+    //     <form onSubmit={handleLogin}>
+    //       <CardContent className="grid gap-4">
+    //         <div className="grid gap-2">
+    //           <Label htmlFor="email">Email</Label>
+    //           <Input
+    //             id="email"
+    //             type="email"
+    //             placeholder="m@example.com"
+    //             required
+    //             value={email}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+    //             disabled={isLoading}
+    //           />
+    //         </div>
+    //         <div className="grid gap-2">
+    //           <Label htmlFor="password">Password</Label>
+    //           <Input
+    //             id="password"
+    //             type="password"
+    //             required
+    //             value={password}
+    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+    //             disabled={isLoading}
+    //             placeholder="password"
+    //           />
+    //         </div>
+    //       </CardContent>
+    //       <CardFooter className="flex flex-col gap-4">
+    //          <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
+    //           {isLoading ? "Logging in..." : "Login"}
+    //         </Button>
+    //          <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
+    //            <Link href="/register">Sign up</Link>
+    //          </Button>
+    //       </CardFooter>
+    //     </form>
+    //   </Card>
+    // </div>
+
+    <>
+    <section className='auth-welcome-top auth-welcome-top-login'>
+              <CardHeader className="items-center">
+                <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaste Pro</CardTitle>
+                <CardDescription className="text-lg text-muted-foreground pt-2">
+                  Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
+                </CardDescription>
+             </CardHeader>
+    
+             <article className='auth-welcome'>
+              <aside className='auth-welcome-image'>
+                <img src="/images/investing-concept-illustration.png" alt="Not Found Image" />
+              </aside>
+              <aside className='auth-welcome-content'>
+                <div>
+                 <form onSubmit={handleLogin}>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="Email"
                 required
                 value={email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
@@ -75,7 +128,6 @@ export default function LoginPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -83,20 +135,23 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                 disabled={isLoading}
-                placeholder="password"
+                placeholder="Enter Password"
               />
             </div>
           </CardContent>
+
           <CardFooter className="flex flex-col gap-4">
+            <a href="#" className="forget-password">forget passwords</a>
              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Login"}
             </Button>
-             <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
-               <Link href="/register">Sign up</Link>
-             </Button>
+             
           </CardFooter>
         </form>
-      </Card>
-    </div>
+                </div>
+              </aside>
+             </article>
+        </section>
+    </>
   );
 }
