@@ -1,0 +1,16 @@
+.progress-item {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 300px;
+    justify-content: space-around;
+}
+
+.progress-item i {
+    font-size: 1.5rem;
+}
+
+.progress-item p {
+    margin: 0;
+    font-size: 1rem;
+}
