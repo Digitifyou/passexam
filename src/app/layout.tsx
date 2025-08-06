@@ -20,9 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Font Awesome Kit script */}
+        <script
+          src="https://kit.fontawesome.com/f70334b4f8.js"
+          crossOrigin="anonymous"
+          async
+        ></script>
+      </head>
       <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning={true}>
         {children}
-        <Toaster /> {/* Add Toaster component here */}
+        <Toaster />
       </body>
     </html>
   );
