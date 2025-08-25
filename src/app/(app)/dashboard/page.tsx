@@ -96,42 +96,43 @@ export default function DashboardPage() {
 
   return (
     <div className="container py-8">
-      {isLoading ? (
-        renderSkeletons()
-      ) : (
-        <>
-          <div className={cn(
-            "bg-primary text-primary-foreground p-4 rounded-lg mb-8 shadow-md",
-            "flex flex-col md:flex-row items-center justify-between gap-4"
-          )}>
-            <div className="flex items-center gap-2 font-bold text-xl md:text-2xl">
-              Your Progress
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left text-sm">
-              <div className="flex items-center gap-2 p-1 progress-item">
-                <i className="fa-solid fa-book"></i>
-                <p>Active Tests</p>
-                <p className="text-xl font-bold">{activeTests}</p>
-              </div>
-              <div className="flex items-center gap-2 p-1 progress-item">
-                <i className="fa-solid fa-calendar-check"></i>
-                <p>Total Completed</p>
-                <p className="text-xl font-bold">{totalCompleted}</p>
-              </div>
-              <div className="flex items-center gap-2 p-1 progress-item">
-                <i className="fa-solid fa-percent"></i>
-                <p>Percentage Rate</p>
-                <p className="text-xl font-bold">{percentageRate}%</p>
-              </div>
-            </div>
+      {/* Progress Summary Bar */}
+      <div className={cn(
+        "bg-primary text-primary-foreground p-4 rounded-lg mb-8 shadow-md",
+        "flex flex-col md:flex-row items-center justify-between gap-4"
+      )}>
+        <div className="flex items-center gap-2 font-bold text-xl md:text-2xl">
+          Your Progress
+        </div>
+        <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left text-sm">
+          <div className="flex items-center gap-2 p-1 progress-item">
+            <i className="fa-solid fa-book"></i>
+            <p>Active Tests</p>
+            <p className="text-xl font-bold">{activeTests}</p>
           </div>
-          
-          {error && (
-            <Card className="bg-destructive/10 border-destructive mb-6">
-              <CardHeader><CardTitle className="text-destructive">Error</CardTitle></CardHeader>
-              <CardContent><p>{error}</p></CardContent>
-            </Card>
-          )}
+          <div className="flex items-center gap-2 p-1 progress-item">
+            <X className="h-6 w-6 text-red-300" />
+              <p>Total Completed</p>
+              <p className="text-xl font-bold">{totalCompleted}</p>
+          </div>
+          <div className="flex items-center gap-2 p-1 progress-item">
+            <BarChart className="h-6 w-6 text-blue-300" />
+              <p>Percentage Rate</p>
+              <p className="text-xl font-bold">{percentageRate}%</p>
+          </div>
+        </div>
+      </div>
+      
+      {error && (
+        <Card className="bg-destructive/10 border-destructive mb-6">
+          <CardHeader>
+            <CardTitle className="text-destructive">Error</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>{error}</p>
+          </CardContent>
+        </Card>
+      )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sections.map((section) => (
