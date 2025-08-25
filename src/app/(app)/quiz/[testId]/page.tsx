@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -14,13 +12,11 @@ import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescript
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
-import quizData from '@/data/quiz-questions.json'; // Import the JSON data
 import { cn } from "@/lib/utils";
 
-
-// Types (replace with actual types from backend or derive from JSON structure)
+// Types
 interface QuestionOption {
-  id: string | number; // Unique ID for the radio item value
+  id: string | number;
   text: string;
 }
 
@@ -28,47 +24,33 @@ interface Question {
   id: number;
   question: string;
   options: QuestionOption[];
-  correct_answer: string | number; // Matches option.id
+  correct_answer: string | number;
 }
 
 interface TestDetails {
   id: number;
   title: string;
   test_type: 'practice' | 'final';
-  duration?: number; // in seconds for final tests
+  duration?: number;
   questions: Question[];
 }
 
-// Updated Answer type
 interface Answer {
   questionId: number;
   selectedOption: string | number | null;
 }
 
-// Type assertion for the imported JSON data
-const testsDatabase: Record<string, TestDetails> = quizData;
-
-// Helper function to shuffle an array (Fisher-Yates)
-// Ensures the shuffling happens client-side after hydration
 const shuffleArray = <T>(array: T[]): T[] => {
-  // Ensure this runs only on the client
-  if (typeof window === 'undefined') {
-     console.warn("Shuffle attempted on server, returning original array.");
-     return array;
-  }
+  if (typeof window === 'undefined') return array;
   let currentIndex = array.length, randomIndex;
-  // While there remain elements to shuffle.
   while (currentIndex !== 0) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
   return array;
 };
-
 
 export default function QuizPage() {
   const params = useParams();
@@ -81,131 +63,65 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<number, Answer>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [timeLeft, setTimeLeft] = useState<number | null>(null); // For final test timer
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]); // Store shuffled subset
-  const [isClient, setIsClient] = useState(false); // Track client-side mount
+  const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
-
-   // Effect to track client-side mounting
-   useEffect(() => {
-     setIsClient(true);
-   }, []);
-
-
-  // Fetch test details and select questions
   useEffect(() => {
-     // Only run on client after mount and if testId exists
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
     if (!isClient || !testId) return;
 
     const fetchTest = async () => {
       setIsLoading(true);
       setError(null);
-      setTestDetails(null); // Reset details on new fetch
-      setShuffledQuestions([]); // Reset questions
-      setAnswers({}); // Reset answers
-      setCurrentQuestionIndex(0); // Reset index
-      setTimeLeft(null); // Reset timer
-
       try {
-        // Simulate async loading if needed
-        await new Promise(resolve => setTimeout(resolve, 50));
-
-        const fetchedTest = testsDatabase[testId];
-
-        if (fetchedTest) {
-           // --- Question Selection Logic ---
-           let selectedQuestions: Question[] = [];
-           // Ensure questions exist and is an array before proceeding
-           if (fetchedTest.questions && Array.isArray(fetchedTest.questions) && fetchedTest.questions.length > 0) {
-             const allQuestions = fetchedTest.questions;
-             // Ensure shuffle happens client-side - call shuffleArray here
-             const shuffledAll = shuffleArray([...allQuestions]); // Shuffle a copy
-             const targetQuestionCount = fetchedTest.test_type === 'final' ? 50 : 25;
-
-             if (shuffledAll.length >= targetQuestionCount) {
-               selectedQuestions = shuffledAll.slice(0, targetQuestionCount);
-               console.log(`Selected ${targetQuestionCount} random questions for ${fetchedTest.test_type} test ID ${testId}.`);
-             } else {
-               console.warn(`Test ID ${testId} (${fetchedTest.test_type}) has only ${shuffledAll.length} questions, less than the target ${targetQuestionCount}. Using all available ${shuffledAll.length} questions.`);
-               selectedQuestions = shuffledAll; // Use all available shuffled questions
-             }
-           } else {
-               console.warn(`Test data for ID ${testId} has no questions or questions are not in the expected format.`);
-               // Set error state instead of throwing immediately
-               setError(`Test data for ID ${testId} is missing questions or has an invalid format.`);
-               // Set loading to false as we've determined the state
-               setIsLoading(false);
-               // Return early to prevent further processing on invalid data
-               return;
-           }
-
-           // Update test details state with the base info
-           setTestDetails({
-               ...fetchedTest,
-               questions: [], // Base details don't hold the selected questions
-           });
-
-           // Set the selected shuffled questions state
-           setShuffledQuestions(selectedQuestions); // This state holds the active questions
-
-            // --- End Question Selection Logic ---
-
-          // Initialize answers state based on the *selected* questions
-          const initialAnswers: Record<number, Answer> = {};
-           if (selectedQuestions.length > 0) {
-              selectedQuestions.forEach(q => {
-                 // Safety check for question ID
-                 if (q && q.id !== undefined && q.id !== null) {
-                    initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
-                 } else {
-                    console.error("Encountered a question without a valid ID during answer initialization:", q);
-                 }
-              });
-           } else {
-               console.log("No questions selected, initializing empty answers.");
-               // If no questions were selected (e.g., due to insufficient count warning above), set error.
-               if (!error) { // Avoid overwriting existing errors (like missing questions array)
-                   setError(`Could not select any questions for test ID ${testId}. The test might be empty or misconfigured.`);
-               }
-               setIsLoading(false);
-               return; // Stop if no questions could be processed
-           }
-           setAnswers(initialAnswers);
-
-
-          // Start timer for final tests
-          if (fetchedTest.test_type === 'final' && fetchedTest.duration) {
-             // Use duration from original fetched data, not the potentially modified testDetails
-             // Use a default duration if not specified but it's a final test
-             const duration = fetchedTest.duration || 3600; // Default 1 hour if duration missing for final
-            setTimeLeft(duration);
-          }
+        const response = await fetch(`/api/quiz/${testId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch test details');
+        }
+        const fetchedTest: TestDetails = await response.json();
+        
+        let selectedQuestions: Question[] = [];
+        if (fetchedTest.questions && fetchedTest.questions.length > 0) {
+          const shuffledAll = shuffleArray([...fetchedTest.questions]);
+          const targetQuestionCount = fetchedTest.test_type === 'final' ? 50 : 25;
+          selectedQuestions = shuffledAll.slice(0, targetQuestionCount);
         } else {
-           console.error(`Test data for ID ${testId} not found in JSON data.`);
-           // Throw error to be caught below and displayed to user
-           // Use a more user-friendly message
-           throw new Error(`Test details for ID ${testId} could not be found. It might be unavailable. Please return to the dashboard.`);
+            setError(`Test data for ID ${testId} is missing questions.`);
+            setIsLoading(false);
+            return;
+        }
+
+        setTestDetails(fetchedTest);
+        setShuffledQuestions(selectedQuestions);
+
+        const initialAnswers: Record<number, Answer> = {};
+        selectedQuestions.forEach(q => {
+          initialAnswers[q.id] = { questionId: q.id, selectedOption: null };
+        });
+        setAnswers(initialAnswers);
+
+        if (fetchedTest.test_type === 'final' && fetchedTest.duration) {
+          setTimeLeft(fetchedTest.duration);
         }
       } catch (err) {
         console.error("Failed to load test:", err);
-        const message = err instanceof Error ? err.message : "Could not load the test. Please go back and try again.";
+        const message = err instanceof Error ? err.message : "Could not load the test.";
         setError(message);
       } finally {
-        // Only set loading to false if it hasn't been set already (e.g., by error handling within try block)
-        if (isLoading) {
-            setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
     fetchTest();
-  }, [testId, isClient]); // Add isClient dependency
+  }, [testId, isClient]);
 
-   // Timer logic for final tests
   useEffect(() => {
-     // Ensure we have testDetails *and* a valid timeLeft to start the timer
     if (testDetails?.test_type !== 'final' || timeLeft === null || timeLeft <= 0 || isLoading || !isClient) {
       return;
     }
@@ -214,7 +130,6 @@ export default function QuizPage() {
       setTimeLeft((prevTime) => {
         if (prevTime === null || prevTime <= 1) {
           clearInterval(timer);
-          // Check if submission hasn't already started (e.g., by manual submit near timeout)
           if (!isSubmitting) {
              handleTimeUp();
           }
@@ -224,33 +139,26 @@ export default function QuizPage() {
       });
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup interval on unmount or dependency change
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [testDetails, timeLeft, isLoading, isSubmitting, isClient]); // Add isClient
+    return () => clearInterval(timer);
+  }, [testDetails, timeLeft, isLoading, isSubmitting, isClient]);
 
   const handleTimeUp = () => {
-    if (isSubmitting) return; // Prevent duplicate submissions
+    if (isSubmitting) return;
     toast({
       variant: "destructive",
       title: "Time's Up!",
       description: "Submitting your answers automatically.",
     });
-    handleSubmit(); // Auto-submit
+    handleSubmit();
   };
 
-
   const handleAnswerSelect = (questionId: number, selectedOption: string | number) => {
-     // Ensure questionId is valid before updating state
-     if (questionId === undefined || questionId === null) {
-         console.error("Attempted to select answer for invalid question ID:", questionId);
-         return;
-     }
+    if (questionId === undefined || questionId === null) return;
     setAnswers(prev => ({
       ...prev,
       [questionId]: { questionId, selectedOption },
     }));
   };
-
 
   const goToNextQuestion = () => {
     if (shuffledQuestions && currentQuestionIndex < shuffledQuestions.length - 1) {
@@ -260,181 +168,122 @@ export default function QuizPage() {
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1); // Corrected logic to decrement
+      setCurrentQuestionIndex(prev => prev - 1);
     }
   };
 
-   const goToQuestion = (index: number) => {
-     if (shuffledQuestions && index >= 0 && index < shuffledQuestions.length) {
-       setCurrentQuestionIndex(index);
-     }
-   };
+  const goToQuestion = (index: number) => {
+    if (shuffledQuestions && index >= 0 && index < shuffledQuestions.length) {
+      setCurrentQuestionIndex(index);
+    }
+  };
 
   const handleSubmit = useCallback(async () => {
-     // Check if already submitting, or if crucial data is missing
-     if (isSubmitting || !testDetails || !shuffledQuestions || shuffledQuestions.length === 0) {
-          console.warn("Submission prevented: Already submitting or missing data.");
-          return;
-     }
-     setIsSubmitting(true);
-     setShowSubmitConfirm(false); // Close confirmation dialog
+    if (isSubmitting || !testDetails || !shuffledQuestions || shuffledQuestions.length === 0) return;
 
-     console.log("Submitting answers:", answers);
+    setIsSubmitting(true);
+    setShowSubmitConfirm(false);
 
-     try {
-       // Simulate submission delay
-       await new Promise(resolve => setTimeout(resolve, 500));
+    try {
+      const response = await fetch('/api/quiz/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ testId, answers, shuffledQuestions }),
+      });
 
-       // --- CLIENT-SIDE RESULT CALCULATION ---
-       let correctCount = 0;
-       shuffledQuestions.forEach(q => {
-         // Ensure question and its ID are valid before accessing answers
-          if (q && q.id !== undefined && q.id !== null) {
-             const userAnswer = answers[q.id];
-             if (userAnswer?.selectedOption !== null && userAnswer?.selectedOption !== undefined) {
-                // Compare as strings for flexibility (e.g., 'a' vs 'a')
-                if (String(userAnswer.selectedOption) === String(q.correct_answer)) {
-                    correctCount++;
-                }
-             }
-          } else {
-             console.error("Encountered invalid question during result calculation:", q);
-          }
-       });
-       const totalQuestions = shuffledQuestions.length; // Use the actual count of displayed questions
-       const score = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-       const incorrectCount = totalQuestions - correctCount;
+      if (!response.ok) {
+        throw new Error('Failed to submit the quiz');
+      }
 
-       const result = {
-         score: score.toString(),
-         correctAnswers: correctCount,
-         incorrectAnswers: incorrectCount, // Calculate incorrect count
-         totalQuestions: totalQuestions,
-       };
-        // --- END CLIENT-SIDE RESULT CALCULATION ---
+      const result = await response.json();
 
+      toast({
+        title: "Test Submitted!",
+        description: `Your score: ${result.score}%`,
+      });
 
-       toast({
-         title: "Test Submitted!",
-         description: `Your score: ${result.score}%`,
-       });
+      router.push(`/review/${testId}?score=${result.score}&correct=${result.correctAnswers}&incorrect=${result.incorrectAnswers}&total=${result.totalQuestions}`);
+    } catch (err) {
+      console.error("Failed to submit answers:", err);
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "Could not submit your answers. Please try again.",
+      });
+      setIsSubmitting(false);
+    }
+  }, [answers, isSubmitting, router, testId, testDetails, shuffledQuestions, toast]);
 
-       // Redirect to Review Page (pass necessary data)
-       // Ensure all params are correctly passed
-       router.push(`/review/${testId}?score=${result.score}&correct=${result.correctAnswers}&incorrect=${result.incorrectAnswers}&total=${result.totalQuestions}`);
-
-
-     } catch (err) {
-        console.error("Failed to submit answers:", err);
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: "Could not submit your answers. Please try again.",
-        });
-        setIsSubmitting(false); // Ensure submitting state is reset only on error within try block
-     } finally {
-         //setIsSubmitting(false); // Setting isSubmitting=false here might cause issues if redirect is fast
-         // It's generally safer to let the component unmount or reset state on error.
-         // If staying on the page after submission was possible, reset here.
-     }
-
-  }, [answers, isSubmitting, router, testId, testDetails, shuffledQuestions, toast]); // Added shuffledQuestions dependency
-
-
-   // Format time left for display
   const formatTime = (seconds: number | null): string => {
     if (seconds === null) return '--:--';
-    if (seconds < 0) return '00:00'; // Handle potential negative values if timer logic has issues
+    if (seconds < 0) return '00:00';
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  // Loading state (also check for client side mount)
   if (isLoading || !isClient) {
     return (
       <div className="container py-8">
-         <Skeleton className="h-8 w-3/4 mb-6" />
-         <Card>
-           <CardHeader>
-             <Skeleton className="h-6 w-1/2 mb-2"/>
-              <Skeleton className="h-4 w-1/4"/>
-           </CardHeader>
-           <CardContent className="space-y-4">
-              <Skeleton className="h-5 w-full" />
-              <Skeleton className="h-5 w-5/6" />
-              <div className="space-y-3 pt-4">
-                  <Skeleton className="h-10 w-full" />
-                  <Skeleton className="h-10 w-full" />
-                  <Skeleton className="h-10 w-full" />
-                  <Skeleton className="h-10 w-full" />
-              </div>
-           </CardContent>
-           <CardFooter className="flex justify-between">
-              <Skeleton className="h-10 w-24" />
-              <Skeleton className="h-10 w-24" />
-           </CardFooter>
-         </Card>
+        <Skeleton className="h-8 w-3/4 mb-6" />
+        <Card>
+          <CardHeader>
+            <Skeleton className="h-6 w-1/2 mb-2"/>
+            <Skeleton className="h-4 w-1/4"/>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Skeleton className="h-5 w-full" />
+            <Skeleton className="h-5 w-5/6" />
+            <div className="space-y-3 pt-4">
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-10 w-full" />
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Skeleton className="h-10 w-24" />
+            <Skeleton className="h-10 w-24" />
+          </CardFooter>
+        </Card>
       </div>
     );
   }
 
-  // Error state or no questions loaded state
-   if (error || !testDetails || !shuffledQuestions || shuffledQuestions.length === 0) {
-     const errorMessage = error || (testDetails && (!shuffledQuestions || shuffledQuestions.length === 0) ? "No questions were selected for this test." : "Test data could not be loaded.");
-     return (
-        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
-           <Alert variant="destructive" className="max-w-lg">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error Loading Test</AlertTitle>
-              <AlertDescription>
-                 {errorMessage}
-                 <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
-              </AlertDescription>
-           </Alert>
-        </div>
-     );
-   }
+  if (error || !testDetails || !shuffledQuestions || shuffledQuestions.length === 0) {
+    const errorMessage = error || (testDetails && (!shuffledQuestions || shuffledQuestions.length === 0) ? "No questions were selected for this test." : "Test data could not be loaded.");
+    return (
+      <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+        <Alert variant="destructive" className="max-w-lg">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Error Loading Test</AlertTitle>
+          <AlertDescription>
+            {errorMessage}
+            <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  }
 
-  // Quiz display - Ensure currentQuestion is accessed safely
-   const currentQuestion = shuffledQuestions[currentQuestionIndex];
-   // Check if currentQuestion or its ID is valid
-   if (!currentQuestion || currentQuestion.id === undefined || currentQuestion.id === null) {
-       console.error("Invalid current question or question ID:", currentQuestion);
-       // Attempt to recover or show error
-       if (shuffledQuestions.length > 0 && currentQuestionIndex < shuffledQuestions.length) {
-          // Maybe try moving to the next valid question? Or show a specific error.
-          setError("Error displaying current question due to invalid data. Please contact support if this persists.");
-          return ( // Re-render to show the error in the Alert above
-                <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
-                   <Alert variant="destructive" className="max-w-lg">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertTitle>Error Displaying Question</AlertTitle>
-                      <AlertDescription>
-                         {error}
-                         <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
-                      </AlertDescription>
-                   </Alert>
-                </div>
-             );
-       } else {
-          // If no valid questions left, maybe trigger error state
-          setError("Encountered invalid question data and could not continue the quiz.");
-          // Rerender will show the error alert from above
-           return ( // Re-render to show the error in the Alert above
-                <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
-                   <Alert variant="destructive" className="max-w-lg">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertTitle>Quiz Error</AlertTitle>
-                      <AlertDescription>
-                         {error}
-                         <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
-                      </AlertDescription>
-                   </Alert>
-                </div>
-             );
-       }
-   }
+  const currentQuestion = shuffledQuestions[currentQuestionIndex];
+  if (!currentQuestion || currentQuestion.id === undefined || currentQuestion.id === null) {
+    setError("Error displaying current question due to invalid data.");
+    return (
+      <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+        <Alert variant="destructive" className="max-w-lg">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Quiz Error</AlertTitle>
+          <AlertDescription>
+            {error}
+            <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  }
 
   const currentAnswer = answers[currentQuestion.id];
   const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
@@ -442,147 +291,126 @@ export default function QuizPage() {
   const isLastQuestion = currentQuestionIndex === shuffledQuestions.length - 1;
 
   return (
-     <div className="container py-8">
-        <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold">{testDetails.title}</h1>
-            {isFinal && timeLeft !== null && (
-                 <div className={`flex items-center space-x-2 p-2 rounded-md font-mono text-lg tabular-nums ${timeLeft <= 60 && timeLeft > 0 ? 'text-destructive font-semibold animate-pulse' : timeLeft === 0 ? 'text-destructive font-semibold' : 'text-muted-foreground'}`}>
-                    <TimerIcon className="h-5 w-5" />
-                    <span>{formatTime(timeLeft)}</span>
-                </div>
-            )}
-        </div>
-
-       <Progress value={progress} className="mb-6 h-2" />
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Question Panel (Navigator) */}
-          <Card className="md:col-span-1 h-fit sticky top-20 hidden md:block">
-              <CardHeader>
-                  <CardTitle>Questions</CardTitle>
-              </CardHeader>
-              <CardContent className="grid grid-cols-5 gap-2 max-h-[60vh] overflow-y-auto pr-2">
-                  {shuffledQuestions.map((q, index) => {
-                       // Safety check for question ID
-                       const questionIdValid = q && q.id !== undefined && q.id !== null;
-                       const answered = questionIdValid && answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
-                      const isCurrent = index === currentQuestionIndex;
-                       // Determine button styles based on state
-                        let variant: "default" | "secondary" | "outline" | "accent" | "ghost" | "link" | null | undefined = "outline"; // Default to outline
-                         if (isCurrent) {
-                            variant = "default"; // Primary for current
-                         } else if (answered) {
-                           // Use accent color defined in theme (globals.css)
-                            variant = "accent"; // Accent for answered
-                         }
-
-                        const additionalClasses = isCurrent ? "ring-2 ring-ring ring-offset-2" : answered ? "border-accent-foreground/50" : "";
-
-
-                      return (
-                          <Button
-                              key={questionIdValid ? q.id : `invalid-q-${index}`} // Use index as fallback key
-                              variant={variant}
-                              size="icon"
-                              className={`h-9 w-9 rounded-full transition-all duration-150 ${additionalClasses} ${!questionIdValid ? 'opacity-50 cursor-not-allowed' : ''}`}
-                              onClick={() => questionIdValid && goToQuestion(index)}
-                              aria-label={`Go to question ${index + 1}`}
-                              disabled={isSubmitting || !questionIdValid} // Disable navigation buttons while submitting or if ID invalid
-                          >
-                              {index + 1}
-                          </Button>
-                      );
-                  })}
-              </CardContent>
-          </Card>
-
-          {/* Main Quiz Area */}
-          <div className="md:col-span-3">
-            <Card>
-              <CardHeader>
-                <CardTitle>Question {currentQuestionIndex + 1} of {shuffledQuestions.length}</CardTitle>
-                <CardDescription className="pt-4 text-lg text-foreground">
-                  {currentQuestion.question}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RadioGroup
-                   // Ensure currentAnswer and its selectedOption are checked before accessing toString()
-                   // Also provide a default empty string value if null/undefined
-                   value={currentAnswer?.selectedOption?.toString() ?? ""}
-                  onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
-                  className="space-y-3"
-                  // disabled={isSubmitting} // Interaction should not be disabled while submitting as user might still navigate
-                >
-                  {currentQuestion.options.map((option) => (
-                      <Label
-                        key={option.id}
-                        htmlFor={`option-${option.id}`}
-                        // Apply cn utility for conditional classes
-                        className={cn(
-                          "flex items-center space-x-3 p-4 border rounded-md transition-colors duration-150",
-                          "hover:bg-accent/50 dark:hover:bg-accent/30", // Consistent hover
-                          // Use has-[:checked] pseudo-class for better state handling with ShadCN components
-                          "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20",
-                           // More explicit disabled styling - disable only if actually submitting or timed out
-                           (isSubmitting || timeLeft === 0) ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
-                        )}
-                      >
-                        <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting || timeLeft === 0} />
-                        <span>{option.text}</span>
-                      </Label>
-                    )
-                  )}
-                </RadioGroup>
-              </CardContent>
-              <CardFooter className="flex justify-between">
+    <div className="container py-8">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">{testDetails.title}</h1>
+        {isFinal && timeLeft !== null && (
+          <div className={`flex items-center space-x-2 p-2 rounded-md font-mono text-lg tabular-nums ${timeLeft <= 60 && timeLeft > 0 ? 'text-destructive font-semibold animate-pulse' : timeLeft === 0 ? 'text-destructive font-semibold' : 'text-muted-foreground'}`}>
+            <TimerIcon className="h-5 w-5" />
+            <span>{formatTime(timeLeft)}</span>
+          </div>
+        )}
+      </div>
+      <Progress value={progress} className="mb-6 h-2" />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card className="md:col-span-1 h-fit sticky top-20 hidden md:block">
+          <CardHeader>
+            <CardTitle>Questions</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-5 gap-2 max-h-[60vh] overflow-y-auto pr-2">
+            {shuffledQuestions.map((q, index) => {
+              const questionIdValid = q && q.id !== undefined && q.id !== null;
+              const answered = questionIdValid && answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
+              const isCurrent = index === currentQuestionIndex;
+              let variant: "default" | "secondary" | "outline" | "accent" | "ghost" | "link" | null | undefined = "outline";
+              if (isCurrent) {
+                variant = "default";
+              } else if (answered) {
+                variant = "accent";
+              }
+              const additionalClasses = isCurrent ? "ring-2 ring-ring ring-offset-2" : answered ? "border-accent-foreground/50" : "";
+              return (
                 <Button
-                  variant="outline"
-                  onClick={goToPreviousQuestion}
-                  disabled={currentQuestionIndex === 0 || isSubmitting}
+                  key={questionIdValid ? q.id : `invalid-q-${index}`}
+                  variant={variant}
+                  size="icon"
+                  className={`h-9 w-9 rounded-full transition-all duration-150 ${additionalClasses} ${!questionIdValid ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  onClick={() => questionIdValid && goToQuestion(index)}
+                  aria-label={`Go to question ${index + 1}`}
+                  disabled={isSubmitting || !questionIdValid}
                 >
-                  <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+                  {index + 1}
                 </Button>
-
-                 {isLastQuestion ? (
-                    <Button
-                        onClick={() => setShowSubmitConfirm(true)}
-                        className="bg-primary hover:bg-primary/90" // Consistent primary button style
-                        disabled={isSubmitting || timeLeft === 0} // Disable if submitting or time is up
-                    >
-                       {isSubmitting ? "Submitting..." : "Submit Test"}
-                    </Button>
-                 ) : (
-                    <Button onClick={goToNextQuestion} disabled={isSubmitting}>
-                       Next <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                 )}
-              </CardFooter>
-            </Card>
-           </div>
+              );
+            })}
+          </CardContent>
+        </Card>
+        <div className="md:col-span-3">
+          <Card>
+            <CardHeader>
+              <CardTitle>Question {currentQuestionIndex + 1} of {shuffledQuestions.length}</CardTitle>
+              <CardDescription className="pt-4 text-lg text-foreground">
+                {currentQuestion.question}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <RadioGroup
+                value={currentAnswer?.selectedOption?.toString() ?? ""}
+                onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
+                className="space-y-3"
+              >
+                {currentQuestion.options.map((option) => (
+                  <Label
+                    key={option.id}
+                    htmlFor={`option-${option.id}`}
+                    className={cn(
+                      "flex items-center space-x-3 p-4 border rounded-md transition-colors duration-150",
+                      "hover:bg-accent/50 dark:hover:bg-accent/30",
+                      "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20",
+                      (isSubmitting || timeLeft === 0) ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
+                    )}
+                  >
+                    <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting || timeLeft === 0} />
+                    <span>{option.text}</span>
+                  </Label>
+                ))}
+              </RadioGroup>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button
+                variant="outline"
+                onClick={goToPreviousQuestion}
+                disabled={currentQuestionIndex === 0 || isSubmitting}
+              >
+                <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+              </Button>
+              {isLastQuestion ? (
+                <Button
+                  onClick={() => setShowSubmitConfirm(true)}
+                  className="bg-primary hover:bg-primary/90"
+                  disabled={isSubmitting || timeLeft === 0}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Test"}
+                </Button>
+              ) : (
+                <Button onClick={goToNextQuestion} disabled={isSubmitting}>
+                  Next <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              )}
+            </CardFooter>
+          </Card>
         </div>
-
-       {/* Submit Confirmation Dialog */}
-        <AlertDialog open={showSubmitConfirm} onOpenChange={setShowSubmitConfirm}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Submit your test?</AlertDialogTitle>
-              <AlertDialogDescription>
-                 Are you sure you want to submit your answers? You won't be able to change them after submission.
-                 {isFinal && timeLeft !== null && timeLeft > 0 && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
-                 {isFinal && timeLeft !== null && timeLeft <= 0 && <span className="block mt-2 font-semibold text-destructive">Time is up! Your answers will be submitted.</span>}
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <Button variant="outline" onClick={() => setShowSubmitConfirm(false)} disabled={isSubmitting}>
-                Cancel
-              </Button>
-              <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
-                 {isSubmitting ? "Submitting..." : "Confirm Submit"}
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-     </div>
+      </div>
+      <AlertDialog open={showSubmitConfirm} onOpenChange={setShowSubmitConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Submit your test?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to submit your answers? You won't be able to change them after submission.
+              {isFinal && timeLeft !== null && timeLeft > 0 && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
+              {isFinal && timeLeft !== null && timeLeft <= 0 && <span className="block mt-2 font-semibold text-destructive">Time is up! Your answers will be submitted.</span>}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <Button variant="outline" onClick={() => setShowSubmitConfirm(false)} disabled={isSubmitting}>
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
+              {isSubmitting ? "Submitting..." : "Confirm Submit"}
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
   );
 }

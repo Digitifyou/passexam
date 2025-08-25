@@ -21,84 +21,41 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    // TODO: Replace with actual API call to login.php
-    console.log("Attempting login with:", { email, password });
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // --- MOCK API RESPONSE ---
-    // Replace this block with fetch logic
-    // Allow both user@example.com and admin@example.com with password 'password' for testing
-    const mockSuccess = (email === "user@example.com" || email === "admin@example.com") && password === "password";
-    // --- END MOCK API RESPONSE ---
-
-    if (mockSuccess) {
-      toast({
-        title: "Login Successful",
-        description: "Redirecting to dashboard...",
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       });
-      // In a real app, the session would be set by the server response headers
-      // For now, just redirect
-      router.push("/dashboard");
-    } else {
+
+      if (response.ok) {
+        toast({
+          title: "Login Successful",
+          description: "Redirecting to dashboard...",
+        });
+        router.push("/dashboard");
+      } else {
+        const errorData = await response.json();
+        toast({
+          variant: "destructive",
+          title: "Login Failed",
+          description: errorData.message || "Invalid email or password.",
+        });
+      }
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Login Failed",
-        description: "Invalid email or password.",
+        description: "An unexpected error occurred.",
       });
+    } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    // <div className="flex min-h-screen items-center justify-center bg-secondary">
-    //   <Card className="w-full max-w-sm">
-    //     <CardHeader>
-    //       <CardTitle className="text-2xl">Login</CardTitle>
-    //       <CardDescription>
-    //         Enter your email below to login to your account. Use user@example.com or admin@example.com with password 'password'.
-    //       </CardDescription>
-    //     </CardHeader>
-    //     <form onSubmit={handleLogin}>
-    //       <CardContent className="grid gap-4">
-    //         <div className="grid gap-2">
-    //           <Label htmlFor="email">Email</Label>
-    //           <Input
-    //             id="email"
-    //             type="email"
-    //             placeholder="m@example.com"
-    //             required
-    //             value={email}
-    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-    //             disabled={isLoading}
-    //           />
-    //         </div>
-    //         <div className="grid gap-2">
-    //           <Label htmlFor="password">Password</Label>
-    //           <Input
-    //             id="password"
-    //             type="password"
-    //             required
-    //             value={password}
-    //             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-    //             disabled={isLoading}
-    //             placeholder="password"
-    //           />
-    //         </div>
-    //       </CardContent>
-    //       <CardFooter className="flex flex-col gap-4">
-    //          <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
-    //           {isLoading ? "Logging in..." : "Login"}
-    //         </Button>
-    //          <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
-    //            <Link href="/register">Sign up</Link>
-    //          </Button>
-    //       </CardFooter>
-    //     </form>
-    //   </Card>
-    // </div>
-
     <>
     <section className='auth-welcome-top auth-welcome-top-login'>
               <CardHeader className="items-center">

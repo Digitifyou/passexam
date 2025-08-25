@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "testId": 106,
+    "testName": "Final Mock Test",
+    "sectionTitle": "Mutual Funds Basics",
+    "testType": "final",
+    "score": 67,
+    "correctCount": 2,
+    "totalQuestions": 3,
+    "submittedAt": "2024-07-28T10:30:00Z"
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "testId": 101,
+    "testName": "Practice Test 1",
+    "sectionTitle": "Mutual Funds Basics",
+    "testType": "practice",
+    "score": 50,
+    "correctCount": 1,
+    "totalQuestions": 2,
+    "submittedAt": "2024-07-27T15:00:00Z"
+  },
+  {
+    "id": 3,
+    "userId": 2,
+    "testId": 201,
+    "testName": "Options Practice 1",
+    "sectionTitle": "Derivatives Explained",
+    "testType": "practice",
+    "score": 100,
+    "correctCount": 1,
+    "totalQuestions": 1,
+    "submittedAt": "2024-07-26T09:15:00Z"
+  },
+  {
+    "id": 4,
+    "userId": 2,
+    "testId": 101,
+    "testName": "Practice Test 1 (Mutual Funds)",
+    "sectionTitle": "TBD",
+    "testType": "practice",
+    "score": 16,
+    "correctCount": 4,
+    "totalQuestions": 25,
+    "submittedAt": "2025-08-25T10:28:46.077Z"
+  }
+]

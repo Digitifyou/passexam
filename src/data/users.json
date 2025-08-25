@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Test User",
+    "email": "user@example.com",
+    "password": "$2b$10$f/3b5S.w3q0.x2a1S.w3q.e.w3q.x2a1S.w3q.x2a1S.w3q.x2a1S.w"
+  },
+  {
+    "id": 2,
+    "name": "Digitify U",
+    "email": "digitifyou@gmail.com",
+    "password": "$2b$10$VEJ5.mCiJICLNjPEHM.cx.ehIyO3Q/ncz/IT.oQOJt.q5P4ifd7WS"
+  },
+  {
+    "id": 3,
+    "name": "testing",
+    "email": "workatdigitifyu@gmail.com",
+    "password": "$2b$10$7YTZWcD3alHnVfX7ZKIjyuUZmfr8dJT.Q2Dq7DXvrOtBOcURinbDa"
+  }
+]
