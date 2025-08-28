@@ -163,7 +163,7 @@ export default function DashboardPage() {
                           )}
                         >
                           <div className='flex items-center justify-between w-full'>
-                            <span className={cn(isCompleted ? "completed-test-text" : "text-primary-foreground")}>{test.title}</span>
+                            <span className={cn(isCompleted ? "completed-test-text" : "text-primary-foreground not-completed-test-text")}>{test.title}</span>
                             {isCompleted && <CheckCircle className="h-5 w-5 text-green-600" />}
                           </div>
                         </Button>
