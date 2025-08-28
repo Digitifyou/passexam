@@ -24,10 +24,8 @@ export async function POST(req: NextRequest) {
   }
 
   const { password: _, ...userWithoutPassword } = user;
-
   const response = NextResponse.json(userWithoutPassword);
 
-  // Set a session cookie
   response.cookies.set('user-session', JSON.stringify(userWithoutPassword), {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

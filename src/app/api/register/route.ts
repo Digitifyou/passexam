@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser: User = {
-    id: users.length + 1,
+    id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
     name,
     email,
     password: hashedPassword,
