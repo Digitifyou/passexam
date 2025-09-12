@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
@@ -33,9 +33,7 @@ export default function RegisterPage() {
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
       });
 
@@ -50,8 +48,9 @@ export default function RegisterPage() {
         toast({
           variant: "destructive",
           title: "Registration Failed",
-          description: errorData.message || "Could not register user. Please try again.",
+          description: errorData.message || "Could not register user.",
         });
+        setIsLoading(false);
       }
     } catch (error) {
       toast({
@@ -59,87 +58,84 @@ export default function RegisterPage() {
         title: "Registration Failed",
         description: "An unexpected error occurred.",
       });
-    } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <>
-        <section className='auth-welcome-top auth-welcome-top-login'>
-                  <CardHeader className="items-center">
-                    <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaste Pro</CardTitle>
-                    <CardDescription className="text-lg text-muted-foreground pt-2">
-                      Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
-                    </CardDescription>
-                 </CardHeader>
-        
-                 <article className='auth-welcome'>
-                  <aside className='auth-welcome-image'>
-                    <img src="/images/9319770_4136944.svg" alt="Not Found Image" />
-                  </aside>
-                  <aside className='auth-welcome-content'>
-                    <div>
-                     <form onSubmit={handleRegister}>
-          <CardContent className="grid gap-4">
-             <div className="grid gap-2">
-              <Input
-                id="name"
-                type="text"
-                placeholder="Name"
-                required
-                value={name}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-                disabled={isLoading}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Input
-                id="email"
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                disabled={isLoading}
-              />
-            </div>
-             <div className="grid gap-2">
-              <Input
-                id="enter-password"
-                type="password"
-                required
-                value={password}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-                disabled={isLoading}
-                placeholder="Enter Password"
-              />
-            </div>
-             <div className="grid gap-2">
-              <Input
-                id="confirm-password"
-                type="password"
-                required
-                value={confirmPassword}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
-                disabled={isLoading}
-                placeholder="Confirm Password"
-              />
-            </div>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-4">
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
-               {isLoading ? "Registering..." : "Sign up"}
-            </Button>
-             <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
-               <Link href="/login">Already have an account? Login</Link>
-             </Button>
-          </CardFooter>
-        </form>
-                    </div>
-                  </aside>
-                 </article>
-            </section>
-        </>
+    <section className='auth-welcome-top auth-welcome-top-login'>
+      <CardHeader className="items-center">
+        <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaster Pro</CardTitle>
+        <CardDescription className="text-lg text-muted-foreground pt-2">
+          Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
+        </CardDescription>
+      </CardHeader>
+
+      <article className='auth-welcome'>
+        <aside className='auth-welcome-image'>
+          <img src="/images/9319770_4136944.svg" alt="Register Illustration" />
+        </aside>
+        <aside className='auth-welcome-content'>
+          <div>
+            <form onSubmit={handleRegister}>
+              <CardContent className="grid gap-4">
+                <div className="grid gap-2">
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Name"
+                    required
+                    value={name}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    disabled={isLoading}
+                    placeholder="Enter Password"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    id="confirm-password"
+                    type="password"
+                    required
+                    value={confirmPassword}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
+                    disabled={isLoading}
+                    placeholder="Confirm Password"
+                  />
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col gap-4">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
+                  {isLoading ? "Registering..." : "Sign up"}
+                </Button>
+                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
+                  <Link href="/login">Already have an account? Login</Link>
+                </Button>
+              </CardFooter>
+            </form>
+          </div>
+        </aside>
+      </article>
+    </section>
   );
 }

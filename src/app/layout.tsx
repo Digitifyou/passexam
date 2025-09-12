@@ -1,7 +1,8 @@
 import type {Metadata} from 'next';
 import {Geist} from 'next/font/google';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"; // Import Toaster
+import { Toaster } from "@/components/ui/toaster";
+import SessionProvider from './SessionProvider'; // Import the new provider
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Font Awesome Kit script */}
         <script
           src="https://kit.fontawesome.com/f70334b4f8.js"
           crossOrigin="anonymous"
@@ -29,8 +29,11 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning={true}>
-        {children}
-        <Toaster />
+        {/* Wrap your children with the SessionProvider */}
+        <SessionProvider>
+          {children}
+          <Toaster />
+        </SessionProvider>
       </body>
     </html>
   );

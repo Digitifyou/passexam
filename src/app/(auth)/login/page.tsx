@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -24,9 +24,7 @@ export default function LoginPage() {
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
@@ -56,59 +54,84 @@ export default function LoginPage() {
   };
 
   return (
-    <>
     <section className='auth-welcome-top auth-welcome-top-login'>
-              <CardHeader className="items-center">
-                <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaste Pro</CardTitle>
-                <CardDescription className="text-lg text-muted-foreground pt-2">
-                  Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
-                </CardDescription>
-             </CardHeader>
-    
-             <article className='auth-welcome'>
-              <aside className='auth-welcome-image'>
-                <img src="/images/investing-concept-illustration.png" alt="Not Found Image" />
-              </aside>
-              <aside className='auth-welcome-content'>
-                <div>
-                 <form onSubmit={handleLogin}>
-          <CardContent className="grid gap-4">
-            <div className="grid gap-2">
-              <Input
-                id="email"
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                disabled={isLoading}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-                disabled={isLoading}
-                placeholder="Enter Password"
-              />
-            </div>
-          </CardContent>
+      <CardHeader className="items-center">
+        <CardTitle className="text-4xl font-bold text-primary">Welcome Back!</CardTitle>
+        <CardDescription className="text-lg text-muted-foreground pt-2">
+          Sign in to continue your exam preparation journey.
+        </CardDescription>
+      </CardHeader>
 
-          <CardFooter className="flex flex-col gap-4">
-            <a href="#" className="forget-password">forget passwords</a>
-             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
-              {isLoading ? "Logging in..." : "Login"}
+      <article className='auth-welcome'>
+        <aside className='auth-welcome-image'>
+          <img src="/images/investing-concept-illustration.png" alt="Login Illustration" />
+        </aside>
+        <aside className='auth-welcome-content'>
+          <div>
+            {/* Google Login Button */}
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              disabled={isLoading}
+            >
+              <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 381.5 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 177.2 56.8L357 134.7C333.5 112.5 295.1 98.4 248 98.4c-87.5 0-157.9 70.3-157.9 157.6s70.4 157.6 157.9 157.6c93.1 0 134.3-64.8 138.6-99.1H248v-72.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
+              Sign in with Google
             </Button>
-             
-          </CardFooter>
-        </form>
+
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with email
+                </span>
+              </div>
+            </div>
+            
+            {/* Email and Password Form */}
+            <form onSubmit={handleLogin}>
+              <CardContent className="grid gap-4 p-0">
+                <div className="grid gap-2">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    disabled={isLoading}
+                  />
                 </div>
-              </aside>
-             </article>
-        </section>
-    </>
+                <div className="grid gap-2">
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    disabled={isLoading}
+                    placeholder="Enter Password"
+                  />
+                </div>
+              </CardContent>
+
+              <CardFooter className="flex flex-col gap-4 mt-4 p-0">
+                <Link href="/forgot-password" passHref legacyBehavior>
+                  <a className="forget-password">Forget password?</a>
+                </Link>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={isLoading}>
+                  {isLoading ? "Logging in..." : "Login with Email"}
+                </Button>
+                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10" asChild>
+                  <Link href="/register">Don't have an account? Sign up</Link>
+                </Button>
+              </CardFooter>
+            </form>
+          </div>
+        </aside>
+      </article>
+    </section>
   );
 }
