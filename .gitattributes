@@ -1,0 +1,22 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Force JSON files to use LF line endings to maintain consistency.
+*.json text eol=lf
+
+# Force common web files to use LF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
