@@ -1,44 +1,26 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { LogOut, User, BookOpen } from "lucide-react";
-import { User as UserType } from '@/lib/types';
+import { useSession, signOut } from "next-auth/react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Header() {
-  const router = useRouter();
+  const { data: session, status } = useSession(); // Get the session status
+  const user = session?.user;
   const { toast } = useToast();
-  const [user, setUser] = useState<UserType | null>(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch('/api/session');
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-        }
-      } catch (error) {
-        console.error('Failed to fetch user session', error);
-      }
-    };
-    fetchUser();
-  }, []);
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/logout', { method: 'POST' });
+      await signOut({ callbackUrl: '/login' });
       toast({
         title: "Logged Out",
         description: "You have been successfully logged out.",
       });
-      // Full page reload to ensure middleware redirects correctly
-      window.location.href = '/login';
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -48,7 +30,7 @@ export default function Header() {
     }
   };
 
-  const getUserInitials = (name: string | undefined): string => {
+  const getUserInitials = (name: string | undefined | null): string => {
     if (!name) return "..";
     return name
       .split(' ')
@@ -67,12 +49,18 @@ export default function Header() {
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
-            {user ? (
+            {/* Show a skeleton while the session is loading */}
+            {status === 'loading' && (
+              <Skeleton className="h-8 w-8 rounded-full" />
+            )}
+
+            {/* Show the user profile dropdown when authenticated */}
+            {status === 'authenticated' && user && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src="/placeholder-user.jpg" alt={user.name} />
+                      <AvatarImage src={user.image ?? "/placeholder-user.jpg"} alt={user.name ?? ""} />
                       <AvatarFallback>{getUserInitials(user.name)}</AvatarFallback>
                     </Avatar>
                   </Button>
@@ -100,7 +88,10 @@ export default function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
+            )}
+            
+            {/* Show the login button when unauthenticated */}
+            {status === 'unauthenticated' && (
               <Button asChild>
                 <Link href="/login">Login</Link>
               </Button>

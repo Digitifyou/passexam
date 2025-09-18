@@ -1,6 +1,6 @@
 "use client";
 
-import type { ChangeEvent, FormEvent } from "react";
+import type { FormEvent } from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -21,35 +21,28 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+    const result = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
 
-      if (response.ok) {
-        toast({
-          title: "Login Successful",
-          description: "Redirecting to dashboard...",
-        });
-        router.push("/dashboard");
-      } else {
-        const errorData = await response.json();
-        toast({
-          variant: "destructive",
-          title: "Login Failed",
-          description: errorData.message || "Invalid email or password.",
-        });
-      }
-    } catch (error) {
+    setIsLoading(false);
+
+    if (result?.error) {
       toast({
         variant: "destructive",
         title: "Login Failed",
-        description: "An unexpected error occurred.",
+        description: "Invalid email or password.",
       });
-    } finally {
-      setIsLoading(false);
+    } else if (result?.ok) {
+      toast({
+        title: "Login Successful",
+        description: "Redirecting to dashboard...",
+      });
+      router.push("/dashboard");
+      // Use router.refresh() to ensure the new session state is loaded
+      router.refresh();
     }
   };
 
@@ -100,7 +93,7 @@ export default function LoginPage() {
                     placeholder="Email"
                     required
                     value={email}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     disabled={isLoading}
                   />
                 </div>
@@ -110,7 +103,7 @@ export default function LoginPage() {
                     type="password"
                     required
                     value={password}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     disabled={isLoading}
                     placeholder="Enter Password"
                   />

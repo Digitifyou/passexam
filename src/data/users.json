@@ -16,5 +16,10 @@
     "name": "testing",
     "email": "workatdigitifyu@gmail.com",
     "password": "$2b$10$fels7THutsEkjsp0V.bSR.B6uiW3gwOZ6/pM4BL3GZYXM/edvD.Ui"
+  },
+  {
+    "id": 4,
+    "name": "GMB Business",
+    "email": "mrseoperfect@gmail.com"
   }
 ]

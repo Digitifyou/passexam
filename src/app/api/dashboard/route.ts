@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import path from 'path';
 import fs from 'fs';
 import { readHistory } from '@/lib/db';
 import { User } from '@/lib/types';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]/route';
 
 // Define the structure of the entire quiz database
 type QuizDatabase = Record<string, { id: number; title: string; test_type: 'practice' | 'final'; duration?: number }>;
@@ -12,14 +13,14 @@ type QuizDatabase = Record<string, { id: number; title: string; test_type: 'prac
 const quizFilePath = path.resolve(process.cwd(), 'src/data/quiz-questions.json');
 
 export async function GET(req: NextRequest) {
-  const sessionCookie = req.cookies.get('user-session');
+  const session = await getServerSession(authOptions);
 
-  if (!sessionCookie) {
+  if (!session || !session.user) {
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
   }
 
   try {
-    const user: User = JSON.parse(sessionCookie.value);
+    const user = (session.user as any) as User; // The user object now has our internal id
     
     // Read all available tests
     const fileContent = fs.readFileSync(quizFilePath, 'utf-8');
