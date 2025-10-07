@@ -1,17 +1,16 @@
-import type {Metadata} from 'next';
-import {Geist} from 'next/font/google';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google'; // Changed from Geist to Inter
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import SessionProvider from './SessionProvider'; // Import the new provider
+import SessionProvider from './SessionProvider';
+import Header from '@/components/layout/Header'; // Import Header
+import Footer from '@/components/layout/Footer'; // Import Footer
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] }); // Use Inter font
 
 export const metadata: Metadata = {
-  title: 'QuizMaster Pro',
-  description: 'A full-featured quiz platform.',
+  title: 'NISM Certify Pro',
+  description: 'A full-featured quiz platform for NISM certification.',
 };
 
 export default function RootLayout({
@@ -20,18 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          src="https://kit.fontawesome.com/f70334b4f8.js"
-          crossOrigin="anonymous"
-          async
-        ></script>
-      </head>
-      <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning={true}>
-        {/* Wrap your children with the SessionProvider */}
+    <html lang="en">
+      <body className={inter.className}> {/* Use Inter font class */}
         <SessionProvider>
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
           <Toaster />
         </SessionProvider>
       </body>

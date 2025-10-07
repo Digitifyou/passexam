@@ -1,9 +1,18 @@
+@import "./landing.css"; /* Add this line at the very top */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -75,7 +84,15 @@ body {
 header, main {
   display: flex;
   justify-content: center;
+  
+}
+
+header {
   padding: 20px;
+}
+
+.landing-page-layout {
+  width: 100%;
 }
 
 .auth-welcome-top {
