@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import path from 'path';
 import fs from 'fs';
-import { readHistory, writeHistory } from '@/lib/db';
+import { readHistory, writeHistory, readUsers } from '@/lib/db';
 import { User, UserTestResult } from '@/lib/types';
 
 // Define structures for quiz data
@@ -29,15 +30,20 @@ interface Answer {
 const quizFilePath = path.resolve(process.cwd(), 'src/data/quiz-questions.json');
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
-  const sessionCookie = cookieStore.get('user-session');
+  const session = await getServerSession(authOptions);
 
-  if (!sessionCookie) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
   }
 
   try {
-    const user: User = JSON.parse(sessionCookie.value);
+    const allUsers = readUsers();
+    const user = allUsers.find(u => u.email === session.user.email);
+    
+    if (!user) {
+        return NextResponse.json({ error: 'User not found in database' }, { status: 404 });
+    }
+
     const { testId, answers, shuffledQuestions } = await req.json();
 
     if (!testId || !answers || !shuffledQuestions) {
@@ -79,11 +85,11 @@ export async function POST(req: NextRequest) {
     // Save the result to history
     const history = readHistory();
     const newHistoryEntry: UserTestResult = {
-      id: history.length + 1,
-      userId: user.id,
+      id: history.length > 0 ? Math.max(...history.map(h => h.id)) + 1 : 1,
+      userId: user.id, // Use the correct user ID from your database
       testId: Number(testId),
       testName: testDetails.title,
-      sectionTitle: "TBD", // You can enhance this later
+      sectionTitle: "N/A", // Placeholder
       testType: testDetails.test_type,
       score,
       correctCount,

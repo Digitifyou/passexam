@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -11,93 +11,93 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { LogOut, Check, X, BarChart } from "lucide-react";
 import { format } from 'date-fns';
-import { User as UserType } from '@/lib/types';
-import type { UserTestResult } from '@/lib/types';
+import { UserTestResult } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const { toast } = useToast();
+  const user = session?.user;
 
-  const [userProfile, setUserProfile] = useState<UserType | null>(null);
   const [testResults, setTestResults] = useState<UserTestResult[]>([]);
-  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [isLoadingResults, setIsLoadingResults] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch User Profile Data
-    const fetchProfile = async () => {
-      setIsLoadingProfile(true);
-      setError(null);
-      try {
-        const response = await fetch('/api/session');
-        if (response.ok) {
-          const userData = await response.json();
-          setUserProfile(userData);
-        } else {
-          throw new Error('Failed to fetch user session');
-        }
-      } catch (err) {
-        console.error("Failed to fetch profile:", err);
-        setError("Could not load user profile.");
-        router.push('/login'); // Redirect if not authenticated
-      } finally {
-        setIsLoadingProfile(false);
-      }
-    };
-
-    // Fetch Test Results Data
-    const fetchResults = async () => {
-      setIsLoadingResults(true);
-      try {
-        const response = await fetch('/api/history');
-        if (response.ok) {
-          const resultsData = await response.json();
-          setTestResults(resultsData);
-        } else {
-           throw new Error('Failed to fetch test history');
-        }
-      } catch (err) {
-        console.error("Failed to fetch results:", err);
-        setError(prev => prev ? `${prev} Also failed to load test results.` : `Could not load test results.`);
-      } finally {
-        setIsLoadingResults(false);
-      }
-    };
-
-    fetchProfile();
-    fetchResults();
-  }, [router]);
-
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/logout', { method: 'POST' });
-      toast({
-        title: "Logged Out",
-        description: "You have been successfully logged out.",
-      });
-      window.location.href = '/login';
-    } catch (error) {
-       toast({
-        variant: 'destructive',
-        title: "Logout Failed",
-        description: "Could not log out. Please try again.",
-      });
+    // Redirect if not authenticated
+    if (status === "unauthenticated") {
+      router.push('/login');
     }
+
+    // Fetch Test Results only when the session is loaded
+    if (status === "authenticated") {
+      const fetchResults = async () => {
+        setIsLoadingResults(true);
+        try {
+          const response = await fetch('/api/history');
+          if (response.ok) {
+            const resultsData = await response.json();
+            setTestResults(resultsData);
+          } else {
+            throw new Error('Failed to fetch test history');
+          }
+        } catch (err) {
+          console.error("Failed to fetch results:", err);
+          toast({
+            variant: 'destructive',
+            title: 'Error',
+            description: 'Could not load your test history.'
+          });
+        } finally {
+          setIsLoadingResults(false);
+        }
+      };
+      fetchResults();
+    }
+  }, [status, router, toast]);
+  
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: '/' });
+    toast({
+      title: "Logged Out",
+      description: "You have been successfully logged out.",
+    });
   };
 
-   const getUserInitials = (name: string | undefined): string => {
-     if (!name) return "..";
-     return name
-       .split(' ')
-       .map(n => n[0])
-       .slice(0, 2)
-       .join('')
-       .toUpperCase();
-   }
-
+  const getUserInitials = (name: string | undefined | null): string => {
+    if (!name) return "..";
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
+  }
+  
   const completedPracticeTests = testResults.filter(r => r.testType === 'practice').length;
   const completedFinalTests = testResults.filter(r => r.testType === 'final').length;
+  
+  // Display a loading state while the session is being determined
+  if (status === "loading") {
+    return (
+        <div className="container py-8">
+            <div className="flex justify-between items-center mb-8">
+                <Skeleton className="h-9 w-48" />
+                <Skeleton className="h-10 w-28" />
+            </div>
+            <Card className="mb-8">
+                <CardHeader>
+                    <Skeleton className="h-16 w-full" />
+                </CardHeader>
+                <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
+                    <Skeleton className="h-16 w-full" />
+                    <Skeleton className="h-16 w-full" />
+                    <Skeleton className="h-16 w-full" />
+                </CardContent>
+            </Card>
+        </div>
+    );
+  }
 
   return (
     <div className="container py-8">
@@ -108,40 +108,16 @@ export default function ProfilePage() {
         </Button>
       </div>
 
-      {error && (
-        <Card className="bg-destructive/10 border-destructive mb-6">
-          <CardHeader>
-            <CardTitle className="text-destructive">Error</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>{error}</p>
-          </CardContent>
-        </Card>
-      )}
-
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-4">
-             {isLoadingProfile ? (
-                <Skeleton className="h-16 w-16 rounded-full" />
-             ) : (
-               <Avatar className="h-16 w-16 text-xl">
-                  <AvatarImage src="/placeholder-user.jpg" alt={userProfile?.name} />
-                  <AvatarFallback>{getUserInitials(userProfile?.name)}</AvatarFallback>
-               </Avatar>
-             )}
+            <Avatar className="h-16 w-16 text-xl">
+              {user?.image && <AvatarImage src={user.image} alt={user.name ?? ""} />}
+              <AvatarFallback>{getUserInitials(user?.name)}</AvatarFallback>
+            </Avatar>
             <div className="space-y-1">
-               {isLoadingProfile ? (
-                  <>
-                    <Skeleton className="h-6 w-48" />
-                    <Skeleton className="h-4 w-64" />
-                  </>
-               ) : (
-                  <>
-                     <p className="text-2xl font-semibold">{userProfile?.name ?? 'User Name'}</p>
-                     <p className="text-sm text-muted-foreground">{userProfile?.email ?? 'user@email.com'}</p>
-                  </>
-               )}
+              <p className="text-2xl font-semibold">{user?.name ?? 'User Name'}</p>
+              <p className="text-sm text-muted-foreground">{user?.email ?? 'user@email.com'}</p>
             </div>
           </CardTitle>
         </CardHeader>
@@ -171,11 +147,7 @@ export default function ProfilePage() {
            <div className="flex items-center gap-3 p-3 bg-secondary rounded-md">
                <BarChart className="h-6 w-6 text-blue-600 shrink-0"/>
                 <div>
-                    {isLoadingResults ? (
-                       <Skeleton className="h-5 w-8 inline-block"/>
-                     ) : (
-                       <p className="font-semibold">--</p>
-                    )}
+                   <p className="font-semibold">--</p>
                    <p className="text-sm text-muted-foreground">Average Score</p>
                </div>
            </div>
@@ -201,7 +173,6 @@ export default function ProfilePage() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Test Name</TableHead>
-                  <TableHead className="hidden sm:table-cell">Section</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead className="text-right">Score</TableHead>
                   <TableHead className="text-right hidden md:table-cell">Date</TableHead>
@@ -212,7 +183,6 @@ export default function ProfilePage() {
                 {testResults.map((result) => (
                   <TableRow key={result.id}>
                     <TableCell className="font-medium">{result.testName}</TableCell>
-                    <TableCell className="hidden sm:table-cell">{result.sectionTitle}</TableCell>
                     <TableCell>
                       <Badge variant={result.testType === 'final' ? 'destructive' : 'secondary'}>
                         {result.testType === 'final' ? 'Final' : 'Practice'}
@@ -222,7 +192,6 @@ export default function ProfilePage() {
                         <span className={`font-semibold ${result.score >= 70 ? 'text-green-600' : result.score >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>
                             {result.score}%
                         </span>
-                        <span className="text-xs text-muted-foreground ml-1">({result.correctCount}/{result.totalQuestions})</span>
                     </TableCell>
                     <TableCell className="text-right hidden md:table-cell">
                          {format(new Date(result.submittedAt), 'PP p')}

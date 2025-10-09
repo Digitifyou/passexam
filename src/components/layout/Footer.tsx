@@ -1,6 +1,15 @@
+"use client";
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/quiz/')) {
+    return null;
+  }
+
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container py-12">
@@ -14,7 +23,6 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold">Platform</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="/#modules" className="text-muted-foreground hover:text-primary">NISM Modules</Link></li>
               <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary">Practice Tests</Link></li>
               <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary">Mock Exams</Link></li>
             </ul>
@@ -22,17 +30,18 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold">Support</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="/#faq" className="text-muted-foreground hover:text-primary">FAQ</Link></li>
-              <li><a href="mailto:support@nismprep.com" className="text-muted-foreground hover:text-primary">Help Center</a></li>
-              <li><a href="mailto:contact@nismprep.com" className="text-muted-foreground hover:text-primary">Contact Us</a></li>
+              <li><Link href="/faq" className="text-muted-foreground hover:text-primary">FAQ</Link></li>
+              <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact Us</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold">Company</h4>
+            <h4 className="font-semibold">Legal</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link href="/about" className="text-muted-foreground hover:text-primary">About Us</Link></li>
               <li><Link href="/privacy" className="text-muted-foreground hover:text-primary">Privacy Policy</Link></li>
               <li><Link href="/terms" className="text-muted-foreground hover:text-primary">Terms of Service</Link></li>
+              <li><Link href="/refund-policy" className="text-muted-foreground hover:text-primary">Refund Policy</Link></li>
+              <li><Link href="/cancellation-policy" className="text-muted-foreground hover:text-primary">Cancellation Policy</Link></li>
             </ul>
           </div>
         </div>

@@ -21,5 +21,11 @@
     "id": 4,
     "name": "GMB Business",
     "email": "mrseoperfect@gmail.com"
+  },
+  {
+    "id": 5,
+    "name": "Mareeswaran",
+    "email": "mareesw757@gmail.com",
+    "password": "$2b$10$SPJjWxN4Lrr5IO5H3ZurN.2VNpSZ5U30UQmNxFndya4EHlEeQoR6m"
   }
 ]

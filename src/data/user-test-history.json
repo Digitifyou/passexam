@@ -46,5 +46,41 @@
     "correctCount": 4,
     "totalQuestions": 25,
     "submittedAt": "2025-08-25T10:28:46.077Z"
+  },
+  {
+    "id": 5,
+    "userId": 5,
+    "testId": 101,
+    "testName": "Practice Test 1 (Mutual Funds)",
+    "sectionTitle": "N/A",
+    "testType": "practice",
+    "score": 52,
+    "correctCount": 13,
+    "totalQuestions": 25,
+    "submittedAt": "2025-10-09T09:02:06.347Z"
+  },
+  {
+    "id": 6,
+    "userId": 5,
+    "testId": 102,
+    "testName": "Practice Test 2 (Mutual Funds)",
+    "sectionTitle": "N/A",
+    "testType": "practice",
+    "score": 36,
+    "correctCount": 9,
+    "totalQuestions": 25,
+    "submittedAt": "2025-10-09T09:13:04.125Z"
+  },
+  {
+    "id": 7,
+    "userId": 5,
+    "testId": 106,
+    "testName": "Final Mock Test (Mutual Funds)",
+    "sectionTitle": "N/A",
+    "testType": "final",
+    "score": 38,
+    "correctCount": 19,
+    "totalQuestions": 50,
+    "submittedAt": "2025-10-09T09:15:45.714Z"
   }
 ]
