@@ -99,9 +99,8 @@ header {
   display: flex;
   flex-direction: column;
   padding: 30px;
+  width: 100%;
 }
-
-
 
 .auth-welcome {
   display: flex;
