@@ -4,51 +4,50 @@ import { NextResponse } from 'next/server';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Check for the user session cookie
-  const sessionCookie = request.cookies.get('user-session');
-  const isLoggedIn = !!sessionCookie;
+  // -------------------------------------------------------------------
+  // FIX: Robust check for EITHER the custom OR any NextAuth cookie.
+  // -------------------------------------------------------------------
+  const isCustomSession = request.cookies.has('user-session');
+  
+  // Check if any cookie name contains 'session-token', which is guaranteed to exist
+  // for any active NextAuth session (Google or Credentials) regardless of the prefix.
+  const isNextAuthSession = Array.from(request.cookies.keys()).some(name => 
+    name.includes('session-token')
+  );
 
-  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/register');
-  const isAppRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/quiz') || pathname.startsWith('/review') || pathname.startsWith('/profile');
+  const isLoggedIn = isCustomSession || isNextAuthSession;
+  // -------------------------------------------------------------------
 
-  // If logged in and trying to access login/register, redirect to dashboard
-  if (isLoggedIn && isAuthRoute) {
-    console.log('Middleware: User is logged in. Redirecting from auth route to /dashboard');
+  // Define public-only routes (Auth + Home)
+  const isPublicOnlyRoute = pathname === '/' || 
+                            pathname.startsWith('/login') || 
+                            pathname.startsWith('/register') ||
+                            pathname.startsWith('/forgot-password') || 
+                            pathname.startsWith('/reset-password');
+  
+  // Define protected application routes
+  const isAppRoute = pathname.startsWith('/dashboard') || 
+                     pathname.startsWith('/quiz') || 
+                     pathname.startsWith('/review') || 
+                     pathname.startsWith('/profile');
+
+  // Rule 1: Logged In -> Redirect away from Public/Auth routes to Dashboard
+  if (isLoggedIn && isPublicOnlyRoute) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
-  // If not logged in and trying to access a protected app route, redirect to login
-  if (!isLoggedIn && isAppRoute) {
-     console.log('Middleware: User is not logged in. Redirecting from app route to /login');
+  // Rule 2: Not Logged In -> Redirect away from Protected/Root routes to Login
+  if (!isLoggedIn && (isAppRoute || pathname === '/')) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-   // If accessing the root path, redirect based on login status
-   if (pathname === '/') {
-       if (isLoggedIn) {
-         console.log('Middleware: Accessing root, logged in, redirecting to /dashboard');
-         return NextResponse.redirect(new URL('/dashboard', request.url));
-       } else {
-          console.log('Middleware: Accessing root, not logged in, redirecting to /login');
-         return NextResponse.redirect(new URL('/login', request.url));
-       }
-   }
-
-  // Allow the request to proceed if none of the above conditions are met
+  // Allow all other requests (e.g., /about, /faq) to proceed.
   return NextResponse.next();
 }
 
-// Define the paths middleware should run on
+// Define the paths middleware should run on (unchanged)
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - placeholder-user.jpg (example image)
-     */
     '/((?!api|_next/static|_next/image|favicon.ico|placeholder-user.jpg).*)',
   ],
 };

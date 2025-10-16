@@ -1,16 +1,17 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 export default function RegisterPage() {
+  const { status } = useSession(); // Get session status
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +19,20 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+
+  // --- CLIENT-SIDE REDIRECTION FIX ---
+  useEffect(() => {
+    // If the session is authenticated, redirect the user away.
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  if (status === "authenticated" || status === "loading") {
+    // Return null while redirecting or checking session status to prevent flashing content.
+    return null;
+  }
+  // -----------------------------------
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();

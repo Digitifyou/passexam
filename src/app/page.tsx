@@ -1,7 +1,12 @@
+"use client"; 
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import StatsCard from "@/components/ui/stats-card";
 import FeatureCard from "@/components/ui/feature-card";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import {
   Clock,
   Target,
@@ -18,7 +23,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+// Note: Removed unused imports: ChangeEvent, FormEvent, useState, signIn
+
 export default function LandingPage() {
+  const { status } = useSession(); // Get session status
+  const router = useRouter();
+
   const stats = [
     {
       title: "Questions Bank",
@@ -49,6 +59,20 @@ export default function LandingPage() {
       variant: "warning" as const,
     },
   ];
+
+  // --- CLIENT-SIDE REDIRECTION FIX ---
+  useEffect(() => {
+    // If the session is authenticated, redirect the user away.
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  if (status === "authenticated" || status === "loading") {
+    // Return null while redirecting or checking session status to prevent flashing content.
+    return null;
+  }
+  // -----------------------------------
 
   const features = [
     {

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import SessionProvider from './SessionProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { AuthStatusPopup } from '@/components/AuthStatusPopup'; // Import the new component
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Add suppressHydrationWarning to the html tag
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <SessionProvider>
@@ -29,6 +29,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          
         </SessionProvider>
       </body>
     </html>

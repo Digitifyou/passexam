@@ -1,10 +1,12 @@
+// In src/app/api/auth/[...nextauth]/route.ts
+
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { readUsers, writeUsers } from '@/lib/db';
 import bcrypt from 'bcrypt';
 import { User } from '@/lib/types';
-import { sendEmail } from '@/lib/email'; // Import the new email function
+import { sendEmail } from '@/lib/email';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -94,8 +96,11 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  // ADD THIS PAGES CONFIGURATION
   pages: {
     signIn: '/login',
+    // On sign-in error, you can redirect to a specific page
+    // error: '/auth/error', 
   }
 };
 
