@@ -2,7 +2,7 @@
 {
   "101": {
     "id": 101,
-    "title": "Practice Test 1 (Mutual Funds)",
+    "title": "Practice Test 1",
     "test_type": "practice",
     "questions": [
       { "id": 10101, "question": "What is the primary purpose of Mutual Funds?", "options": [ { "id": "a", "text": "Guaranteed high returns" }, { "id": "b", "text": "Pooling money to invest in securities" }, { "id": "c", "text": "Short-term lending" }, { "id": "d", "text": "Currency trading" } ], "correct_answer": "b" },
@@ -34,7 +34,7 @@
   },
   "102": {
     "id": 102,
-    "title": "Practice Test 2 (Mutual Funds)",
+    "title": "Practice Test 2",
     "test_type": "practice",
     "questions": [
       { "id": 10201, "question": "SEBI stands for?", "options": [ { "id": "a", "text": "Stock Exchange Board of India" }, { "id": "b", "text": "Securities and Exchange Board of India" }, { "id": "c", "text": "Savings and Equity Board of India" }, { "id": "d", "text": "Securities and Equity Bureau of India" } ], "correct_answer": "b" },
@@ -66,7 +66,7 @@
   },
   "103": {
     "id": 103,
-    "title": "Practice Test 3 (Mutual Funds)",
+    "title": "Practice Test 3",
     "test_type": "practice",
     "questions": [
        { "id": 10301, "question": "What is Beta in mutual funds?", "options": [ { "id": "a", "text": "A measure of expense ratio" }, { "id": "b", "text": "A measure of the fund's volatility relative to the market" }, { "id": "c", "text": "The fund's total return" }, { "id": "d", "text": "The fund manager's rating" } ], "correct_answer": "b" },
@@ -98,7 +98,7 @@
   },
   "104": {
     "id": 104,
-    "title": "Practice Test 4 (Mutual Funds)",
+    "title": "Practice Test 4",
     "test_type": "practice",
     "questions": [
       {"id": 10401, "question": "What is the minimum investment required for a mutual fund SIP?", "options": [{"id": "a", "text": "Rs. 100"}, {"id": "b", "text": "Rs. 500"}, {"id": "c", "text": "Rs. 1000"}, {"id": "d", "text": "Varies by scheme, often Rs. 500 or Rs. 1000"}], "correct_answer": "d"},
@@ -130,7 +130,7 @@
   },
   "105": {
     "id": 105,
-    "title": "Practice Test 5 (Mutual Funds)",
+    "title": "Practice Test 5",
     "test_type": "practice",
     "questions": [
       {"id": 10501, "question": "What is a 'NAV Cut-off Time'?", "options": [{"id": "a", "text": "Time when market opens"}, {"id": "b", "text": "Time by which application must be received for same-day NAV"}, {"id": "c", "text": "Time when market closes"}, {"id": "d", "text": "Time when dividends are declared"}], "correct_answer": "b"},
@@ -162,7 +162,7 @@
   },
   "106": {
     "id": 106,
-    "title": "Final Mock Test (Mutual Funds)",
+    "title": "Final Mock Test",
     "test_type": "final",
     "duration": 1800,
     "questions": [
@@ -220,7 +220,7 @@
   },
    "201": {
       "id": 201,
-      "title": "Options Practice 1",
+      "title": "Practice Test 1",
       "test_type": "practice",
       "questions": [
          { "id": 20101, "question": "Right to buy?", "options": [ { "id": "a", "text": "Call Option" }, { "id": "b", "text": "Put Option" }, { "id": "c", "text": "Futures" }, { "id": "d", "text": "Forward" } ], "correct_answer": "a" },
@@ -252,7 +252,7 @@
    },
     "202": {
       "id": 202,
-      "title": "Futures Practice 1",
+      "title": "Practice Test 2",
       "test_type": "practice",
       "questions": [
           { "id": 20201, "question": "Futures contracts are primarily traded on?", "options": [ {"id": "a", "text": "Over-the-Counter (OTC)"}, {"id": "b", "text": "Organized Exchanges"}, {"id": "c", "text": "Directly between banks"}, {"id": "d", "text": "Mutual fund platforms"} ], "correct_answer": "b" },
@@ -284,7 +284,7 @@
   },
     "203": {
       "id": 203,
-      "title": "Options Practice 2",
+      "title": "Practice Test 3",
       "test_type": "practice",
       "questions": [
           { "id": 20301, "question": "The right, but not the obligation, to sell an asset is a?", "options": [ {"id": "a", "text": "Call Option"}, {"id": "b", "text": "Put Option"}, {"id": "c", "text": "Futures Contract"}, {"id": "d", "text": "Forward Contract"} ], "correct_answer": "b" },
@@ -316,7 +316,7 @@
   },
    "204": {
       "id": 204,
-      "title": "Futures Practice 2",
+      "title": "Practice Test 4",
       "test_type": "practice",
       "questions": [
           { "id": 20401, "question": "A primary function of futures markets is?", "options": [ {"id": "a", "text": "Dividend distribution"}, {"id": "b", "text": "Price discovery and risk management"}, {"id": "c", "text": "Issuing new stock"}, {"id": "d", "text": "Long-term investment"} ], "correct_answer": "b" },
@@ -348,7 +348,7 @@
   },
    "205": {
       "id": 205,
-      "title": "Derivatives Combo Practice",
+      "title": "Practice Test 5",
       "test_type": "practice",
       "questions": [
           { "id": 20501, "question": "Which gives the right, not obligation, to buy?", "options": [ {"id": "a", "text": "Long Futures"}, {"id": "b", "text": "Short Futures"}, {"id": "c", "text": "Long Call Option"}, {"id": "d", "text": "Long Put Option"} ], "correct_answer": "c" },
@@ -380,7 +380,7 @@
   },
    "206": {
       "id": 206,
-      "title": "Final Mock Derivatives",
+      "title": "Final Mock Test",
       "test_type": "final",
       "duration": 2400,
       "questions": [
@@ -438,7 +438,7 @@
    },
     "301": {
       "id": 301,
-      "title": "Market Concepts PT 1",
+      "title": "Practice Test 1",
       "test_type": "practice",
       "questions": [
          { "id": 30101, "question": "Primary market?", "options": [ { "id": "a", "text": "Trading existing securities" }, { "id": "b", "text": "Issuing new securities" }, { "id": "c", "text": "Trading derivatives" }, { "id": "d", "text": "Trading currencies" } ], "correct_answer": "b" },
@@ -470,7 +470,7 @@
    },
    "302": {
       "id": 302,
-      "title": "Trading Strategies PT 1",
+      "title": "Practice Test 2",
       "test_type": "practice",
       "questions": [
           { "id": 30201, "question": "Day Trading involves?", "options": [ {"id": "a", "text": "Holding stocks for years"}, {"id": "b", "text": "Buying and selling securities within the same trading day"}, {"id": "c", "text": "Investing based on dividends"}, {"id": "d", "text": "Trading only blue-chip stocks"} ], "correct_answer": "b" },
@@ -502,7 +502,7 @@
   },
     "303": {
       "id": 303,
-      "title": "Market Concepts PT 2",
+      "title": "Practice Test 3",
       "test_type": "practice",
       "questions": [
           { "id": 30301, "question": "Bonus Shares are?", "options": [ {"id": "a", "text": "Shares bought with bonus pay"}, {"id": "b", "text": "Additional free shares given to existing shareholders"}, {"id": "c", "text": "Shares with higher dividends"}, {"id": "d", "text": "Shares issued during an IPO"} ], "correct_answer": "b" },
@@ -534,7 +534,7 @@
   },
    "304": {
       "id": 304,
-      "title": "Trading Strategies PT 2",
+      "title": "Practice Test 4",
       "test_type": "practice",
       "questions": [
           { "id": 30401, "question": "Bollinger Bands consist of?", "options": [ {"id": "a", "text": "Two moving averages"}, {"id": "b", "text": "A simple moving average and two standard deviation bands above and below it"}, {"id": "c", "text": "RSI and MACD lines"}, {"id": "d", "text": "Support and Resistance levels"} ], "correct_answer": "b" },
@@ -566,7 +566,7 @@
   },
    "305": {
       "id": 305,
-      "title": "Equity Valuation Basics",
+      "title": "Practice Test 5",
       "test_type": "practice",
       "questions": [
           { "id": 30501, "question": "Equity Valuation aims to determine?", "options": [ {"id": "a", "text": "The past performance of a stock"}, {"id": "b", "text": "The theoretical or intrinsic value of a stock"}, {"id": "c", "text": "The daily trading volume"}, {"id": "d", "text": "The stock's beta"} ], "correct_answer": "b" },
@@ -598,7 +598,7 @@
   },
    "306": {
       "id": 306,
-      "title": "Final Mock Equity",
+      "title": "Final Mock Test",
       "test_type": "final",
       "duration": 1800,
       "questions": [
