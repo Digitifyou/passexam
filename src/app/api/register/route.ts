@@ -5,11 +5,20 @@ import bcrypt from 'bcrypt';
 import { sendEmail } from '@/lib/email'; // Import the new email function
 
 export async function POST(req: NextRequest) {
-  const { name, email, password } = await req.json();
+  // Add mobile to destructuring
+  const { name, email, password, mobile } = await req.json();
 
-  if (!name || !email || !password) {
-    return NextResponse.json({ message: 'Missing fields' }, { status: 400 });
+  // Add basic mobile validation
+  if (!name || !email || !password || !mobile) {
+    return NextResponse.json({ message: 'Missing fields (Name, Email, Password, Mobile required)' }, { status: 400 });
   }
+
+  // Optional: Add more specific mobile number validation if needed
+  // const mobileRegex = /^[0-9]{10}$/; // Example: Simple 10-digit check
+  // if (!mobileRegex.test(mobile)) {
+  //   return NextResponse.json({ message: 'Invalid mobile number format' }, { status: 400 });
+  // }
+
 
   const users = readUsers();
   const userExists = users.some(user => user.email === email);
@@ -24,6 +33,7 @@ export async function POST(req: NextRequest) {
     name,
     email,
     password: hashedPassword,
+    mobile, // Add mobile number here
   };
 
   users.push(newUser);

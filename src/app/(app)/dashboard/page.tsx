@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge"; // <-- Badge import removed/commented out
 import { CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import './dashboard.css';
@@ -23,7 +23,7 @@ interface Test {
 interface Section {
   id: number;
   title: string;
-  subtopics: string[];
+  subtopics: string[]; // Keep subtopics data if needed elsewhere, just don't display
   tests: Test[];
 }
 
@@ -60,7 +60,7 @@ export default function DashboardPage() {
   const completedTestIds = new Set(testResults.map(r => r.testId));
   const totalCompleted = completedTestIds.size;
   const activeTests = totalTests - totalCompleted;
-  
+
   const totalScore = testResults.reduce((acc, curr) => acc + curr.score, 0);
   const percentageRate = totalCompleted > 0 ? Math.round(totalScore / totalCompleted) : 0;
 
@@ -79,10 +79,7 @@ export default function DashboardPage() {
           <Card key={`skeleton-${index}`}>
             <CardHeader>
               <Skeleton className="h-6 w-3/4" />
-              <div className="flex flex-wrap gap-2 mt-2">
-                <Skeleton className="h-5 w-20" />
-                <Skeleton className="h-5 w-16" />
-              </div>
+              {/* Removed Skeleton for Badges */}
             </CardHeader>
             <CardContent className="space-y-3">
               {Array.from({ length: 4 }).map((_, testIndex) => (
@@ -129,7 +126,7 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
-          
+
           {error && (
             <Card className="bg-destructive/10 border-destructive mb-6">
               <CardHeader><CardTitle className="text-destructive">Error</CardTitle></CardHeader>
@@ -142,6 +139,7 @@ export default function DashboardPage() {
               <Card key={section.id} className="flex flex-col">
                 <CardHeader>
                   <CardTitle>{section.title}</CardTitle>
+                  {/* --- Removed Badge Display ---
                   {section.subtopics && (
                     <div className="flex flex-wrap gap-2 mt-2">
                       {section.subtopics.map((topic, index) => (
@@ -149,6 +147,7 @@ export default function DashboardPage() {
                       ))}
                     </div>
                   )}
+                  */}
                 </CardHeader>
                 <CardContent className="flex-grow space-y-3">
                   {section.tests.filter(t => t.test_type === 'practice').map((test) => {
@@ -156,16 +155,20 @@ export default function DashboardPage() {
                     return (
                       <Link href={`/quiz/${test.id}`} key={test.id} passHref legacyBehavior>
                         <Button
-                          asChild
+                          asChild // Use asChild to make the whole Button clickable link
                           variant="outline"
                           className={cn(
-                            "w-full justify-between group",
+                            "w-full justify-between group h-auto py-2", // Adjust height and padding
                             isCompleted ? "border-green-500 bg-green-50/50 hover:bg-green-100/60" : "border-primary hover:bg-primary/10"
                           )}
                         >
+                          {/* Wrap content in a div for layout control */}
                           <div className='flex items-center justify-between w-full'>
-                            <span className={cn(isCompleted ? "completed-test-text" : "text-primary-foreground not-completed-test-text")}>{test.title}</span>
-                            {isCompleted && <CheckCircle className="h-5 w-5 text-green-600" />}
+                            <span className={cn("text-left text-sm whitespace-normal", // Allow wrapping
+                                isCompleted ? "completed-test-text" : "text-primary-foreground not-completed-test-text")}>
+                                    {test.title}
+                            </span>
+                            {isCompleted && <CheckCircle className="h-4 w-4 text-green-600 shrink-0 ml-2" />}
                           </div>
                         </Button>
                       </Link>
@@ -178,16 +181,18 @@ export default function DashboardPage() {
                     return (
                       <Link href={`/quiz/${finalTest.id}`} key={finalTest.id} passHref legacyBehavior>
                         <Button
-                          asChild
+                          asChild // Use asChild here too
                           variant={isCompleted ? "outline" : "destructive"}
-                          className={cn(
-                            "w-full justify-center group",
+                           className={cn(
+                            "w-full justify-center group h-auto py-2", // Adjust height and padding
                             isCompleted ? "border-green-500 bg-green-50/50 hover:bg-green-100/60" : "bg-destructive/80 hover:bg-destructive text-destructive-foreground"
                           )}
                         >
                           <div className='flex items-center justify-center gap-2'>
-                            <span className={cn(isCompleted ? "completed-test-text" : "")}>Final Test</span>
-                            {isCompleted && <CheckCircle className="h-5 w-5 text-green-600" />}
+                            <span className={cn("text-sm whitespace-normal", isCompleted ? "completed-test-text" : "")}>
+                                {finalTest.title} {/* Display the actual final test title */}
+                            </span>
+                             {isCompleted && <CheckCircle className="h-4 w-4 text-green-600 shrink-0 ml-2" />}
                           </div>
                         </Button>
                       </Link>

@@ -21,10 +21,10 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold">Platform</h4>
+            <h4 className="font-semibold">Platform Features</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary">Practice Tests</Link></li>
-              <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary">Mock Exams</Link></li>
+              <li><Link href="/#" className="text-muted-foreground hover:text-primary">Practice Tests</Link></li>
+              <li><Link href="/#" className="text-muted-foreground hover:text-primary">Mock Exams</Link></li>
             </ul>
           </div>
           <div>

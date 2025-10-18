@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   password?: string; // Make password optional as we don't want to send it to the client
+  mobile?: string; // <-- Add optional mobile field
 }
 
 export interface UserTestResult {

@@ -16,6 +16,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [mobile, setMobile] = useState(""); // <-- Add state for mobile
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
@@ -44,13 +45,23 @@ export default function RegisterPage() {
       });
       return;
     }
+    // Add basic mobile validation check on client-side too
+    if (!mobile || !/^[0-9]{10}$/.test(mobile)) { // Example: 10 digits
+        toast({
+            variant: "destructive",
+            title: "Registration Failed",
+            description: "Please enter a valid 10-digit mobile number.",
+        });
+        return;
+    }
+
     setIsLoading(true);
 
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, email, password, mobile }), // <-- Include mobile
       });
 
       if (response.ok) {
@@ -100,6 +111,7 @@ export default function RegisterPage() {
               onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
               disabled={isLoading}
             >
+              {/* SVG Icon */}
               <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 381.5 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 177.2 56.8L357 134.7C333.5 112.5 295.1 98.4 248 98.4c-87.5 0-157.9 70.3-157.9 157.6s70.4 157.6 157.9 157.6c93.1 0 134.3-64.8 138.6-99.1H248v-72.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
               Sign up with Google
             </Button>
@@ -138,6 +150,21 @@ export default function RegisterPage() {
                     disabled={isLoading}
                   />
                 </div>
+                 {/* --- Add Mobile Input --- */}
+                 <div className="grid gap-2">
+                  <Input
+                    id="mobile"
+                    type="tel" // Use type="tel" for mobile numbers
+                    placeholder="Mobile Number (10 digits)"
+                    required
+                    value={mobile}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setMobile(e.target.value)}
+                    disabled={isLoading}
+                    maxLength={10} // Optional: Limit input length
+                    pattern="[0-9]{10}" // Optional: Basic pattern validation
+                  />
+                </div>
+                {/* --- End Mobile Input --- */}
                 <div className="grid gap-2">
                   <Input
                     id="password"

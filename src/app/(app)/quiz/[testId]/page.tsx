@@ -8,10 +8,10 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"; // Import AlertDialogCancel & AlertDialogTrigger
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
-import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
+import { TimerIcon, ChevronLeft, ChevronRight, AlertCircle, LogOut } from 'lucide-react'; // Import LogOut icon
 import { cn } from "@/lib/utils";
 
 // Types
@@ -65,6 +65,7 @@ export default function QuizPage() {
   const [error, setError] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+  const [showExitConfirm, setShowExitConfirm] = useState(false); // State for exit confirmation
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]);
   const [isClient, setIsClient] = useState(false);
@@ -85,12 +86,21 @@ export default function QuizPage() {
           throw new Error('Failed to fetch test details');
         }
         const fetchedTest: TestDetails = await response.json();
-        
+
         let selectedQuestions: Question[] = [];
         if (fetchedTest.questions && fetchedTest.questions.length > 0) {
           const shuffledAll = shuffleArray([...fetchedTest.questions]);
+          // Adjust count based on test type - standard practice now
           const targetQuestionCount = fetchedTest.test_type === 'final' ? 50 : 25;
-          selectedQuestions = shuffledAll.slice(0, targetQuestionCount);
+          // Ensure we don't try to slice more than available questions
+          selectedQuestions = shuffledAll.slice(0, Math.min(targetQuestionCount, shuffledAll.length));
+
+          if (selectedQuestions.length < targetQuestionCount && fetchedTest.questions.length < targetQuestionCount) {
+             console.warn(`Warning: Test ID ${testId} has only ${fetchedTest.questions.length} questions, less than the target ${targetQuestionCount}. Using all available.`);
+          } else if (selectedQuestions.length === 0) {
+             throw new Error(`No questions available or selected for test ID ${testId}.`);
+          }
+
         } else {
             setError(`Test data for ID ${testId} is missing questions.`);
             setIsLoading(false);
@@ -98,7 +108,7 @@ export default function QuizPage() {
         }
 
         setTestDetails(fetchedTest);
-        setShuffledQuestions(selectedQuestions);
+        setShuffledQuestions(selectedQuestions); // Set the potentially smaller subset
 
         const initialAnswers: Record<number, Answer> = {};
         selectedQuestions.forEach(q => {
@@ -142,6 +152,7 @@ export default function QuizPage() {
     return () => clearInterval(timer);
   }, [testDetails, timeLeft, isLoading, isSubmitting, isClient]);
 
+
   const handleTimeUp = () => {
     if (isSubmitting) return;
     toast({
@@ -178,11 +189,21 @@ export default function QuizPage() {
     }
   };
 
+  const handleExit = () => {
+    setShowExitConfirm(false); // Close the dialog
+    router.push('/dashboard'); // Navigate back
+  };
+
   const handleSubmit = useCallback(async () => {
     if (isSubmitting || !testDetails || !shuffledQuestions || shuffledQuestions.length === 0) return;
 
     setIsSubmitting(true);
     setShowSubmitConfirm(false);
+
+    // Make sure 'answers' only includes answers for the questions actually presented
+    const relevantAnswers = Object.values(answers).filter(ans =>
+        shuffledQuestions.some(q => q.id === ans.questionId)
+    );
 
     try {
       const response = await fetch('/api/quiz/submit', {
@@ -190,11 +211,13 @@ export default function QuizPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ testId, answers, shuffledQuestions }),
+        // Send only relevant answers and the exact questions presented
+        body: JSON.stringify({ testId, answers: relevantAnswers, shuffledQuestions }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit the quiz');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to submit the quiz');
       }
 
       const result = await response.json();
@@ -204,17 +227,21 @@ export default function QuizPage() {
         description: `Your score: ${result.score}%`,
       });
 
-      router.push(`/review/${testId}?score=${result.score}&correct=${result.correctAnswers}&incorrect=${result.incorrectAnswers}&total=${result.totalQuestions}`);
+        // Pass the actual number of questions SUBMITTED to the review page
+        // which is shuffledQuestions.length in this context
+      router.push(`/review/${testId}?score=${result.score}&correct=${result.correctAnswers}&incorrect=${result.incorrectAnswers}&total=${shuffledQuestions.length}`);
     } catch (err) {
       console.error("Failed to submit answers:", err);
       toast({
         variant: "destructive",
         title: "Submission Failed",
-        description: "Could not submit your answers. Please try again.",
+        description: err instanceof Error ? err.message : "Could not submit your answers. Please try again.",
       });
-      setIsSubmitting(false);
+      setIsSubmitting(false); // Allow retry on failure
     }
+   // Removed setIsSubmitting(false) from finally block as navigation handles it
   }, [answers, isSubmitting, router, testId, testDetails, shuffledQuestions, toast]);
+
 
   const formatTime = (seconds: number | null): string => {
     if (seconds === null) return '--:--';
@@ -270,20 +297,23 @@ export default function QuizPage() {
 
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
   if (!currentQuestion || currentQuestion.id === undefined || currentQuestion.id === null) {
-    setError("Error displaying current question due to invalid data.");
-    return (
-      <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
-        <Alert variant="destructive" className="max-w-lg">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Quiz Error</AlertTitle>
-          <AlertDescription>
-            {error}
-            <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
-          </AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
+      // More specific error or handling if a question is invalid
+      console.error("Invalid current question data:", currentQuestion, "at index", currentQuestionIndex);
+      setError("Error displaying the current question due to invalid data.");
+       // Render error state again
+       return (
+        <div className="container py-8 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+          <Alert variant="destructive" className="max-w-lg">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Quiz Error</AlertTitle>
+            <AlertDescription>
+              {error}
+              <Button variant="link" className="p-0 h-auto mt-2 text-destructive dark:text-destructive" onClick={() => router.push('/dashboard')}>Go back to Dashboard</Button>
+            </AlertDescription>
+          </Alert>
+        </div>
+      );
+    }
 
   const currentAnswer = answers[currentQuestion.id];
   const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
@@ -292,42 +322,58 @@ export default function QuizPage() {
 
   return (
     <div className="container py-8">
+      {/* Header and Timer */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{testDetails.title}</h1>
         {isFinal && timeLeft !== null && (
-          <div className={`flex items-center space-x-2 p-2 rounded-md font-mono text-lg tabular-nums ${timeLeft <= 60 && timeLeft > 0 ? 'text-destructive font-semibold animate-pulse' : timeLeft === 0 ? 'text-destructive font-semibold' : 'text-muted-foreground'}`}>
+           <div className={`flex items-center space-x-2 p-2 rounded-md font-mono text-lg tabular-nums ${timeLeft <= 60 && timeLeft > 0 ? 'text-destructive font-semibold animate-pulse' : timeLeft === 0 ? 'text-destructive font-semibold' : 'text-muted-foreground'}`}>
             <TimerIcon className="h-5 w-5" />
             <span>{formatTime(timeLeft)}</span>
           </div>
         )}
       </div>
       <Progress value={progress} className="mb-6 h-2" />
+
+       {/* Main Grid: Question Navigator + Question Card */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+         {/* --- Question Navigator (Side Panel) --- */}
         <Card className="md:col-span-1 h-fit sticky top-20 hidden md:block">
           <CardHeader>
             <CardTitle>Questions</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-5 gap-2 max-h-[60vh] overflow-y-auto pr-2">
             {shuffledQuestions.map((q, index) => {
+              // Ensure q and q.id are valid before proceeding
               const questionIdValid = q && q.id !== undefined && q.id !== null;
+              // Check if the valid question has been answered
               const answered = questionIdValid && answers[q.id]?.selectedOption !== null && answers[q.id]?.selectedOption !== undefined;
               const isCurrent = index === currentQuestionIndex;
+
+              // Determine button variant based on state
               let variant: "default" | "secondary" | "outline" | "accent" | "ghost" | "link" | null | undefined = "outline";
               if (isCurrent) {
-                variant = "default";
+                variant = "default"; // Highlight current question strongly
               } else if (answered) {
-                variant = "accent";
+                 // Use a distinct style for answered questions, e.g., 'secondary' or a custom style via `cn`
+                 variant = "secondary"; // Or use 'accent' if you prefer that color
               }
-              const additionalClasses = isCurrent ? "ring-2 ring-ring ring-offset-2" : answered ? "border-accent-foreground/50" : "";
+
+              // Additional classes for visual cues
+              const additionalClasses = isCurrent
+                ? "ring-2 ring-ring ring-offset-2" // Ring for current
+                : answered
+                ? "border-primary/50" // Subtle border for answered
+                : "";
+
               return (
                 <Button
-                  key={questionIdValid ? q.id : `invalid-q-${index}`}
+                  key={questionIdValid ? q.id : `invalid-q-${index}`} // Use index as fallback key
                   variant={variant}
                   size="icon"
                   className={`h-9 w-9 rounded-full transition-all duration-150 ${additionalClasses} ${!questionIdValid ? 'opacity-50 cursor-not-allowed' : ''}`}
                   onClick={() => questionIdValid && goToQuestion(index)}
                   aria-label={`Go to question ${index + 1}`}
-                  disabled={isSubmitting || !questionIdValid}
+                  disabled={isSubmitting || !questionIdValid} // Disable if submitting or question data invalid
                 >
                   {index + 1}
                 </Button>
@@ -335,82 +381,127 @@ export default function QuizPage() {
             })}
           </CardContent>
         </Card>
+
+        {/* --- Question Display Card --- */}
         <div className="md:col-span-3">
           <Card>
             <CardHeader>
-              <CardTitle>Question {currentQuestionIndex + 1} of {shuffledQuestions.length}</CardTitle>
+               <CardTitle>Question {currentQuestionIndex + 1} of {shuffledQuestions.length}</CardTitle>
               <CardDescription className="pt-4 text-lg text-foreground">
                 {currentQuestion.question}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <RadioGroup
+                 // Use currentQuestion.id safely now after validation
                 value={currentAnswer?.selectedOption?.toString() ?? ""}
                 onValueChange={(value) => handleAnswerSelect(currentQuestion.id, value)}
                 className="space-y-3"
+                disabled={isSubmitting || timeLeft === 0} // Disable group if submitting or time up
               >
-                {currentQuestion.options.map((option) => (
+                {/* Ensure options exist and map */}
+                {Array.isArray(currentQuestion.options) && currentQuestion.options.map((option) => (
                   <Label
                     key={option.id}
                     htmlFor={`option-${option.id}`}
                     className={cn(
                       "flex items-center space-x-3 p-4 border rounded-md transition-colors duration-150",
                       "hover:bg-accent/50 dark:hover:bg-accent/30",
+                      // Highlight checked state more clearly
                       "has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:dark:bg-primary/20",
-                      (isSubmitting || timeLeft === 0) ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
+                       // Apply disabled styles based on state
+                       (isSubmitting || timeLeft === 0) ? "cursor-not-allowed opacity-60 bg-muted/50" : "cursor-pointer"
                     )}
                   >
-                    <RadioGroupItem value={option.id.toString()} id={`option-${option.id}`} disabled={isSubmitting || timeLeft === 0} />
+                    <RadioGroupItem
+                      value={option.id.toString()}
+                      id={`option-${option.id}`}
+                       // Disable individual items too
+                       disabled={isSubmitting || timeLeft === 0}
+                    />
                     <span>{option.text}</span>
                   </Label>
                 ))}
               </RadioGroup>
             </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button
-                variant="outline"
-                onClick={goToPreviousQuestion}
-                disabled={currentQuestionIndex === 0 || isSubmitting}
-              >
-                <ChevronLeft className="mr-2 h-4 w-4" /> Previous
-              </Button>
-              {isLastQuestion ? (
-                <Button
-                  onClick={() => setShowSubmitConfirm(true)}
-                  className="bg-primary hover:bg-primary/90"
-                  disabled={isSubmitting || timeLeft === 0}
-                >
-                  {isSubmitting ? "Submitting..." : "Submit Test"}
-                </Button>
-              ) : (
-                <Button onClick={goToNextQuestion} disabled={isSubmitting}>
-                  Next <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-              )}
+             <CardFooter className="flex justify-between items-center flex-wrap gap-2"> {/* Added flex-wrap and gap */}
+                {/* Exit Quiz Button and Dialog */}
+                 <AlertDialog open={showExitConfirm} onOpenChange={setShowExitConfirm}>
+                    <AlertDialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          disabled={isSubmitting} // Disable if submitting
+                         >
+                          <LogOut className="mr-2 h-4 w-4" /> Exit Quiz
+                        </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Exit Quiz?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                           Are you sure you want to exit? Your progress will not be saved.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleExit} className="bg-destructive hover:bg-destructive/90">
+                            Confirm Exit
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+
+                {/* Navigation Buttons */}
+                <div className="flex gap-2"> {/* Group navigation buttons */}
+                    <Button
+                    variant="outline"
+                    onClick={goToPreviousQuestion}
+                    disabled={currentQuestionIndex === 0 || isSubmitting}
+                    >
+                    <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+                    </Button>
+                    {isLastQuestion ? (
+                    <Button
+                        onClick={() => setShowSubmitConfirm(true)}
+                        className="bg-primary hover:bg-primary/90"
+                        disabled={isSubmitting || timeLeft === 0} // Disable if submitting or time is up
+                    >
+                        {isSubmitting ? "Submitting..." : "Submit Test"}
+                    </Button>
+                    ) : (
+                    <Button onClick={goToNextQuestion} disabled={isSubmitting}>
+                        Next <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                    )}
+                </div>
             </CardFooter>
           </Card>
         </div>
       </div>
-      <AlertDialog open={showSubmitConfirm} onOpenChange={setShowSubmitConfirm}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Submit your test?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to submit your answers? You won't be able to change them after submission.
-              {isFinal && timeLeft !== null && timeLeft > 0 && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
-              {isFinal && timeLeft !== null && timeLeft <= 0 && <span className="block mt-2 font-semibold text-destructive">Time is up! Your answers will be submitted.</span>}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <Button variant="outline" onClick={() => setShowSubmitConfirm(false)} disabled={isSubmitting}>
-              Cancel
-            </Button>
-            <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
-              {isSubmitting ? "Submitting..." : "Confirm Submit"}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+
+       {/* Submit Confirmation Dialog */}
+       <AlertDialog open={showSubmitConfirm} onOpenChange={setShowSubmitConfirm}>
+            {/* Removed Trigger as it's manually controlled by state */}
+            <AlertDialogContent>
+            <AlertDialogHeader>
+                <AlertDialogTitle>Submit your test?</AlertDialogTitle>
+                <AlertDialogDescription>
+                Are you sure you want to submit your answers? You won't be able to change them after submission.
+                {isFinal && timeLeft !== null && timeLeft > 0 && <span className="block mt-2">Time remaining: {formatTime(timeLeft)}</span>}
+                {isFinal && timeLeft !== null && timeLeft <= 0 && <span className="block mt-2 font-semibold text-destructive">Time is up! Your answers will be submitted.</span>}
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setShowSubmitConfirm(false)} disabled={isSubmitting}>
+                    Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction onClick={handleSubmit} disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
+                 {isSubmitting ? "Submitting..." : "Confirm Submit"}
+                </AlertDialogAction>
+            </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
     </div>
   );
 }

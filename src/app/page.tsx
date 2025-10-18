@@ -134,13 +134,13 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/register">
+              <Link href="/login">
                 <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
                   Start Your Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-3 border-primary-foreground/20 bg-yellow-300">
+              <Button size="lg" variant="outline" className="hidden text-lg px-8 py-3 border-primary-foreground/20 bg-yellow-300">
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
               </Button>
