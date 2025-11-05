@@ -1,0 +1,1409 @@
+[{
+        "id": 10001,
+        "question": "What system was replaced by the introduction of money in the evolution of currency markets?",
+        "options": [
+            { "id": "a", "text": "Barter System" },
+            { "id": "b", "text": "Gold Standard" },
+            { "id": "c", "text": "Fiat Money" },
+            { "id": "d", "text": "Bretton Woods System" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10002,
+        "question": "Which factor contributed to the shift from the barter system to a medium of exchange?",
+        "options": [
+            { "id": "a", "text": "Ease of Transportation" },
+            { "id": "b", "text": "Divisibility of Goods" },
+            { "id": "c", "text": "Universal Acceptance" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10003,
+        "question": "What was the primary reason for the introduction of paper currency?",
+        "options": [
+            { "id": "a", "text": "Replace Metal Coins" },
+            { "id": "b", "text": "Facilitate International Trade" },
+            { "id": "c", "text": "Standardize Exchange" },
+            { "id": "d", "text": "Deposit of Gold/Silver" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10004,
+        "question": "Which system pegged currencies to the US Dollar, which was then tied to gold?",
+        "options": [
+            { "id": "a", "text": "Gold Standard" },
+            { "id": "b", "text": "Bretton Woods System" },
+            { "id": "c", "text": "Floating Exchange Rate" },
+            { "id": "d", "text": "Fiat Money" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10005,
+        "question": "What is the term for currency not backed by a physical commodity but by government decree?",
+        "options": [
+            { "id": "a", "text": "Fiat Money" },
+            { "id": "b", "text": "Gold Standard" },
+            { "id": "c", "text": "Paper Currency" },
+            { "id": "d", "text": "Barter System" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10006,
+        "question": "Which event led to the collapse of the Bretton Woods System?",
+        "options": [
+            { "id": "a", "text": "World War II" },
+            { "id": "b", "text": "Abandonment of Gold Standard" },
+            { "id": "c", "text": "1973 Oil Crisis" },
+            { "id": "d", "text": "End of World War I" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10007,
+        "question": "What is the term for determining exchange rates based on supply and demand?",
+        "options": [
+            { "id": "a", "text": "Floating Exchange Rate" },
+            { "id": "b", "text": "Fixed Exchange Rate" },
+            { "id": "c", "text": "Pegged Exchange Rate" },
+            { "id": "d", "text": "Managed Float" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10008,
+        "question": "Which currency pairs are considered the most traded in the forex market?",
+        "options": [
+            { "id": "a", "text": "Exotic Pairs" },
+            { "id": "b", "text": "Minor Currencies" },
+            { "id": "c", "text": "Major Currencies" },
+            { "id": "d", "text": "Cross Pairs" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10009,
+        "question": "What is the purpose of central bank intervention in a managed float system?",
+        "options": [
+            { "id": "a", "text": "Stabilize Exchange Rates" },
+            { "id": "b", "text": "Increase Trade Deficits" },
+            { "id": "c", "text": "Reduce Interest Rates" },
+            { "id": "d", "text": "Promote Inflation" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10010,
+        "question": "Which factor determines the value of fiat money?",
+        "options": [
+            { "id": "a", "text": "Government Stability" },
+            { "id": "b", "text": "Supply and Demand" },
+            { "id": "c", "text": "Commodity Backing" },
+            { "id": "d", "text": "Both A and B" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10011,
+        "question": "What is the term for a currency pegged to another currency or basket of currencies?",
+        "options": [
+            { "id": "a", "text": "Fixed Exchange Rate" },
+            { "id": "b", "text": "Pegged Exchange Rate" },
+            { "id": "c", "text": "Floating Exchange Rate" },
+            { "id": "d", "text": "Managed Float" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10012,
+        "question": "Which currency pair is an example of an exotic pair?",
+        "options": [
+            { "id": "a", "text": "EUR/USD" },
+            { "id": "b", "text": "USD/JPY" },
+            { "id": "c", "text": "USD/TRY" },
+            { "id": "d", "text": "GBP/USD" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10013,
+        "question": "What is the name of the system where exchange rates are determined by market forces?",
+        "options": [
+            { "id": "a", "text": "Clean Float" },
+            { "id": "b", "text": "Dirty Float" },
+            { "id": "c", "text": "Fixed Exchange Rate" },
+            { "id": "d", "text": "Pegged Exchange Rate" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10014,
+        "question": "Which institution was created by the Bretton Woods Agreement?",
+        "options": [
+            { "id": "a", "text": "IMF and World Bank" },
+            { "id": "b", "text": "Federal Reserve" },
+            { "id": "c", "text": "European Central Bank" },
+            { "id": "d", "text": "World Trade Organization" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10015,
+        "question": "What is the term for a currency pair not involving the US Dollar?",
+        "options": [
+            { "id": "a", "text": "Minor Currency Pair" },
+            { "id": "b", "text": "Exotic Pair" },
+            { "id": "c", "text": "Cross Pair" },
+            { "id": "d", "text": "Major Currency Pair" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10016,
+        "question": "Which factor contributed to the shift from the gold standard to fiat money?",
+        "options": [
+            { "id": "a", "text": "World Wars" },
+            { "id": "b", "text": "Economic Indicators" },
+            { "id": "c", "text": "Political Instability" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10017,
+        "question": "What is the primary purpose of identifying a base currency and a quotation currency in a currency pair?",
+        "options": [
+            { "id": "a", "text": "To determine the exchange rate between two currencies" },
+            { "id": "b", "text": "To identify the domestic and foreign currencies in a transaction" },
+            { "id": "c", "text": "To differentiate between buying and selling prices" },
+            { "id": "d", "text": "To standardize the way currency pairs are quoted globally" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10018,
+        "question": "In a currency pair, which currency is priced and its amount is generally fixed at one unit?",
+        "options": [
+            { "id": "a", "text": "Base currency" },
+            { "id": "b", "text": "Quotation currency" },
+            { "id": "c", "text": "Domestic currency" },
+            { "id": "d", "text": "Foreign currency" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10019,
+        "question": "What does the bid price represent in a two-way quote?",
+        "options": [
+            { "id": "a", "text": "The price at which the market maker will sell the base currency" },
+            { "id": "b", "text": "The price at which the market maker will buy the base currency" },
+            { "id": "c", "text": "The price at which the market maker will sell the quotation currency" },
+            { "id": "d", "text": "The price at which the market maker will buy the quotation currency" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10020,
+        "question": "Which of the following is NOT a type of currency pair quote?",
+        "options": [
+            { "id": "a", "text": "Direct quote" },
+            { "id": "b", "text": "Indirect quote" },
+            { "id": "c", "text": "Spot quote" },
+            { "id": "d", "text": "Forward quote" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10021,
+        "question": "In the interbank market, what is the primary mechanism for buying and selling currencies?",
+        "options": [
+            { "id": "a", "text": "Market making" },
+            { "id": "b", "text": "Arbitrage" },
+            { "id": "c", "text": "Hedging" },
+            { "id": "d", "text": "Speculation" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10022,
+        "question": "What is the term for the difference between the bid and ask prices in a two-way quote?",
+        "options": [
+            { "id": "a", "text": "Spread" },
+            { "id": "b", "text": "Liquidity" },
+            { "id": "c", "text": "Volatility" },
+            { "id": "d", "text": "Efficiency" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10023,
+        "question": "Which of the following is a characteristic of a direct quote?",
+        "options": [
+            { "id": "a", "text": "The domestic currency is the base currency" },
+            { "id": "b", "text": "The foreign currency is the base currency" },
+            { "id": "c", "text": "The domestic currency is the quotation currency" },
+            { "id": "d", "text": "The foreign currency is the quotation currency" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10024,
+        "question": "What does it mean when the base currency appreciates?",
+        "options": [
+            { "id": "a", "text": "The base currency can buy more units of the quotation currency" },
+            { "id": "b", "text": "The base currency can buy fewer units of the quotation currency" },
+            { "id": "c", "text": "The quotation currency can buy more units of the base currency" },
+            { "id": "d", "text": "The quotation currency can buy fewer units of the base currency" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10025,
+        "question": "In the USDINR currency pair, which currency is the base currency?",
+        "options": [
+            { "id": "a", "text": "INR" },
+            { "id": "b", "text": "USD" },
+            { "id": "c", "text": "EUR" },
+            { "id": "d", "text": "GBP" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10026,
+        "question": "What is the term for the process of quoting both buy and sell prices for currencies?",
+        "options": [
+            { "id": "a", "text": "Market making" },
+            { "id": "b", "text": "Price discovery" },
+            { "id": "c", "text": "Liquidity provision" },
+            { "id": "d", "text": "Arbitrage" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10027,
+        "question": "Which of the following is a type of market participant in the interbank segment of the foreign exchange market?",
+        "options": [
+            { "id": "a", "text": "Retail customers" },
+            { "id": "b", "text": "Authorized Dealer banks" },
+            { "id": "c", "text": "Merchant traders" },
+            { "id": "d", "text": "Individual investors" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10028,
+        "question": "What is the term for the electronic trading platform introduced by the RBI for retail forex customers?",
+        "options": [
+            { "id": "a", "text": "FX-Retail" },
+            { "id": "b", "text": "FX-Interbank" },
+            { "id": "c", "text": "FX-Market" },
+            { "id": "d", "text": "FX-Trade" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10029,
+        "question": "In a two-way quote, which price is quoted first?",
+        "options": [
+            { "id": "a", "text": "Ask price" },
+            { "id": "b", "text": "Bid price" },
+            { "id": "c", "text": "Offer price" },
+            { "id": "d", "text": "Market price" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10030,
+        "question": "What is the term for the strengthening of the base currency in terms of the quotation currency?",
+        "options": [
+            { "id": "a", "text": "Appreciation" },
+            { "id": "b", "text": "Depreciation" },
+            { "id": "c", "text": "Strengthening" },
+            { "id": "d", "text": "Weakening" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10031,
+        "question": "Which of the following is a characteristic of the interbank market?",
+        "options": [
+            { "id": "a", "text": "It is the largest segment of the forex market" },
+            { "id": "b", "text": "It is the smallest segment of the forex market" },
+            { "id": "c", "text": "It is primarily used by retail customers" },
+            { "id": "d", "text": "It is primarily used by individual investors" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10032,
+        "question": "What is the term for the process by which the RBI ensures transparent and fair pricing in the retail forex market?",
+        "options": [
+            { "id": "a", "text": "Market making" },
+            { "id": "b", "text": "Price fixing" },
+            { "id": "c", "text": "Electronic trading" },
+            { "id": "d", "text": "Arbitrage" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10033,
+        "question": "What are the normal market hours for FCY/INR transactions in India?",
+        "options": [
+            { "id": "a", "text": "9:00 a.m. to 5:00 p.m. IST" },
+            { "id": "b", "text": "8:00 a.m. to 6:00 p.m. IST" },
+            { "id": "c", "text": "10:00 a.m. to 7:00 p.m. IST" },
+            { "id": "d", "text": "7:00 a.m. to 8:00 p.m. IST" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10034,
+        "question": "What is the maximum percentage of the total capital that NOOP limits must not exceed?",
+        "options": [
+            { "id": "a", "text": "25%" },
+            { "id": "b", "text": "30%" },
+            { "id": "c", "text": "20%" },
+            { "id": "d", "text": "35%" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10035,
+        "question": "Which platform was introduced by CCIL for retail customers?",
+        "options": [
+            { "id": "a", "text": "FX-Retail" },
+            { "id": "b", "text": "Refinitiv D2" },
+            { "id": "c", "text": "FX Clear" },
+            { "id": "d", "text": "CCIL Direct" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10036,
+        "question": "What is the primary source for computing the USD/INR reference rate?",
+        "options": [
+            { "id": "a", "text": "Refinitiv and CCIL" },
+            { "id": "b", "text": "Bloomberg and Reuters" },
+            { "id": "c", "text": "FX Clear and D2" },
+            { "id": "d", "text": "Bank submissions" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10037,
+        "question": "What is the definition of the spot value date?",
+        "options": [
+            { "id": "a", "text": "Settlement on the same day" },
+            { "id": "b", "text": "Settlement on the next business day" },
+            { "id": "c", "text": "Settlement on the second business day" },
+            { "id": "d", "text": "Settlement on the third business day" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10038,
+        "question": "What is the time window for collecting quotes for FBIL reference rates?",
+        "options": [
+            { "id": "a", "text": "11:30 a.m. to 12:30 p.m." },
+            { "id": "b", "text": "9:00 a.m. to 5:00 p.m." },
+            { "id": "c", "text": "8:00 a.m. to 12:00 p.m." },
+            { "id": "d", "text": "1:00 p.m. to 5:00 p.m." }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10039,
+        "question": "What is the purpose of the +/-3 SD rule in FBIL reference rates?",
+        "options": [
+            { "id": "a", "text": "To include outliers" },
+            { "id": "b", "text": "To remove outliers" },
+            { "id": "c", "text": "To average prices" },
+            { "id": "d", "text": "To weight volumes" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10040,
+        "question": "What is the threshold for transactions to calculate the USD/INR reference rate?",
+        "options": [
+            { "id": "a", "text": "10 transactions with $25 million" },
+            { "id": "b", "text": "5 transactions with $10 million" },
+            { "id": "c", "text": "15 transactions with $15 million" },
+            { "id": "d", "text": "20 transactions with $20 million" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10041,
+        "question": "What is the name of the electronic trading platform for retail customers?",
+        "options": [
+            { "id": "a", "text": "FX-Retail" },
+            { "id": "b", "text": "CCIL Platform" },
+            { "id": "c", "text": "Refinitiv D2" },
+            { "id": "d", "text": "FX Clear" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10042,
+        "question": "What is the time by which FBIL reference rates are published?",
+        "options": [
+            { "id": "a", "text": "1:30 p.m." },
+            { "id": "b", "text": "12:00 p.m." },
+            { "id": "c", "text": "3:00 p.m." },
+            { "id": "d", "text": "5:00 p.m." }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10043,
+        "question": "What is the definition of the 'tom' rate?",
+        "options": [
+            { "id": "a", "text": "Settlement on the same day" },
+            { "id": "b", "text": "Settlement on the next business day" },
+            { "id": "c", "text": "Settlement on the second business day" },
+            { "id": "d", "text": "Settlement on the third business day" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10044,
+        "question": "What is the name of the organisation responsible for computing USD/INR reference rates?",
+        "options": [
+            { "id": "a", "text": "FBIL" },
+            { "id": "b", "text": "RBI" },
+            { "id": "c", "text": "FEDAI" },
+            { "id": "d", "text": "CCIL" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10045,
+        "question": "What is the purpose of the card rate in forex transactions?",
+        "options": [
+            { "id": "a", "text": "To provide intraday movement coverage" },
+            { "id": "b", "text": "To offer fixed rates regardless of volatility" },
+            { "id": "c", "text": "To penalize low-volume customers" },
+            { "id": "d", "text": "To reduce operational costs" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10046,
+        "question": "What is the term for the difference between IBR and card rate?",
+        "options": [
+            { "id": "a", "text": "Price fluctuation risk" },
+            { "id": "b", "text": "Operational cost" },
+            { "id": "c", "text": "Market spread" },
+            { "id": "d", "text": "Customer margin" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10047,
+        "question": "What is the name of the forward premia benchmark rates announced by FBIL?",
+        "options": [
+            { "id": "a", "text": "Forward Premia Curve" },
+            { "id": "b", "text": "Spot Premia Curve" },
+            { "id": "c", "text": "Overnight Premia Curve" },
+            { "id": "d", "text": "Monthly Premia Curve" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10048,
+        "question": "What is the cutoff time for USD/INR transactions data for forward premia calculation?",
+        "options": [
+            { "id": "a", "text": "3:00 p.m." },
+            { "id": "b", "text": "12:00 p.m." },
+            { "id": "c", "text": "5:00 p.m." },
+            { "id": "d", "text": "9:00 a.m." }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10049,
+        "question": "What is the primary purpose of an outright forward contract?",
+        "options": [
+            { "id": "a", "text": "To speculate on future currency movements" },
+            { "id": "b", "text": "To hedge against exchange rate risk" },
+            { "id": "c", "text": "To invest in foreign currencies" },
+            { "id": "d", "text": "To borrow funds in a foreign currency" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10050,
+        "question": "How does the settlement of forward contracts differ from currency futures?",
+        "options": [
+            { "id": "a", "text": "Forward contracts are physically settled, while futures are net settled" },
+            { "id": "b", "text": "Forward contracts are net settled, while futures are physically settled" },
+            { "id": "c", "text": "Both are physically settled" },
+            { "id": "d", "text": "Both are net settled" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10051,
+        "question": "Which currency pair is used as an example to explain cross rates?",
+        "options": [
+            { "id": "a", "text": "EURINR" },
+            { "id": "b", "text": "USDINR" },
+            { "id": "c", "text": "GBPUSD" },
+            { "id": "d", "text": "JPYINR" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10052,
+        "question": "What is the formula to calculate the cross rate for EURINR using EURUSD and USDINR?",
+        "options": [
+            { "id": "a", "text": "EURINR = EURUSD * USDINR" },
+            { "id": "b", "text": "EURINR = EURUSD / USDINR" },
+            { "id": "c", "text": "EURINR = USDINR / EURUSD" },
+            { "id": "d", "text": "EURINR = EURUSD + USDINR" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10053,
+        "question": "Which economic indicator is considered a key factor in determining currency strength?",
+        "options": [
+            { "id": "a", "text": "GDP growth rate" },
+            { "id": "b", "text": "Inflation rate" },
+            { "id": "c", "text": "Unemployment rate" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10054,
+        "question": "What does a higher GDP growth rate indicate for a country's currency?",
+        "options": [
+            { "id": "a", "text": "Weakening of the currency" },
+            { "id": "b", "text": "Strengthening of the currency" },
+            { "id": "c", "text": "No impact on the currency" },
+            { "id": "d", "text": "Depreciation of the currency" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10055,
+        "question": "Which of the following is NOT a type of derivative product?",
+        "options": [
+            { "id": "a", "text": "Forward" },
+            { "id": "b", "text": "Future" },
+            { "id": "c", "text": "Option" },
+            { "id": "d", "text": "Insurance" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10056,
+        "question": "What is the main purpose of hedging in derivatives?",
+        "options": [
+            { "id": "a", "text": "To speculate on price movements" },
+            { "id": "b", "text": "To reduce risk exposure" },
+            { "id": "c", "text": "To increase potential profits" },
+            { "id": "d", "text": "To diversify investments" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10057,
+        "question": "Which of the following is a characteristic of forward contracts?",
+        "options": [
+            { "id": "a", "text": "They are traded on exchanges" },
+            { "id": "b", "text": "They are standardized contracts" },
+            { "id": "c", "text": "They are over-the-counter (OTC) contracts" },
+            { "id": "d", "text": "They are settled daily" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10058,
+        "question": "What is the name of the rate agreed upon in a forward contract?",
+        "options": [
+            { "id": "a", "text": "Spot rate" },
+            { "id": "b", "text": "Forward rate" },
+            { "id": "c", "text": "Exchange rate" },
+            { "id": "d", "text": "Cross rate" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10059,
+        "question": "Which economic factor is linked to the relative strength of a country's economy in the long run?",
+        "options": [
+            { "id": "a", "text": "Demand-supply mismatch" },
+            { "id": "b", "text": "Global risk appetite" },
+            { "id": "c", "text": "Inflation rate" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10060,
+        "question": "What is the impact of rising CPI on interest rates and currency value?",
+        "options": [
+            { "id": "a", "text": "Rising CPI leads to higher interest rates and currency strengthening" },
+            { "id": "b", "text": "Rising CPI leads to lower interest rates and currency weakening" },
+            { "id": "c", "text": "Rising CPI has no impact on interest rates or currency value" },
+            { "id": "d", "text": "Rising CPI leads to higher interest rates but currency weakening" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10061,
+        "question": "Which of the following is NOT an economic indicator?",
+        "options": [
+            { "id": "a", "text": "GDP" },
+            { "id": "b", "text": "IIP" },
+            { "id": "c", "text": "CPI" },
+            { "id": "d", "text": "FX intervention" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10062,
+        "question": "What is the effect of a narrowing trade deficit on a country's currency?",
+        "options": [
+            { "id": "a", "text": "Weakening of the currency" },
+            { "id": "b", "text": "Strengthening of the currency" },
+            { "id": "c", "text": "No impact on the currency" },
+            { "id": "d", "text": "Depreciation of the currency" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10063,
+        "question": "Which of the following is a type of risk management approach?",
+        "options": [
+            { "id": "a", "text": "Speculation" },
+            { "id": "b", "text": "Hedging" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10064,
+        "question": "What is the primary function of derivatives in financial markets?",
+        "options": [
+            { "id": "a", "text": "To provide loans" },
+            { "id": "b", "text": "To manage price risk" },
+            { "id": "c", "text": "To facilitate currency exchange" },
+            { "id": "d", "text": "To invest in stocks" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10065,
+        "question": "What is the primary purpose of hedging in risk management?",
+        "options": [
+            { "id": "a", "text": "To eliminate all risks" },
+            { "id": "b", "text": "To lock in future returns at a known level" },
+            { "id": "c", "text": "To increase potential returns" },
+            { "id": "d", "text": "To reduce upfront costs" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10066,
+        "question": "Which strategy retains the positive return while eliminating the negative return?",
+        "options": [
+            { "id": "a", "text": "Hedging" },
+            { "id": "b", "text": "Insurance" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "Investment" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10067,
+        "question": "What is a key feature of diversification?",
+        "options": [
+            { "id": "a", "text": "It increases both risk and return" },
+            { "id": "b", "text": "It reduces risk more than return" },
+            { "id": "c", "text": "It eliminates all risks" },
+            { "id": "d", "text": "It maximizes return without considering risk" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10068,
+        "question": "Which economic function of derivatives helps determine expected future spot prices?",
+        "options": [
+            { "id": "a", "text": "Hedging risk exposure" },
+            { "id": "b", "text": "Price discovery" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "Insurance" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10069,
+        "question": "What type of derivative is used to implement insurance?",
+        "options": [
+            { "id": "a", "text": "Future" },
+            { "id": "b", "text": "Forward" },
+            { "id": "c", "text": "Option" },
+            { "id": "d", "text": "Swap" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10070,
+        "question": "How do derivatives aid in hedging risk exposure?",
+        "options": [
+            { "id": "a", "text": "By increasing the value of the underlying asset" },
+            { "id": "b", "text": "By offsetting losses in the underlying asset" },
+            { "id": "c", "text": "By eliminating all market risks" },
+            { "id": "d", "text": "By reducing liquidity" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10071,
+        "question": "What is the upfront cost associated with insurance?",
+        "options": [
+            { "id": "a", "text": "Premium" },
+            { "id": "b", "text": "Commission" },
+            { "id": "c", "text": "Interest" },
+            { "id": "d", "text": "Taxes" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10072,
+        "question": "Which of the following is NOT a function of derivatives?",
+        "options": [
+            { "id": "a", "text": "Risk management" },
+            { "id": "b", "text": "Price discovery" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "Increasing liquidity" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10073,
+        "question": "What does the price discovery function of derivatives market provide?",
+        "options": [
+            { "id": "a", "text": "Information about past prices" },
+            { "id": "b", "text": "Information about current prices" },
+            { "id": "c", "text": "Information about expected future prices" },
+            { "id": "d", "text": "Information about volatility" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10074,
+        "question": "Which strategy is used to minimize risk per unit return?",
+        "options": [
+            { "id": "a", "text": "Hedging" },
+            { "id": "b", "text": "Insurance" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "Investment" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10075,
+        "question": "What is the primary function of derivatives?",
+        "options": [
+            { "id": "a", "text": "Price discovery" },
+            { "id": "b", "text": "Hedging risk exposure" },
+            { "id": "c", "text": "Speculation" },
+            { "id": "d", "text": "Arbitrage" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10076,
+        "question": "Which of the following is a characteristic of hedging?",
+        "options": [
+            { "id": "a", "text": "It eliminates all risks" },
+            { "id": "b", "text": "It reduces risk and locks in returns" },
+            { "id": "c", "text": "It increases potential returns" },
+            { "id": "d", "text": "It is cost-free" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10077,
+        "question": "What is the purpose of using futures and forwards in derivatives markets?",
+        "options": [
+            { "id": "a", "text": "To speculate on price movements" },
+            { "id": "b", "text": "To provide price discovery" },
+            { "id": "c", "text": "To eliminate all risks" },
+            { "id": "d", "text": "To reduce transaction costs" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10078,
+        "question": "Which strategy involves selectively eliminating negative returns?",
+        "options": [
+            { "id": "a", "text": "Hedging" },
+            { "id": "b", "text": "Insurance" },
+            { "id": "c", "text": "Diversification" },
+            { "id": "d", "text": "Investment" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10079,
+        "question": "What is the outcome of diversification in terms of risk and return?",
+        "options": [
+            { "id": "a", "text": "Risk increases and return decreases" },
+            { "id": "b", "text": "Risk decreases more than return" },
+            { "id": "c", "text": "Risk and return both increase" },
+            { "id": "d", "text": "Risk decreases less than return" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10080,
+        "question": "Which of the following is a primary function of hedging in derivatives?",
+        "options": [
+            { "id": "a", "text": "To speculate on price movements" },
+            { "id": "b", "text": "To reduce risk by locking in future returns" },
+            { "id": "c", "text": "To eliminate both positive and negative returns" },
+            { "id": "d", "text": "To maximize returns through diversification" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10081,
+        "question": "What is the main purpose of insurance in the context of derivatives?",
+        "options": [
+            { "id": "a", "text": "To eliminate both positive and negative returns" },
+            { "id": "b", "text": "To selectively eliminate negative returns while retaining positive ones" },
+            { "id": "c", "text": "To increase market efficiency" },
+            { "id": "d", "text": "To provide leverage for higher returns" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10082,
+        "question": "Which of the following is NOT a key feature of forwards?",
+        "options": [
+            { "id": "a", "text": "Customized contract terms" },
+            { "id": "b", "text": "Settlement typically by delivery" },
+            { "id": "c", "text": "No initial margin required" },
+            { "id": "d", "text": "Standardized contract terms" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10083,
+        "question": "What is the primary difference between a forward and a futures contract?",
+        "options": [
+            { "id": "a", "text": "Futures are standardized and traded on exchanges" },
+            { "id": "b", "text": "Forwards are used for hedging only" },
+            { "id": "c", "text": "Futures require initial margins" },
+            { "id": "d", "text": "Forwards are always settled in cash" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10084,
+        "question": "Which of the following is a type of risk associated with derivatives?",
+        "options": [
+            { "id": "a", "text": "Credit risk" },
+            { "id": "b", "text": "Price risk" },
+            { "id": "c", "text": "Liquidity risk" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10085,
+        "question": "What is the purpose of a swap in derivatives?",
+        "options": [
+            { "id": "a", "text": "To exchange cash flows based on a prearranged formula" },
+            { "id": "b", "text": "To buy or sell an asset at a future date" },
+            { "id": "c", "text": "To provide insurance against negative returns" },
+            { "id": "d", "text": "To speculate on currency movements" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10086,
+        "question": "Which of the following is a growth driver of derivatives markets?",
+        "options": [
+            { "id": "a", "text": "Increased asset price volatility" },
+            { "id": "b", "text": "Integration of national and international markets" },
+            { "id": "c", "text": "Technological advancements" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10087,
+        "question": "What is the notional amount outstanding for foreign exchange contracts as of June 2023?",
+        "options": [
+            { "id": "a", "text": "$120,250 billion" },
+            { "id": "b", "text": "$573,697 billion" },
+            { "id": "c", "text": "$7,838 billion" },
+            { "id": "d", "text": "$2,244 billion" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10088,
+        "question": "Which of the following is a type of currency derivative?",
+        "options": [
+            { "id": "a", "text": "Forward" },
+            { "id": "b", "text": "Future" },
+            { "id": "c", "text": "Swap" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10089,
+        "question": "What is the purpose of the Risk Disclosure Document provided by brokers?",
+        "options": [
+            { "id": "a", "text": "To guarantee returns on derivative trades" },
+            { "id": "b", "text": "To inform clients about potential risks" },
+            { "id": "c", "text": "To provide trading strategies" },
+            { "id": "d", "text": "To explain market regulations" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10090,
+        "question": "Which of the following is a characteristic of options contracts?",
+        "options": [
+            { "id": "a", "text": "Obligation to buy or sell the underlying asset" },
+            { "id": "b", "text": "Right to buy or sell the underlying asset" },
+            { "id": "c", "text": "Requirement of initial margin" },
+            { "id": "d", "text": "Standardized terms only" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10091,
+        "question": "What is the primary function of diversification in derivatives?",
+        "options": [
+            { "id": "a", "text": "To maximize returns" },
+            { "id": "b", "text": "To reduce risk more than return" },
+            { "id": "c", "text": "To eliminate all risks" },
+            { "id": "d", "text": "To increase leverage" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10092,
+        "question": "Which of the following is a type of swap in the forex market?",
+        "options": [
+            { "id": "a", "text": "Foreign exchange swap" },
+            { "id": "b", "text": "Currency swap" },
+            { "id": "c", "text": "Both A and B" },
+            { "id": "d", "text": "Neither A nor B" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10093,
+        "question": "What is the purpose of margin in futures contracts?",
+        "options": [
+            { "id": "a", "text": "To guarantee settlement" },
+            { "id": "b", "text": "To cover potential losses" },
+            { "id": "c", "text": "To reduce transaction costs" },
+            { "id": "d", "text": "To increase leverage" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10094,
+        "question": "Which of the following is a benefit of using forwards?",
+        "options": [
+            { "id": "a", "text": "Assurance of fixed future returns" },
+            { "id": "b", "text": "Elimination of all risks" },
+            { "id": "c", "text": "Opportunity to speculate" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10095,
+        "question": "What is the role of the clearing corporation in futures markets?",
+        "options": [
+            { "id": "a", "text": "To act as a mediator in disputes" },
+            { "id": "b", "text": "To provide settlement guarantees" },
+            { "id": "c", "text": "To regulate market participants" },
+            { "id": "d", "text": "To set market prices" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10096,
+        "question": "What was the average daily turnover of futures in the currency derivatives market in India for FY 2022-23?",
+        "options": [
+            { "id": "a", "text": "50,803 Crs" },
+            { "id": "b", "text": "60,803 Crs" },
+            { "id": "c", "text": "70,803 Crs" },
+            { "id": "d", "text": "80,803 Crs" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10097,
+        "question": "Which of the following is the primary goal of hedgers in the currency derivatives market?",
+        "options": [
+            { "id": "a", "text": "To speculate on currency movements" },
+            { "id": "b", "text": "To reduce risk associated with currency fluctuations" },
+            { "id": "c", "text": "To arbitrage price differences" },
+            { "id": "d", "text": "To leverage high volumes" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10098,
+        "question": "Speculators in the currency derivatives market primarily aim to:",
+        "options": [
+            { "id": "a", "text": "Hedge against currency risk" },
+            { "id": "b", "text": "Predict future currency movements" },
+            { "id": "c", "text": "Exploit price differences" },
+            { "id": "d", "text": "Reduce transaction costs" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10099,
+        "question": "Arbitrageurs in the currency derivatives market exploit:",
+        "options": [
+            { "id": "a", "text": "Currency risk" },
+            { "id": "b", "text": "Price differences" },
+            { "id": "c", "text": "Leverage opportunities" },
+            { "id": "d", "text": "Hedging strategies" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10100,
+        "question": "Which of the following is a key advantage of Exchange-Traded Derivatives (ETD) over OTC derivatives?",
+        "options": [
+            { "id": "a", "text": "Customization of contracts" },
+            { "id": "b", "text": "Higher counterparty risk" },
+            { "id": "c", "text": "Less transparency" },
+            { "id": "d", "text": "Greater transparency" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10101,
+        "question": "An importer in India would typically hedge against the risk of:",
+        "options": [
+            { "id": "a", "text": "Rupee appreciation" },
+            { "id": "b", "text": "Rupee depreciation" },
+            { "id": "c", "text": "Interest rate fluctuations" },
+            { "id": "d", "text": "Commodity price changes" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10102,
+        "question": "Standardization in ETDs can lead to:",
+        "options": [
+            { "id": "a", "text": "Perfect hedges" },
+            { "id": "b", "text": "Customized contracts" },
+            { "id": "c", "text": "Increased liquidity" },
+            { "id": "d", "text": "Imperfect hedges" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10103,
+        "question": "Which of the following is NOT an advantage of ETDs over OTC derivatives?",
+        "options": [
+            { "id": "a", "text": "Elimination of counterparty risk" },
+            { "id": "b", "text": "Greater transparency" },
+            { "id": "c", "text": "Lower transaction costs" },
+            { "id": "d", "text": "Customization of contracts" }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 10104,
+        "question": "The main advantage of currency futures over forwards is:",
+        "options": [
+            { "id": "a", "text": "Price transparency" },
+            { "id": "b", "text": "Higher counterparty risk" },
+            { "id": "c", "text": "Customization" },
+            { "id": "d", "text": "Lower leverage" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10105,
+        "question": "In ETDs, the counterparty risk is mitigated by:",
+        "options": [
+            { "id": "a", "text": "Margin requirements" },
+            { "id": "b", "text": "Authorized Dealers" },
+            { "id": "c", "text": "Market Makers" },
+            { "id": "d", "text": "Traders" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10106,
+        "question": "OTC foreign exchange derivative contracts in India must be used primarily for:",
+        "options": [
+            { "id": "a", "text": "Speculation" },
+            { "id": "b", "text": "Hedging" },
+            { "id": "c", "text": "Arbitrage" },
+            { "id": "d", "text": "Leverage" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10107,
+        "question": "Which of the following is a reason for the increased transparency in ETDs?",
+        "options": [
+            { "id": "a", "text": "Private negotiations" },
+            { "id": "b", "text": "Screen-based trading" },
+            { "id": "c", "text": "Customized contracts" },
+            { "id": "d", "text": "Over-the-counter trading" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10108,
+        "question": "To expand hedging tools, which new instrument was introduced in India?",
+        "options": [
+            { "id": "a", "text": "Currency futures" },
+            { "id": "b", "text": "Currency options" },
+            { "id": "c", "text": "Both A and B" },
+            { "id": "d", "text": "Neither A nor B" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10109,
+        "question": "The introduction of currency futures in India aimed to:",
+        "options": [
+            { "id": "a", "text": "Increase counterparty risk" },
+            { "id": "b", "text": "Provide hedging tools" },
+            { "id": "c", "text": "Reduce transparency" },
+            { "id": "d", "text": "Eliminate arbitrage opportunities" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10110,
+        "question": "ETDs are considered less risky than OTC derivatives because they eliminate:",
+        "options": [
+            { "id": "a", "text": "Market risk" },
+            { "id": "b", "text": "Credit risk" },
+            { "id": "c", "text": "Liquidity risk" },
+            { "id": "d", "text": "Operational risk" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10111,
+        "question": "In ETDs, the contract amount and expiry date are determined by:",
+        "options": [
+            { "id": "a", "text": "Market participants" },
+            { "id": "b", "text": "The exchange" },
+            { "id": "c", "text": "Authorized dealers" },
+            { "id": "d", "text": "Traders" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10112,
+        "question": "What is the primary purpose of currency futures in an economy?",
+        "options": [
+            { "id": "a", "text": "To facilitate speculation" },
+            { "id": "b", "text": "To hedge against currency risk" },
+            { "id": "c", "text": "To provide liquidity in the market" },
+            { "id": "d", "text": "To influence exchange rates" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10113,
+        "question": "Which of the following cross-currency pairs were introduced for exchange-traded currency futures?",
+        "options": [
+            { "id": "a", "text": "EUR-USD, GBP-USD, and USD-JPY" },
+            { "id": "b", "text": "USD-INR, EUR-INR, and JPY-INR" },
+            { "id": "c", "text": "GBP-EUR, USD-CHF, and AUD-USD" },
+            { "id": "d", "text": "JPY-EUR, GBP-JPY, and CHF-USD" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10114,
+        "question": "What is a key feature of futures contracts?",
+        "options": [
+            { "id": "a", "text": "They are customized to individual needs" },
+            { "id": "b", "text": "They are traded over-the-counter" },
+            { "id": "c", "text": "They are standardized and traded on exchanges" },
+            { "id": "d", "text": "They require physical delivery of the asset" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10115,
+        "question": "What role does the Clearing Corporation play in futures trading?",
+        "options": [
+            { "id": "a", "text": "It acts as a broker between buyers and sellers" },
+            { "id": "b", "text": "It guarantees settlement of trades" },
+            { "id": "c", "text": "It provides margin financing to traders" },
+            { "id": "d", "text": "It sets the prices for futures contracts" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10116,
+        "question": "What is the underlying asset for currency futures contracts?",
+        "options": [
+            { "id": "a", "text": "Commodity prices" },
+            { "id": "b", "text": "Interest rates" },
+            { "id": "c", "text": "Exchange rates" },
+            { "id": "d", "text": "Stock market indices" }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 10117,
+        "question": "When does the expiry date for monthly currency futures contracts typically fall?",
+        "options": [
+            { "id": "a", "text": "Last business day of the expiry month" },
+            { "id": "b", "text": "Two working days prior to the last business day of the expiry month" },
+            { "id": "c", "text": "First working day of the expiry month" },
+            { "id": "d", "text": "Last Saturday of the expiry month" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10118,
+        "question": "What contract cycles are available for currency futures contracts?",
+        "options": [
+            { "id": "a", "text": "Only monthly contracts" },
+            { "id": "b", "text": "Weekly, monthly, and quarterly contracts" },
+            { "id": "c", "text": "Daily and weekly contracts" },
+            { "id": "d", "text": "Annual contracts" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10119,
+        "question": "What is the definition of tick size in futures trading?",
+        "options": [
+            { "id": "a", "text": "The maximum price fluctuation allowed in a trading session" },
+            { "id": "b", "text": "The minimum price increment for a contract" },
+            { "id": "c", "text": "The total volume of contracts traded in a day" },
+            { "id": "d", "text": "The difference between bid and ask prices" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10120,
+        "question": "What is the lot size for USD-INR futures contracts?",
+        "options": [
+            { "id": "a", "text": "100 USD" },
+            { "id": "b", "text": "1000 USD" },
+            { "id": "c", "text": "10,000 USD" },
+            { "id": "d", "text": "1 USD" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10121,
+        "question": "What determines the base price of a futures contract on the first day of trading?",
+        "options": [
+            { "id": "a", "text": "The closing price of the previous day" },
+            { "id": "b", "text": "The theoretical futures price" },
+            { "id": "c", "text": "The average of the bid and ask prices" },
+            { "id": "d", "text": "The opening price of the day" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10122,
+        "question": "What is the purpose of the mark-to-market (MTM) process in futures trading?",
+        "options": [
+            { "id": "a", "text": "To settle profits and losses on a daily basis" },
+            { "id": "b", "text": "To determine the opening price of the next trading day" },
+            { "id": "c", "text": "To calculate the final settlement price" },
+            { "id": "d", "text": "To monitor trading volumes" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10123,
+        "question": "What does open interest represent in futures markets?",
+        "options": [
+            { "id": "a", "text": "The total number of contracts traded in a day" },
+            { "id": "b", "text": "The total number of outstanding contracts" },
+            { "id": "c", "text": "The difference between open and closed positions" },
+            { "id": "d", "text": "The average price of contracts" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10124,
+        "question": "What happens to a long position in futures if the price of the underlying asset increases at expiry?",
+        "options": [
+            { "id": "a", "text": "It results in a loss" },
+            { "id": "b", "text": "It results in a profit" },
+            { "id": "c", "text": "It has no impact" },
+            { "id": "d", "text": "It depends on the margin" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10125,
+        "question": "Which regulatory bodies oversee exchange-traded currency futures in India?",
+        "options": [
+            { "id": "a", "text": "RBI and SEBI" },
+            { "id": "b", "text": "RBI and IRDAI" },
+            { "id": "c", "text": "SEBI and NSE" },
+            { "id": "d", "text": "NSE and BSE" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10126,
+        "question": "How is the contract value of a futures contract calculated?",
+        "options": [
+            { "id": "a", "text": "Futures price multiplied by the contract size" },
+            { "id": "b", "text": "Spot price multiplied by the tick size" },
+            { "id": "c", "text": "Daily settlement price multiplied by open interest" },
+            { "id": "d", "text": "Futures price multiplied by the expiry date" }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 10127,
+        "question": "How are exchange-traded currency futures and options contracts settled in India?",
+        "options": [
+            { "id": "a", "text": "Through physical delivery" },
+            { "id": "b", "text": "Through cash settlement" },
+            { "id": "c", "text": "Through a combination of cash and physical settlement" },
+            { "id": "d", "text": "Through a barter system" }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 10128,
+        "question": "What is the unit of trading for a USDINR futures contract?",
+        "options": [
+            { "id": "a", "text": "1 contract denotes 100 US Dollars" },
+            { "id": "b", "text": "1 contract denotes 1000 US Dollars" },
+            { "id": "c", "text": "1 contract denotes 10000 US Dollars" },
+            { "id": "d", "text": "1 contract denotes 100000 US Dollars" }
+        ],
+        "correct_answer": "b"
+    }
+]

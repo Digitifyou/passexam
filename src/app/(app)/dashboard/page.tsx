@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardDescription, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 // import { Badge } from "@/components/ui/badge"; // <-- Badge import removed/commented out
@@ -138,7 +138,7 @@ export default function DashboardPage() {
             {sections.map((section) => (
               <Card key={section.id} className="flex flex-col">
                 <CardHeader>
-                  <CardTitle>{section.title}</CardTitle>
+                  <h3><b>{section.title}</b></h3>
                   {/* --- Removed Badge Display ---
                   {section.subtopics && (
                     <div className="flex flex-wrap gap-2 mt-2">
@@ -164,7 +164,7 @@ export default function DashboardPage() {
                         >
                           {/* Wrap content in a div for layout control */}
                           <div className='flex items-center justify-between w-full'>
-                            <span className={cn("text-left text-sm whitespace-normal", // Allow wrapping
+                            <span className={cn("text-left whitespace-normal", // Allow wrapping
                                 isCompleted ? "completed-test-text" : "text-primary-foreground not-completed-test-text")}>
                                     {test.title}
                             </span>

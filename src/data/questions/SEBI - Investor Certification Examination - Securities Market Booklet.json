@@ -1,0 +1,1387 @@
+[{
+        "id": 80001,
+        "question": "Which legislation governs the recognition and regulation of transactions in securities in a stock exchange?",
+        "options": [{
+                "id": "a",
+                "text": "The SEBI Act, 1992"
+            },
+            {
+                "id": "b",
+                "text": "The Companies Act, 2013"
+            },
+            {
+                "id": "c",
+                "text": "The Securities Contracts (Regulation) Act, 1956"
+            },
+            {
+                "id": "d",
+                "text": "The Depositories Act, 1996"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80002,
+        "question": "What do mutual funds represent as financial instruments?",
+        "options": [{
+                "id": "a",
+                "text": "A type of debt security"
+            },
+            {
+                "id": "b",
+                "text": "A pool of money collected from many investors"
+            },
+            {
+                "id": "c",
+                "text": "A derivative instrument"
+            },
+            {
+                "id": "d",
+                "text": "A type of equity share"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80003,
+        "question": "What is the primary objective of the primary market?",
+        "options": [{
+                "id": "a",
+                "text": "To facilitate the trading of existing securities"
+            },
+            {
+                "id": "b",
+                "text": "To enable companies to raise funds by issuing new securities"
+            },
+            {
+                "id": "c",
+                "text": "To provide a platform for derivatives trading"
+            },
+            {
+                "id": "d",
+                "text": "To allow investors to sell their securities"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80004,
+        "question": "Which type of issue allows existing shareholders to subscribe to newly issued shares in proportion to their existing shareholding?",
+        "options": [{
+                "id": "a",
+                "text": "Initial Public Offer (IPO)"
+            },
+            {
+                "id": "b",
+                "text": "Follow on Public Offer (FPO)"
+            },
+            {
+                "id": "c",
+                "text": "Rights Issue"
+            },
+            {
+                "id": "d",
+                "text": "Bonus Issue"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80005,
+        "question": "What do market infrastructure institutions facilitate in the securities market?",
+        "options": [{
+                "id": "a",
+                "text": "Only the issuance of new securities"
+            },
+            {
+                "id": "b",
+                "text": "The issue, purchase, and sale of securities"
+            },
+            {
+                "id": "c",
+                "text": "Derivative trading only"
+            },
+            {
+                "id": "d",
+                "text": "Foreign currency exchange"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80006,
+        "question": "What are the two main segments of stock exchanges?",
+        "options": [{
+                "id": "a",
+                "text": "Primary and Secondary"
+            },
+            {
+                "id": "b",
+                "text": "Cash and Derivatives"
+            },
+            {
+                "id": "c",
+                "text": "Equity and Debt"
+            },
+            {
+                "id": "d",
+                "text": "Commodity and Currency"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80007,
+        "question": "What is the primary function of depositories in the securities market?",
+        "options": [{
+                "id": "a",
+                "text": "To facilitate trading on stock exchanges"
+            },
+            {
+                "id": "b",
+                "text": "To hold securities in dematerialized form"
+            },
+            {
+                "id": "c",
+                "text": "To regulate the securities market"
+            },
+            {
+                "id": "d",
+                "text": "To provide loans to investors"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80008,
+        "question": "Which type of risk refers to the impact of overall economic factors on investments?",
+        "options": [{
+                "id": "a",
+                "text": "Unsystematic Risk"
+            },
+            {
+                "id": "b",
+                "text": "Market Risk"
+            },
+            {
+                "id": "c",
+                "text": "Inflation Risk"
+            },
+            {
+                "id": "d",
+                "text": "Liquidity Risk"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80009,
+        "question": "What are the three main accounts required for investing in the securities market?",
+        "options": [{
+                "id": "a",
+                "text": "Bank Account, Trading Account, Demat Account"
+            },
+            {
+                "id": "b",
+                "text": "Bank Account, Savings Account, Current Account"
+            },
+            {
+                "id": "c",
+                "text": "Trading Account, Demat Account, Credit Account"
+            },
+            {
+                "id": "d",
+                "text": "Bank Account, Demat Account, Loan Account"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80010,
+        "question": "Why is the Know Your Client (KYC) process mandatory?",
+        "options": [{
+                "id": "a",
+                "text": "To prevent money laundering"
+            },
+            {
+                "id": "b",
+                "text": "To promote stock market trading"
+            },
+            {
+                "id": "c",
+                "text": "To regulate derivative markets"
+            },
+            {
+                "id": "d",
+                "text": "To facilitate IPOs"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80011,
+        "question": "Within how many working days are securities issued in the primary market listed on stock exchanges?",
+        "options": [{
+                "id": "a",
+                "text": "Less than 3 working days"
+            },
+            {
+                "id": "b",
+                "text": "Less than 6 working days"
+            },
+            {
+                "id": "c",
+                "text": "Less than 10 working days"
+            },
+            {
+                "id": "d",
+                "text": "Less than 15 working days"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80012,
+        "question": "What is the mandate of SEBI?",
+        "options": [{
+                "id": "a",
+                "text": "To promote the development of the securities market"
+            },
+            {
+                "id": "b",
+                "text": "To regulate the securities market"
+            },
+            {
+                "id": "c",
+                "text": "To protect the interests of investors in securities"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80013,
+        "question": "What is the purpose of the secondary market?",
+        "options": [{
+                "id": "a",
+                "text": "To enable companies to raise funds"
+            },
+            {
+                "id": "b",
+                "text": "To facilitate the trading of listed securities"
+            },
+            {
+                "id": "c",
+                "text": "To issue new securities"
+            },
+            {
+                "id": "d",
+                "text": "To promote derivatives trading"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80014,
+        "question": "What is the main function of clearing corporations?",
+        "options": [{
+                "id": "a",
+                "text": "To facilitate trading on stock exchanges"
+            },
+            {
+                "id": "b",
+                "text": "To guarantee the settlement of trades"
+            },
+            {
+                "id": "c",
+                "text": "To regulate the securities market"
+            },
+            {
+                "id": "d",
+                "text": "To provide loans to investors"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80015,
+        "question": "What factors influence an investor's risk appetite?",
+        "options": [{
+                "id": "a",
+                "text": "Investment goals and age"
+            },
+            {
+                "id": "b",
+                "text": "Market trends only"
+            },
+            {
+                "id": "c",
+                "text": "Economic conditions only"
+            },
+            {
+                "id": "d",
+                "text": "Company performance only"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80016,
+        "question": "What is the purpose of this booklet?",
+        "options": [{
+                "id": "a",
+                "text": "To serve as a guide for specific investments"
+            },
+            {
+                "id": "b",
+                "text": "To provide basic information about the securities market"
+            },
+            {
+                "id": "c",
+                "text": "To promote a specific company's shares"
+            },
+            {
+                "id": "d",
+                "text": "To regulate the securities market"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80017,
+        "question": "What is the primary purpose of the e-KYC facility for investors?",
+        "options": [{
+                "id": "a",
+                "text": "To allow investors to trade in the secondary market"
+            },
+            {
+                "id": "b",
+                "text": "To enable investors to complete the KYC process using Aadhaar or Digi Locker"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "d",
+                "text": "To allow investors to apply for IPOs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80018,
+        "question": "Which of the following is a characteristic of a Basic Services Demat Account (BSDA)?",
+        "options": [{
+                "id": "a",
+                "text": "The account can be opened by individuals with multiple demat accounts"
+            },
+            {
+                "id": "b",
+                "text": "The value of holdings in non-debt securities can exceed Rs. 2 lakhs"
+            },
+            {
+                "id": "c",
+                "text": "The Annual Maintenance Charges (AMC) for non-debt securities up to Rs. 50,000 is 'No AMC'"
+            },
+            {
+                "id": "d",
+                "text": "The account is only available for debt securities"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80019,
+        "question": "What is the purpose of a Power of Attorney (PoA) in the context of securities markets?",
+        "options": [{
+                "id": "a",
+                "text": "To nominate a person to claim securities in case of the investor's death"
+            },
+            {
+                "id": "b",
+                "text": "To authorize a stock broker or depository participant to operate the demat and bank account"
+            },
+            {
+                "id": "c",
+                "text": "To allow the investor to trade in derivatives"
+            },
+            {
+                "id": "d",
+                "text": "To enable the investor to apply for an IPO"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80020,
+        "question": "What is the time frame for the listing of shares after the closure of an IPO?",
+        "options": [{
+                "id": "a",
+                "text": "Six working days after the closure of the issue"
+            },
+            {
+                "id": "b",
+                "text": "Immediately after the closure of the issue"
+            },
+            {
+                "id": "c",
+                "text": "One working day after the closure of the issue"
+            },
+            {
+                "id": "d",
+                "text": "Two working days after the closure of the issue"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80021,
+        "question": "Which of the following is NOT a valid mode of placing an order in the secondary market?",
+        "options": [{
+                "id": "a",
+                "text": "Online trading app"
+            },
+            {
+                "id": "b",
+                "text": "Physical order placed with the broker"
+            },
+            {
+                "id": "c",
+                "text": "Phone call to the broker"
+            },
+            {
+                "id": "d",
+                "text": "In-person visit to the stock exchange"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80022,
+        "question": "What is the settlement cycle for trades executed on a stock exchange?",
+        "options": [{
+                "id": "a",
+                "text": "T+1"
+            },
+            {
+                "id": "b",
+                "text": "T+2"
+            },
+            {
+                "id": "c",
+                "text": "T+3"
+            },
+            {
+                "id": "d",
+                "text": "T+4"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80023,
+        "question": "What is the purpose of a Contract Note in securities trading?",
+        "options": [{
+                "id": "a",
+                "text": "To serve as a receipt for the transaction"
+            },
+            {
+                "id": "b",
+                "text": "To provide a detailed breakdown of brokerage charges"
+            },
+            {
+                "id": "c",
+                "text": "To act as a legal document for the trade executed by the broker"
+            },
+            {
+                "id": "d",
+                "text": "To confirm the allotment of shares in an IPO"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80024,
+        "question": "What is the primary purpose of margin money in securities trading?",
+        "options": [{
+                "id": "a",
+                "text": "To pay for brokerage charges"
+            },
+            {
+                "id": "b",
+                "text": "To mitigate the risk of non-payment or non-delivery of securities"
+            },
+            {
+                "id": "c",
+                "text": "To invest in mutual funds"
+            },
+            {
+                "id": "d",
+                "text": "To apply for an IPO"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80025,
+        "question": "Which of the following is a type of mutual fund scheme?",
+        "options": [{
+                "id": "a",
+                "text": "Derivative Fund"
+            },
+            {
+                "id": "b",
+                "text": "Debt Scheme"
+            },
+            {
+                "id": "c",
+                "text": "Hybrid Scheme"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80026,
+        "question": "What is the purpose of the Consolidated Account Statement (CAS)?",
+        "options": [{
+                "id": "a",
+                "text": "To provide a single account statement for all mutual fund investments"
+            },
+            {
+                "id": "b",
+                "text": "To show the details of transactions across all demat accounts and mutual funds"
+            },
+            {
+                "id": "c",
+                "text": "To confirm the allotment of shares in an IPO"
+            },
+            {
+                "id": "d",
+                "text": "To serve as a receipt for the margin money deposited"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80027,
+        "question": "What is the purpose of the Application Supported by Blocked Amount (ASBA) facility?",
+        "options": [{
+                "id": "a",
+                "text": "To allow investors to apply for IPOs without blocking funds in their bank account"
+            },
+            {
+                "id": "b",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "c",
+                "text": "To enable investors to apply for IPOs while keeping the funds blocked in their bank account"
+            },
+            {
+                "id": "d",
+                "text": "To allow investors to trade in derivatives"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80028,
+        "question": "What is the purpose of a Nomination facility in a demat account?",
+        "options": [{
+                "id": "a",
+                "text": "To allow the nominee to operate the account during the investor's lifetime"
+            },
+            {
+                "id": "b",
+                "text": "To enable the nominee to claim securities in case of the investor's death"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "d",
+                "text": "To allow the nominee to trade on behalf of the investor"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80029,
+        "question": "What is the purpose of the Running Account authorization?",
+        "options": [{
+                "id": "a",
+                "text": "To allow the broker to maintain a separate account for frequent traders"
+            },
+            {
+                "id": "b",
+                "text": "To enable the investor to trade in derivatives"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "d",
+                "text": "To allow the investor to apply for an IPO"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80030,
+        "question": "What is the purpose of the Trade Verification module on exchange websites?",
+        "options": [{
+                "id": "a",
+                "text": "To allow investors to verify the details of trades executed in their account"
+            },
+            {
+                "id": "b",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "c",
+                "text": "To enable investors to apply for IPOs"
+            },
+            {
+                "id": "d",
+                "text": "To confirm the allotment of shares in an IPO"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80031,
+        "question": "What is the purpose of the early pay-in facility in securities trading?",
+        "options": [{
+                "id": "a",
+                "text": "To allow investors to pay funds or deliver securities before the pay-in date"
+            },
+            {
+                "id": "b",
+                "text": "To enable investors to trade in derivatives"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "d",
+                "text": "To allow investors to apply for an IPO"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80032,
+        "question": "What is the purpose of the SMS and Email Alerts facility for investors?",
+        "options": [{
+                "id": "a",
+                "text": "To provide investors with real-time updates on their account transactions"
+            },
+            {
+                "id": "b",
+                "text": "To allow investors to apply for IPOs"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate the pledging of securities for margin"
+            },
+            {
+                "id": "d",
+                "text": "To enable investors to trade in derivatives"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80033,
+        "question": "What is the primary purpose of the KYC process in mutual fund investments?",
+        "options": [{
+                "id": "a",
+                "text": "To determine investment returns"
+            },
+            {
+                "id": "b",
+                "text": "To verify investor identity and address"
+            },
+            {
+                "id": "c",
+                "text": "To assess investment risk appetite"
+            },
+            {
+                "id": "d",
+                "text": "To manage investment portfolios"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80034,
+        "question": "Which of the following is NOT a facility offered by mutual funds beyond lumpsum investment?",
+        "options": [{
+                "id": "a",
+                "text": "Systematic Investment Plan"
+            },
+            {
+                "id": "b",
+                "text": "Systematic Withdrawal Plan"
+            },
+            {
+                "id": "c",
+                "text": "Systematic Transfer Plan"
+            },
+            {
+                "id": "d",
+                "text": "Guaranteed Return Plan"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80035,
+        "question": "According to SEBI guidelines, how often is the risk-o-meter for mutual fund schemes evaluated?",
+        "options": [{
+                "id": "a",
+                "text": "Annually"
+            },
+            {
+                "id": "b",
+                "text": "Monthly"
+            },
+            {
+                "id": "c",
+                "text": "Quarterly"
+            },
+            {
+                "id": "d",
+                "text": "Daily"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80036,
+        "question": "What does an ETF track?",
+        "options": [{
+                "id": "a",
+                "text": "Individual stocks"
+            },
+            {
+                "id": "b",
+                "text": "A specific company's performance"
+            },
+            {
+                "id": "c",
+                "text": "An index, commodity, or basket of assets"
+            },
+            {
+                "id": "d",
+                "text": "Mutual fund portfolios"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80037,
+        "question": "Which platform can investors use to lodge complaints related to securities markets?",
+        "options": [{
+                "id": "a",
+                "text": "SCORES"
+            },
+            {
+                "id": "b",
+                "text": "IGRP"
+            },
+            {
+                "id": "c",
+                "text": "NSE"
+            },
+            {
+                "id": "d",
+                "text": "BSE"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80038,
+        "question": "What is the purpose of the Investor Services Cell of Stock Exchanges?",
+        "options": [{
+                "id": "a",
+                "text": "To manage trading accounts"
+            },
+            {
+                "id": "b",
+                "text": "To resolve investor queries and complaints"
+            },
+            {
+                "id": "c",
+                "text": "To provide investment advice"
+            },
+            {
+                "id": "d",
+                "text": "To facilitate mutual fund investments"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80039,
+        "question": "What is the Arbitration Mechanism used for?",
+        "options": [{
+                "id": "a",
+                "text": "Resolving disputes between brokers and investors"
+            },
+            {
+                "id": "b",
+                "text": "Facilitating mutual fund investments"
+            },
+            {
+                "id": "c",
+                "text": "Providing investment advice"
+            },
+            {
+                "id": "d",
+                "text": "Managing demat accounts"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80040,
+        "question": "What happens to unclaimed dividends and shares after seven years?",
+        "options": [{
+                "id": "a",
+                "text": "They are transferred to IEPF"
+            },
+            {
+                "id": "b",
+                "text": "They are forfeited by the company"
+            },
+            {
+                "id": "c",
+                "text": "They are automatically reinvested"
+            },
+            {
+                "id": "d",
+                "text": "They are donated to charity"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80041,
+        "question": "What should investors avoid when dealing with investment advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Checking SEBI registration"
+            },
+            {
+                "id": "b",
+                "text": "Asking for risk profiling"
+            },
+            {
+                "id": "c",
+                "text": "Paying advisory fees through banking channels"
+            },
+            {
+                "id": "d",
+                "text": "Dealing with unregistered entities"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80042,
+        "question": "What is a right of investors in the securities market?",
+        "options": [{
+                "id": "a",
+                "text": "Receiving a guaranteed return on investment"
+            },
+            {
+                "id": "b",
+                "text": "Getting a Unique Client Code"
+            },
+            {
+                "id": "c",
+                "text": "Purchasing unregistered investment products"
+            },
+            {
+                "id": "d",
+                "text": "Engaging in dabba trading"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80043,
+        "question": "What should investors do with their bank account details?",
+        "options": [{
+                "id": "a",
+                "text": "Share them with multiple brokers"
+            },
+            {
+                "id": "b",
+                "text": "Keep them updated with their broker"
+            },
+            {
+                "id": "c",
+                "text": "Use cash transactions for changes"
+            },
+            {
+                "id": "d",
+                "text": "Never update them once set"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80044,
+        "question": "What is the purpose of the Risk Disclosure Document?",
+        "options": [{
+                "id": "a",
+                "text": "To guarantee investment returns"
+            },
+            {
+                "id": "b",
+                "text": "To inform investors about potential risks"
+            },
+            {
+                "id": "c",
+                "text": "To promote specific investment products"
+            },
+            {
+                "id": "d",
+                "text": "To provide investment advice"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80045,
+        "question": "What should investors avoid according to the Do's and Don'ts?",
+        "options": [{
+                "id": "a",
+                "text": "Regularly checking portfolio"
+            },
+            {
+                "id": "b",
+                "text": "Investing based on hot tips"
+            },
+            {
+                "id": "c",
+                "text": "Using banking channels for transactions"
+            },
+            {
+                "id": "d",
+                "text": "Keeping track of account statements"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80046,
+        "question": "What is required for e-KYC in mutual fund investments?",
+        "options": [{
+                "id": "a",
+                "text": "Aadhaar card and PAN card"
+            },
+            {
+                "id": "b",
+                "text": "Passport and driving license"
+            },
+            {
+                "id": "c",
+                "text": "Voter ID and ration card"
+            },
+            {
+                "id": "d",
+                "text": "Bank account number and passport"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80047,
+        "question": "What is the role of IGRP and IGRC?",
+        "options": [{
+                "id": "a",
+                "text": "To manage mutual fund investments"
+            },
+            {
+                "id": "b",
+                "text": "To resolve investor complaints"
+            },
+            {
+                "id": "c",
+                "text": "To facilitate stock trading"
+            },
+            {
+                "id": "d",
+                "text": "To provide investment advice"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80048,
+        "question": "What is the consequence of not informing mutual funds about address changes?",
+        "options": [{
+                "id": "a",
+                "text": "Risk of fraudulent activities"
+            },
+            {
+                "id": "b",
+                "text": "Loss of investment benefits"
+            },
+            {
+                "id": "c",
+                "text": "Delay in dividend payments"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80049,
+        "question": "What is the primary step to ensure an Investment Adviser is legitimate?",
+        "options": [{
+                "id": "a",
+                "text": "Check their registration certificate"
+            },
+            {
+                "id": "b",
+                "text": "Ask for references"
+            },
+            {
+                "id": "c",
+                "text": "Check their website"
+            },
+            {
+                "id": "d",
+                "text": "Request a discount"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80050,
+        "question": "What should investors avoid when dealing with Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Paying fees through banking channels"
+            },
+            {
+                "id": "b",
+                "text": "Asking for risk profiling"
+            },
+            {
+                "id": "c",
+                "text": "Falling for assured returns"
+            },
+            {
+                "id": "d",
+                "text": "Maintaining payment receipts"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 80051,
+        "question": "How should advisory fees be paid?",
+        "options": [{
+                "id": "a",
+                "text": "Only through cash"
+            },
+            {
+                "id": "b",
+                "text": "Through banking channels"
+            },
+            {
+                "id": "c",
+                "text": "Via third-party apps"
+            },
+            {
+                "id": "d",
+                "text": "Using UPI"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80052,
+        "question": "What is the process after UPI fund blocking?",
+        "options": [{
+                "id": "a",
+                "text": "Funds are unblocked immediately"
+            },
+            {
+                "id": "b",
+                "text": "Funds are debited post allocation"
+            },
+            {
+                "id": "c",
+                "text": "Funds are transferred to the adviser"
+            },
+            {
+                "id": "d",
+                "text": "Funds are blocked permanently"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80053,
+        "question": "What is the transaction limit for UPI in IPOs?",
+        "options": [{
+                "id": "a",
+                "text": "Rs. 1 Lakh"
+            },
+            {
+                "id": "b",
+                "text": "Rs. 2 Lakhs"
+            },
+            {
+                "id": "c",
+                "text": "Rs. 5 Lakhs"
+            },
+            {
+                "id": "d",
+                "text": "Rs. 10 Lakhs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80054,
+        "question": "What does ASBA stand for?",
+        "options": [{
+                "id": "a",
+                "text": "Application Supported by Blocked Amount"
+            },
+            {
+                "id": "b",
+                "text": "Annual Securities Brokerage Account"
+            },
+            {
+                "id": "c",
+                "text": "Advanced Securities Buying Algorithm"
+            },
+            {
+                "id": "d",
+                "text": "Authenticated Secure Banking Application"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80055,
+        "question": "Which program conducts investor awareness in local languages?",
+        "options": [{
+                "id": "a",
+                "text": "Regional Seminars"
+            },
+            {
+                "id": "b",
+                "text": "Resource Persons Programs"
+            },
+            {
+                "id": "c",
+                "text": "SMARTs"
+            },
+            {
+                "id": "d",
+                "text": "CoTs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80056,
+        "question": "What is the purpose of SEBI's Investor Awareness Programs?",
+        "options": [{
+                "id": "a",
+                "text": "Promote specific investments"
+            },
+            {
+                "id": "b",
+                "text": "Educate on securities market"
+            },
+            {
+                "id": "c",
+                "text": "Recruit new advisers"
+            },
+            {
+                "id": "d",
+                "text": "Increase trading volume"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80057,
+        "question": "Where can investors find details on UPI for IPOs?",
+        "options": [{
+                "id": "a",
+                "text": "SEBI's website"
+            },
+            {
+                "id": "b",
+                "text": "NSE website"
+            },
+            {
+                "id": "c",
+                "text": "BSE website"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 80058,
+        "question": "What is a Depository Participant?",
+        "options": [{
+                "id": "a",
+                "text": "A type of investment"
+            },
+            {
+                "id": "b",
+                "text": "An entity holding securities"
+            },
+            {
+                "id": "c",
+                "text": "A financial regulator"
+            },
+            {
+                "id": "d",
+                "text": "A stock exchange"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 80059,
+        "question": "What is the role of SCORES?",
+        "options": [{
+                "id": "a",
+                "text": "SEBI's complaint system"
+            },
+            {
+                "id": "b",
+                "text": "A stock trading platform"
+            },
+            {
+                "id": "c",
+                "text": "An investment advisory service"
+            },
+            {
+                "id": "d",
+                "text": "A market research tool"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80060,
+        "question": "What is the limit for third-party UPI in IPOs?",
+        "options": [{
+                "id": "a",
+                "text": "Not allowed"
+            },
+            {
+                "id": "b",
+                "text": "Rs. 1 Lakh"
+            },
+            {
+                "id": "c",
+                "text": "Rs. 2 Lakhs"
+            },
+            {
+                "id": "d",
+                "text": "Rs. 5 Lakhs"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80061,
+        "question": "What is the purpose of risk profiling?",
+        "options": [{
+                "id": "a",
+                "text": "To determine investment suitability"
+            },
+            {
+                "id": "b",
+                "text": "To increase returns"
+            },
+            {
+                "id": "c",
+                "text": "To lower fees"
+            },
+            {
+                "id": "d",
+                "text": "To speed up transactions"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80062,
+        "question": "What should investors insist on from advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Written terms and conditions"
+            },
+            {
+                "id": "b",
+                "text": "Higher returns"
+            },
+            {
+                "id": "c",
+                "text": "Lower fees"
+            },
+            {
+                "id": "d",
+                "text": "Quick decisions"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 80063,
+        "question": "What is the helpline for investor complaints?",
+        "options": [{
+                "id": "a",
+                "text": "1800 22 7575"
+            },
+            {
+                "id": "b",
+                "text": "1800 266 7575"
+            },
+            {
+                "id": "c",
+                "text": "Both A and B"
+            },
+            {
+                "id": "d",
+                "text": "Neither A nor B"
+            }
+        ],
+        "correct_answer": "c"
+    }
+]

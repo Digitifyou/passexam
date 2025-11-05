@@ -82,5 +82,101 @@
     "correctCount": 19,
     "totalQuestions": 50,
     "submittedAt": "2025-10-09T09:15:45.714Z"
+  },
+  {
+    "id": 8,
+    "userId": 2,
+    "testId": 2604,
+    "testName": "Fixed Income Securities - Practice 4",
+    "sectionTitle": "Fixed Income Securities",
+    "testType": "practice",
+    "score": 8,
+    "correctCount": 2,
+    "totalQuestions": 25,
+    "submittedAt": "2025-10-24T12:54:24.082Z"
+  },
+  {
+    "id": 9,
+    "userId": 2,
+    "testId": 202,
+    "testName": "Securities Market Overview - Practice 2",
+    "sectionTitle": "Securities Market Overview",
+    "testType": "practice",
+    "score": 0,
+    "correctCount": 0,
+    "totalQuestions": 25,
+    "submittedAt": "2025-10-24T12:59:12.382Z"
+  },
+  {
+    "id": 10,
+    "userId": 2,
+    "testId": 803,
+    "testName": "SEBI   Investor Certification Examination   Securities Market Booklet - Practice 3",
+    "sectionTitle": "SEBI   Investor Certification Examination   Securities Market Booklet",
+    "testType": "practice",
+    "score": 23,
+    "correctCount": 3,
+    "totalQuestions": 13,
+    "submittedAt": "2025-10-24T13:04:28.980Z"
+  },
+  {
+    "id": 11,
+    "userId": 2,
+    "testId": 803,
+    "testName": "SEBI   Investor Certification Examination   Securities Market Booklet - Practice 3",
+    "sectionTitle": "SEBI   Investor Certification Examination   Securities Market Booklet",
+    "testType": "practice",
+    "score": 23,
+    "correctCount": 3,
+    "totalQuestions": 13,
+    "submittedAt": "2025-10-24T13:07:46.027Z"
+  },
+  {
+    "id": 12,
+    "userId": 3,
+    "testId": 501,
+    "testName": "Interest Rate Derivatives - Practice 1",
+    "sectionTitle": "Interest Rate Derivatives",
+    "testType": "practice",
+    "score": 0,
+    "correctCount": 0,
+    "totalQuestions": 25,
+    "submittedAt": "2025-11-05T08:39:18.999Z"
+  },
+  {
+    "id": 13,
+    "userId": 3,
+    "testId": 501,
+    "testName": "Interest Rate Derivatives - Practice 1",
+    "sectionTitle": "Interest Rate Derivatives",
+    "testType": "practice",
+    "score": 0,
+    "correctCount": 0,
+    "totalQuestions": 25,
+    "submittedAt": "2025-11-05T08:42:03.784Z"
+  },
+  {
+    "id": 14,
+    "userId": 3,
+    "testId": 102,
+    "testName": "Currency Derivatives - Practice 2",
+    "sectionTitle": "Currency Derivatives",
+    "testType": "practice",
+    "score": 4,
+    "correctCount": 1,
+    "totalQuestions": 25,
+    "submittedAt": "2025-11-05T08:47:58.539Z"
+  },
+  {
+    "id": 15,
+    "userId": 3,
+    "testId": 201,
+    "testName": "Securities Market Overview - Practice 1",
+    "sectionTitle": "Securities Market Overview",
+    "testType": "practice",
+    "score": 8,
+    "correctCount": 2,
+    "totalQuestions": 25,
+    "submittedAt": "2025-11-05T08:58:25.864Z"
   }
 ]

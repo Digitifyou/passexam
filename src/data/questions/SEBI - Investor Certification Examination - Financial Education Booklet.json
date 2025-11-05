@@ -1,0 +1,3173 @@
+[{
+        "id": 70001,
+        "question": "What is the primary purpose of financial planning?",
+        "options": [{
+                "id": "a",
+                "text": "To save money"
+            },
+            {
+                "id": "b",
+                "text": "To invest in the stock market"
+            },
+            {
+                "id": "c",
+                "text": "To create a comprehensive plan for managing income and expenditure"
+            },
+            {
+                "id": "d",
+                "text": "To avoid taxes"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70002,
+        "question": "Which of the following is NOT a key concept in personal finance?",
+        "options": [{
+                "id": "a",
+                "text": "Savings"
+            },
+            {
+                "id": "b",
+                "text": "Investments"
+            },
+            {
+                "id": "c",
+                "text": "Assets"
+            },
+            {
+                "id": "d",
+                "text": "Liabilities"
+            },
+            {
+                "id": "e",
+                "text": "Debt"
+            }
+        ],
+        "correct_answer": "e"
+    },
+    {
+        "id": 70003,
+        "question": "What does the term 'savings' refer to?",
+        "options": [{
+                "id": "a",
+                "text": "The money spent on essential items"
+            },
+            {
+                "id": "b",
+                "text": "The surplus of income over expenditure"
+            },
+            {
+                "id": "c",
+                "text": "The money borrowed from others"
+            },
+            {
+                "id": "d",
+                "text": "The money invested in the stock market"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70004,
+        "question": "What is the main difference between savings and investments?",
+        "options": [{
+                "id": "a",
+                "text": "Savings are short-term, while investments are long-term"
+            },
+            {
+                "id": "b",
+                "text": "Savings are for emergencies, while investments are for growth"
+            },
+            {
+                "id": "c",
+                "text": "Savings are liquid, while investments may not be"
+            },
+            {
+                "id": "d",
+                "text": "Savings are risky, while investments are safe"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70005,
+        "question": "What is the primary purpose of financial education?",
+        "options": [{
+                "id": "a",
+                "text": "To help individuals make informed decisions about their financial resources"
+            },
+            {
+                "id": "b",
+                "text": "To encourage individuals to spend more"
+            },
+            {
+                "id": "c",
+                "text": "To promote investment in the stock market"
+            },
+            {
+                "id": "d",
+                "text": "To reduce the use of credit cards"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70006,
+        "question": "What is the term for the process of earning interest on both the principal and previously earned interest?",
+        "options": [{
+                "id": "a",
+                "text": "Simple interest"
+            },
+            {
+                "id": "b",
+                "text": "Compound interest"
+            },
+            {
+                "id": "c",
+                "text": "Rule of 72"
+            },
+            {
+                "id": "d",
+                "text": "Rupee cost averaging"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70007,
+        "question": "What is the purpose of the Rule of 72?",
+        "options": [{
+                "id": "a",
+                "text": "To calculate the time it takes for an investment to double"
+            },
+            {
+                "id": "b",
+                "text": "To determine the best time to invest in the stock market"
+            },
+            {
+                "id": "c",
+                "text": "To calculate the compound interest on an investment"
+            },
+            {
+                "id": "d",
+                "text": "To determine the rate of inflation"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70008,
+        "question": "What is the term for the decline in the purchasing power of money due to rising prices of goods and services?",
+        "options": [{
+                "id": "a",
+                "text": "Inflation"
+            },
+            {
+                "id": "b",
+                "text": "Deflation"
+            },
+            {
+                "id": "c",
+                "text": "Recession"
+            },
+            {
+                "id": "d",
+                "text": "Depression"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70009,
+        "question": "What is the term for the strategy of investing a fixed amount of money at regular intervals, regardless of market conditions?",
+        "options": [{
+                "id": "a",
+                "text": "Rupee cost averaging"
+            },
+            {
+                "id": "b",
+                "text": "Dollar cost averaging"
+            },
+            {
+                "id": "c",
+                "text": "Compound interest"
+            },
+            {
+                "id": "d",
+                "text": "Rule of 72"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70010,
+        "question": "What is the term for items that you own and have economic value?",
+        "options": [{
+                "id": "a",
+                "text": "Assets"
+            },
+            {
+                "id": "b",
+                "text": "Liabilities"
+            },
+            {
+                "id": "c",
+                "text": "Debt"
+            },
+            {
+                "id": "d",
+                "text": "Expenditure"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70011,
+        "question": "What is the term for money borrowed to meet a shortfall when expenses exceed available funds?",
+        "options": [{
+                "id": "a",
+                "text": "Debt"
+            },
+            {
+                "id": "b",
+                "text": "Loan"
+            },
+            {
+                "id": "c",
+                "text": "Credit"
+            },
+            {
+                "id": "d",
+                "text": "Mortgage"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70012,
+        "question": "What is the term for the process of estimating financial needs and implementing a plan to meet them?",
+        "options": [{
+                "id": "a",
+                "text": "Financial planning"
+            },
+            {
+                "id": "b",
+                "text": "Budgeting"
+            },
+            {
+                "id": "c",
+                "text": "Investing"
+            },
+            {
+                "id": "d",
+                "text": "Saving"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70013,
+        "question": "What is the term for the difference between assets and liabilities?",
+        "options": [{
+                "id": "a",
+                "text": "Net worth"
+            },
+            {
+                "id": "b",
+                "text": "Net asset value"
+            },
+            {
+                "id": "c",
+                "text": "Equity"
+            },
+            {
+                "id": "d",
+                "text": "Capital"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70014,
+        "question": "What is the term for financial goals that are specific, measurable, achievable, realistic, and time-bound?",
+        "options": [{
+                "id": "a",
+                "text": "SMART goals"
+            },
+            {
+                "id": "b",
+                "text": "Long-term goals"
+            },
+            {
+                "id": "c",
+                "text": "Short-term goals"
+            },
+            {
+                "id": "d",
+                "text": "Medium-term goals"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70015,
+        "question": "What is the term for the process of allocating investments based on specific financial goals?",
+        "options": [{
+                "id": "a",
+                "text": "Goal-based investing"
+            },
+            {
+                "id": "b",
+                "text": "Risk management"
+            },
+            {
+                "id": "c",
+                "text": "Portfolio diversification"
+            },
+            {
+                "id": "d",
+                "text": "Asset allocation"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70016,
+        "question": "What is the term for the initial amount of money invested, excluding any interest earned?",
+        "options": [{
+                "id": "a",
+                "text": "Principal"
+            },
+            {
+                "id": "b",
+                "text": "Interest"
+            },
+            {
+                "id": "c",
+                "text": "Return"
+            },
+            {
+                "id": "d",
+                "text": "Investment"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70017,
+        "question": "What does the 'Achievable' characteristic of a SMART goal emphasize?",
+        "options": [{
+                "id": "a",
+                "text": "The goal should be based on resources and tasks that can reasonably be achieved."
+            },
+            {
+                "id": "b",
+                "text": "The goal should be time-bound to track progress."
+            },
+            {
+                "id": "c",
+                "text": "The goal should be based on the investor's risk appetite."
+            },
+            {
+                "id": "d",
+                "text": "The goal should focus on maximizing returns."
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70018,
+        "question": "What is the primary purpose of asset allocation in investing?",
+        "options": [{
+                "id": "a",
+                "text": "To maximize returns by focusing on a single asset class."
+            },
+            {
+                "id": "b",
+                "text": "To balance risk and reward by dividing investments across different asset classes."
+            },
+            {
+                "id": "c",
+                "text": "To reduce liquidity by investing in fixed deposits."
+            },
+            {
+                "id": "d",
+                "text": "To increase debt exposure for higher returns."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70019,
+        "question": "What is the main objective of diversification in investing?",
+        "options": [{
+                "id": "a",
+                "text": "To increase the potential for higher returns by focusing on a single asset class."
+            },
+            {
+                "id": "b",
+                "text": "To reduce risk by spreading investments across various financial instruments."
+            },
+            {
+                "id": "c",
+                "text": "To minimize liquidity by investing in real estate."
+            },
+            {
+                "id": "d",
+                "text": "To maximize debt investments for steady returns."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70020,
+        "question": "Which of the following is considered a high-risk investment?",
+        "options": [{
+                "id": "a",
+                "text": "Investment in government bonds."
+            },
+            {
+                "id": "b",
+                "text": "Investment in equity shares."
+            },
+            {
+                "id": "c",
+                "text": "Investment in fixed deposits."
+            },
+            {
+                "id": "d",
+                "text": "Investment in debt securities."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70021,
+        "question": "What is the relationship between risk and return in investments?",
+        "options": [{
+                "id": "a",
+                "text": "Higher risk always leads to lower returns."
+            },
+            {
+                "id": "b",
+                "text": "Lower risk always leads to higher returns."
+            },
+            {
+                "id": "c",
+                "text": "Higher risk generally leads to higher potential returns."
+            },
+            {
+                "id": "d",
+                "text": "Risk and return are unrelated in investments."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70022,
+        "question": "What is the primary benefit of keeping money in banks rather than at home?",
+        "options": [{
+                "id": "a",
+                "text": "It provides higher returns through investments."
+            },
+            {
+                "id": "b",
+                "text": "It ensures safety and provides opportunities for growth."
+            },
+            {
+                "id": "c",
+                "text": "It allows for easier access to loans."
+            },
+            {
+                "id": "d",
+                "text": "It reduces the need for diversification."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70023,
+        "question": "Which type of bank account is known for being highly liquid but offers low interest?",
+        "options": [{
+                "id": "a",
+                "text": "Fixed Deposit (FD) Account."
+            },
+            {
+                "id": "b",
+                "text": "Recurring Deposit (RD) Account."
+            },
+            {
+                "id": "c",
+                "text": "Savings Bank (SB) Account."
+            },
+            {
+                "id": "d",
+                "text": "Special Bank Term Deposit Scheme."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70024,
+        "question": "What is the key feature of the Basic Savings Bank Deposit Account (BSBDA)?",
+        "options": [{
+                "id": "a",
+                "text": "It requires a high initial deposit."
+            },
+            {
+                "id": "b",
+                "text": "It offers high interest rates."
+            },
+            {
+                "id": "c",
+                "text": "It allows for zero balance and is designed to promote financial inclusion."
+            },
+            {
+                "id": "d",
+                "text": "It is only available for senior citizens."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70025,
+        "question": "Which of the following is NOT a type of bank account?",
+        "options": [{
+                "id": "a",
+                "text": "Savings Bank Account."
+            },
+            {
+                "id": "b",
+                "text": "Recurring Deposit Account."
+            },
+            {
+                "id": "c",
+                "text": "Fixed Deposit Account."
+            },
+            {
+                "id": "d",
+                "text": "Insurance Policy Account."
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70026,
+        "question": "What is the primary purpose of the Know Your Customer (KYC) norms?",
+        "options": [{
+                "id": "a",
+                "text": "To allow banks to lend money more easily."
+            },
+            {
+                "id": "b",
+                "text": "To help banks understand their customers better and manage risks."
+            },
+            {
+                "id": "c",
+                "text": "To reduce the number of documents required for account opening."
+            },
+            {
+                "id": "d",
+                "text": "To increase the interest rates on deposits."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70027,
+        "question": "Which of the following is a feature of the Special Bank Term Deposit Scheme?",
+        "options": [{
+                "id": "a",
+                "text": "It offers a high interest rate."
+            },
+            {
+                "id": "b",
+                "text": "It provides a tax benefit under Section 80C of the Income Tax Act, 1961."
+            },
+            {
+                "id": "c",
+                "text": "It allows for premature withdrawal."
+            },
+            {
+                "id": "d",
+                "text": "It is a short-term investment option."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70028,
+        "question": "What is the primary purpose of the NEFT payment system?",
+        "options": [{
+                "id": "a",
+                "text": "To facilitate high-value transactions in real-time."
+            },
+            {
+                "id": "b",
+                "text": "To allow instant fund transfers using a mobile number."
+            },
+            {
+                "id": "c",
+                "text": "To transfer funds from one bank account to another without any restrictions on the amount."
+            },
+            {
+                "id": "d",
+                "text": "To enable fund transfers through a virtual payment address."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70029,
+        "question": "Which of the following is a key feature of the RTGS payment system?",
+        "options": [{
+                "id": "a",
+                "text": "It is used for low-value transactions."
+            },
+            {
+                "id": "b",
+                "text": "It facilitates real-time transfer of high-value funds."
+            },
+            {
+                "id": "c",
+                "text": "It requires the beneficiary's MMID for transactions."
+            },
+            {
+                "id": "d",
+                "text": "It is primarily used for international transactions."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70030,
+        "question": "What is the primary benefit of the Unified Payment Interface (UPI)?",
+        "options": [{
+                "id": "a",
+                "text": "It allows for high-value transactions only."
+            },
+            {
+                "id": "b",
+                "text": "It enables instant fund transfers using a virtual payment address."
+            },
+            {
+                "id": "c",
+                "text": "It requires the beneficiary's account number and IFSC code for transactions."
+            },
+            {
+                "id": "d",
+                "text": "It is available only through internet banking."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70031,
+        "question": "What is the main advantage of investing in government bonds?",
+        "options": [{
+                "id": "a",
+                "text": "They offer the highest returns compared to other investments."
+            },
+            {
+                "id": "b",
+                "text": "They are highly liquid and can be easily converted to cash."
+            },
+            {
+                "id": "c",
+                "text": "They are considered to be effectively 'risk-free'."
+            },
+            {
+                "id": "d",
+                "text": "They provide tax benefits under Section 80C."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70032,
+        "question": "What is the primary purpose of capital appreciation?",
+        "options": [{
+                "id": "a",
+                "text": "To generate regular income through dividends."
+            },
+            {
+                "id": "b",
+                "text": "To increase the value of an investment over time."
+            },
+            {
+                "id": "c",
+                "text": "To reduce the risk of an investment portfolio."
+            },
+            {
+                "id": "d",
+                "text": "To provide liquidity to an investment."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70033,
+        "question": "Which of the following is a key feature of NEFT?",
+        "options": [{
+                "id": "a",
+                "text": "It is used for high-value transactions."
+            },
+            {
+                "id": "b",
+                "text": "It requires a minimum transfer amount."
+            },
+            {
+                "id": "c",
+                "text": "It uses the beneficiary's account number and IFSC Code."
+            },
+            {
+                "id": "d",
+                "text": "It is processed instantly."
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70034,
+        "question": "What is a unique feature of RTGS?",
+        "options": [{
+                "id": "a",
+                "text": "It is used for low-value transactions."
+            },
+            {
+                "id": "b",
+                "text": "It processes transactions in real-time."
+            },
+            {
+                "id": "c",
+                "text": "It does not require an IFSC Code."
+            },
+            {
+                "id": "d",
+                "text": "It has a maximum transfer limit."
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70035,
+        "question": "Which service allows instant fund transfers through a smartphone using a Virtual Payment Address?",
+        "options": [{
+                "id": "a",
+                "text": "NEFT"
+            },
+            {
+                "id": "b",
+                "text": "RTGS"
+            },
+            {
+                "id": "c",
+                "text": "IMPS"
+            },
+            {
+                "id": "d",
+                "text": "UPI"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70036,
+        "question": "What information is needed for fund transfer through mobile banking using IMPS?",
+        "options": [{
+                "id": "a",
+                "text": "Account number and IFSC Code"
+            },
+            {
+                "id": "b",
+                "text": "MMID"
+            },
+            {
+                "id": "c",
+                "text": "UPI PIN"
+            },
+            {
+                "id": "d",
+                "text": "Debit card details"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70037,
+        "question": "Which of the following is NOT a service provided by a Payment Bank?",
+        "options": [{
+                "id": "a",
+                "text": "Savings account facilities"
+            },
+            {
+                "id": "b",
+                "text": "Issuing ATM/Debit Cards"
+            },
+            {
+                "id": "c",
+                "text": "Providing loans"
+            },
+            {
+                "id": "d",
+                "text": "Payment and remittance services"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70038,
+        "question": "What is the primary purpose of a Small Finance Bank?",
+        "options": [{
+                "id": "a",
+                "text": "To provide large loans to corporations"
+            },
+            {
+                "id": "b",
+                "text": "To serve unserved and underserved populations"
+            },
+            {
+                "id": "c",
+                "text": "To issue credit cards"
+            },
+            {
+                "id": "d",
+                "text": "To facilitate international transactions"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70039,
+        "question": "What is a Business Correspondent?",
+        "options": [{
+                "id": "a",
+                "text": "A bank employee who works at a branch"
+            },
+            {
+                "id": "b",
+                "text": "A representative who assists customers in remote locations"
+            },
+            {
+                "id": "c",
+                "text": "A mobile banking app"
+            },
+            {
+                "id": "d",
+                "text": "A type of savings account"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70040,
+        "question": "Which of the following is a recommended practice for digital payments?",
+        "options": [{
+                "id": "a",
+                "text": "Using unsecured Wi-Fi for internet banking"
+            },
+            {
+                "id": "b",
+                "text": "Saving login credentials on your phone"
+            },
+            {
+                "id": "c",
+                "text": "Updating your mobile banking app regularly"
+            },
+            {
+                "id": "d",
+                "text": "Ignoring account balance statements"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70041,
+        "question": "What should you do if you suspect unauthorized transactions in your account?",
+        "options": [{
+                "id": "a",
+                "text": "Report it to the bank immediately"
+            },
+            {
+                "id": "b",
+                "text": "Wait for the next statement to confirm"
+            },
+            {
+                "id": "c",
+                "text": "Ignore it if the amount is small"
+            },
+            {
+                "id": "d",
+                "text": "Only change your password"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70042,
+        "question": "What is a key difference between a credit card and a debit card?",
+        "options": [{
+                "id": "a",
+                "text": "Credit cards are linked to savings accounts"
+            },
+            {
+                "id": "b",
+                "text": "Debit cards provide credit facilities"
+            },
+            {
+                "id": "c",
+                "text": "Credit cards require immediate payment"
+            },
+            {
+                "id": "d",
+                "text": "Debit cards do not have transaction limits"
+            }
+        ],
+        "correct_answer": null
+    },
+    {
+        "id": 70043,
+        "question": "What should you do when you receive a new ATM card?",
+        "options": [{
+                "id": "a",
+                "text": "Write down the PIN and keep it in your wallet"
+            },
+            {
+                "id": "b",
+                "text": "Use it immediately without changing the PIN"
+            },
+            {
+                "id": "c",
+                "text": "Change the PIN immediately"
+            },
+            {
+                "id": "d",
+                "text": "Share it with a family member"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70044,
+        "question": "Which of the following is NOT a feature of UPI?",
+        "options": [{
+                "id": "a",
+                "text": "24/7 fund transfer"
+            },
+            {
+                "id": "b",
+                "text": "Requires IFSC Code for transactions"
+            },
+            {
+                "id": "c",
+                "text": "Uses Virtual Payment Address"
+            },
+            {
+                "id": "d",
+                "text": "Needs internet banking details"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70045,
+        "question": "What is the purpose of a Virtual Payment Address in UPI?",
+        "options": [{
+                "id": "a",
+                "text": "To replace the need for IFSC Code"
+            },
+            {
+                "id": "b",
+                "text": "To facilitate instant fund transfers"
+            },
+            {
+                "id": "c",
+                "text": "To increase transaction limits"
+            },
+            {
+                "id": "d",
+                "text": "To reduce security measures"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70046,
+        "question": "Which of the following is a recommended practice for ATM usage?",
+        "options": [{
+                "id": "a",
+                "text": "Using an ATM without security"
+            },
+            {
+                "id": "b",
+                "text": "Disclosing your PIN to others"
+            },
+            {
+                "id": "c",
+                "text": "Using the virtual keyboard for online transactions"
+            },
+            {
+                "id": "d",
+                "text": "Leaving your card unattended"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70047,
+        "question": "What is the primary function of a Business Correspondent?",
+        "options": [{
+                "id": "a",
+                "text": "To provide loans to large enterprises"
+            },
+            {
+                "id": "b",
+                "text": "To assist customers in remote areas with banking services"
+            },
+            {
+                "id": "c",
+                "text": "To manage bank branches"
+            },
+            {
+                "id": "d",
+                "text": "To issue credit cards"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70048,
+        "question": "Which of the following is a key feature of IMPS?",
+        "options": [{
+                "id": "a",
+                "text": "It is used for high-value transactions only"
+            },
+            {
+                "id": "b",
+                "text": "It requires the beneficiary's MMID for mobile banking"
+            },
+            {
+                "id": "c",
+                "text": "It processes transactions in real-time"
+            },
+            {
+                "id": "d",
+                "text": "It is available only during banking hours"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70049,
+        "question": "What is the primary source of funds for a credit card?",
+        "options": [{
+                "id": "a",
+                "text": "Linked to one's own savings/current account"
+            },
+            {
+                "id": "b",
+                "text": "Lending bank provides the credit facility"
+            },
+            {
+                "id": "c",
+                "text": "Customer's own investments"
+            },
+            {
+                "id": "d",
+                "text": "Government subsidies"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70050,
+        "question": "When is interest levied on a credit card?",
+        "options": [{
+                "id": "a",
+                "text": "If the outstanding amount is paid on time"
+            },
+            {
+                "id": "b",
+                "text": "If the outstanding amount is not paid on time"
+            },
+            {
+                "id": "c",
+                "text": "If the card is used internationally"
+            },
+            {
+                "id": "d",
+                "text": "If the card is lost"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70051,
+        "question": "What is the main purpose of the Reserve Bank of India (RBI)?",
+        "options": [{
+                "id": "a",
+                "text": "To regulate the country's currency and credit systems"
+            },
+            {
+                "id": "b",
+                "text": "To provide loans to individuals"
+            },
+            {
+                "id": "c",
+                "text": "To manage foreign exchange reserves"
+            },
+            {
+                "id": "d",
+                "text": "To oversee the insurance sector"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70052,
+        "question": "What type of risk refers to the uncertainty inherent in a particular company or industry?",
+        "options": [{
+                "id": "a",
+                "text": "Systematic Risk"
+            },
+            {
+                "id": "b",
+                "text": "Unsystematic Risk"
+            },
+            {
+                "id": "c",
+                "text": "Liquidity Risk"
+            },
+            {
+                "id": "d",
+                "text": "Inflation Risk"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70053,
+        "question": "Which risk arises when an investment cannot be converted into cash quickly enough?",
+        "options": [{
+                "id": "a",
+                "text": "Liquidity Risk"
+            },
+            {
+                "id": "b",
+                "text": "Volatility Risk"
+            },
+            {
+                "id": "c",
+                "text": "Currency Risk"
+            },
+            {
+                "id": "d",
+                "text": "Business Risk"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70054,
+        "question": "What is the purpose of ASBA in the primary market?",
+        "options": [{
+                "id": "a",
+                "text": "To allow investors to trade securities in the secondary market"
+            },
+            {
+                "id": "b",
+                "text": "To enable investors to apply for shares by blocking funds in their bank account"
+            },
+            {
+                "id": "c",
+                "text": "To provide loans for purchasing shares"
+            },
+            {
+                "id": "d",
+                "text": "To facilitate the sale of shares"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70055,
+        "question": "What is the role of a merchant banker in the primary market?",
+        "options": [{
+                "id": "a",
+                "text": "To prepare the prospectus and ensure compliance for share issuance"
+            },
+            {
+                "id": "b",
+                "text": "To trade securities in the secondary market"
+            },
+            {
+                "id": "c",
+                "text": "To manage mutual funds"
+            },
+            {
+                "id": "d",
+                "text": "To provide insurance for investments"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70056,
+        "question": "Where are securities traded in the secondary market?",
+        "options": [{
+                "id": "a",
+                "text": "Stock exchanges"
+            },
+            {
+                "id": "b",
+                "text": "Primary market"
+            },
+            {
+                "id": "c",
+                "text": "Bank branches"
+            },
+            {
+                "id": "d",
+                "text": "Insurance companies"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70057,
+        "question": "What is required to open a demat and trading account?",
+        "options": [{
+                "id": "a",
+                "text": "Completion of the KYC process"
+            },
+            {
+                "id": "b",
+                "text": "A minimum investment of ₹10,000"
+            },
+            {
+                "id": "c",
+                "text": "A physical visit to the stock exchange"
+            },
+            {
+                "id": "d",
+                "text": "A referral from an existing investor"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70058,
+        "question": "What is the purpose of a Contract Note?",
+        "options": [{
+                "id": "a",
+                "text": "To serve as a legal document detailing the transaction"
+            },
+            {
+                "id": "b",
+                "text": "To block funds for ASBA applications"
+            },
+            {
+                "id": "c",
+                "text": "To provide margin for trading"
+            },
+            {
+                "id": "d",
+                "text": "To pledge securities"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70059,
+        "question": "What is the benefit of a Basic Services Demat Account (BSDA)?",
+        "options": [{
+                "id": "a",
+                "text": "Nil/Low Annual Maintenance Charges"
+            },
+            {
+                "id": "b",
+                "text": "Higher interest rates on deposits"
+            },
+            {
+                "id": "c",
+                "text": "Increased trading limits"
+            },
+            {
+                "id": "d",
+                "text": "Priority customer service"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70060,
+        "question": "What is the primary function of a mutual fund?",
+        "options": [{
+                "id": "a",
+                "text": "To pool money from investors to invest in various securities"
+            },
+            {
+                "id": "b",
+                "text": "To provide insurance coverage"
+            },
+            {
+                "id": "c",
+                "text": "To offer loans to individuals"
+            },
+            {
+                "id": "d",
+                "text": "To manage real estate investments"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70061,
+        "question": "What is the role of the RBI as the lender of last resort?",
+        "options": [{
+                "id": "a",
+                "text": "To provide loans to commercial banks during financial crises"
+            },
+            {
+                "id": "b",
+                "text": "To regulate the insurance sector"
+            },
+            {
+                "id": "c",
+                "text": "To manage foreign exchange reserves"
+            },
+            {
+                "id": "d",
+                "text": "To oversee the stock market"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70062,
+        "question": "What is the purpose of the Know Your Client (KYC) process?",
+        "options": [{
+                "id": "a",
+                "text": "To prevent money laundering"
+            },
+            {
+                "id": "b",
+                "text": "To verify the creditworthiness of investors"
+            },
+            {
+                "id": "c",
+                "text": "To promote financial inclusion"
+            },
+            {
+                "id": "d",
+                "text": "To manage risk assessment"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70063,
+        "question": "What is the settlement cycle for trades executed on a Monday?",
+        "options": [{
+                "id": "a",
+                "text": "Settled on the following Wednesday"
+            },
+            {
+                "id": "b",
+                "text": "Settled on the following Tuesday"
+            },
+            {
+                "id": "c",
+                "text": "Settled on the same day"
+            },
+            {
+                "id": "d",
+                "text": "Settled on the following Thursday"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70064,
+        "question": "What is the purpose of margin pledging in trading?",
+        "options": [{
+                "id": "a",
+                "text": "To secure loans from brokers"
+            },
+            {
+                "id": "b",
+                "text": "To facilitate the purchase of shares without upfront payment"
+            },
+            {
+                "id": "c",
+                "text": "To hedge against market risks"
+            },
+            {
+                "id": "d",
+                "text": "To diversify investment portfolios"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70065,
+        "question": "Which of the following is NOT a feature of mutual funds?",
+        "options": [{
+                "id": "a",
+                "text": "Professional management"
+            },
+            {
+                "id": "b",
+                "text": "Guaranteed returns"
+            },
+            {
+                "id": "c",
+                "text": "Diversification"
+            },
+            {
+                "id": "d",
+                "text": "Economy of scale"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70066,
+        "question": "What is the primary purpose of a Systematic Investment Plan (SIP)?",
+        "options": [{
+                "id": "a",
+                "text": "To invest a lump sum amount"
+            },
+            {
+                "id": "b",
+                "text": "To withdraw funds regularly"
+            },
+            {
+                "id": "c",
+                "text": "To invest fixed amounts at regular intervals"
+            },
+            {
+                "id": "d",
+                "text": "To trade commodities"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70067,
+        "question": "Which mutual fund category invests in both debt and equity securities?",
+        "options": [{
+                "id": "a",
+                "text": "Debt Schemes"
+            },
+            {
+                "id": "b",
+                "text": "Equity Schemes"
+            },
+            {
+                "id": "c",
+                "text": "Hybrid Schemes"
+            },
+            {
+                "id": "d",
+                "text": "Solution Oriented Schemes"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70068,
+        "question": "What does AMC stand for in the context of mutual funds?",
+        "options": [{
+                "id": "a",
+                "text": "Annual Maintenance Charges"
+            },
+            {
+                "id": "b",
+                "text": "Asset Management Company"
+            },
+            {
+                "id": "c",
+                "text": "Associated Market Costs"
+            },
+            {
+                "id": "d",
+                "text": "Accumulated Member Contributions"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70069,
+        "question": "Which of the following is a type of life insurance policy?",
+        "options": [{
+                "id": "a",
+                "text": "Term Insurance"
+            },
+            {
+                "id": "b",
+                "text": "Endowment Insurance"
+            },
+            {
+                "id": "c",
+                "text": "Whole Life Insurance"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70070,
+        "question": "What is the main function of the risk-o-meter in mutual funds?",
+        "options": [{
+                "id": "a",
+                "text": "To measure market trends"
+            },
+            {
+                "id": "b",
+                "text": "To indicate the level of risk"
+            },
+            {
+                "id": "c",
+                "text": "To predict future returns"
+            },
+            {
+                "id": "d",
+                "text": "To determine investment amount"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70071,
+        "question": "Which commodity exchange predominantly trades agricultural products?",
+        "options": [{
+                "id": "a",
+                "text": "MCX"
+            },
+            {
+                "id": "b",
+                "text": "NCDEX"
+            },
+            {
+                "id": "c",
+                "text": "BSE"
+            },
+            {
+                "id": "d",
+                "text": "NSE"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70072,
+        "question": "What is the purpose of hedging in commodity trading?",
+        "options": [{
+                "id": "a",
+                "text": "To speculate on price movements"
+            },
+            {
+                "id": "b",
+                "text": "To protect against adverse price changes"
+            },
+            {
+                "id": "c",
+                "text": "To increase market share"
+            },
+            {
+                "id": "d",
+                "text": "To reduce production costs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70073,
+        "question": "Which of the following is NOT a type of contract in commodity derivatives?",
+        "options": [{
+                "id": "a",
+                "text": "Forward Contract"
+            },
+            {
+                "id": "b",
+                "text": "Futures Contract"
+            },
+            {
+                "id": "c",
+                "text": "Options Contract"
+            },
+            {
+                "id": "d",
+                "text": "Insurance Contract"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70074,
+        "question": "What is the primary benefit of diversification in mutual funds?",
+        "options": [{
+                "id": "a",
+                "text": "Higher returns"
+            },
+            {
+                "id": "b",
+                "text": "Reduced risk"
+            },
+            {
+                "id": "c",
+                "text": "Increased liquidity"
+            },
+            {
+                "id": "d",
+                "text": "Lower costs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70075,
+        "question": "Which of the following is a characteristic of unit-linked insurance plans?",
+        "options": [{
+                "id": "a",
+                "text": "Combination of insurance and investment"
+            },
+            {
+                "id": "b",
+                "text": "Guaranteed fixed returns"
+            },
+            {
+                "id": "c",
+                "text": "Only covers death benefit"
+            },
+            {
+                "id": "d",
+                "text": "No premium allocation"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70076,
+        "question": "What is the main advantage of investing through SIP?",
+        "options": [{
+                "id": "a",
+                "text": "Rupee-cost averaging"
+            },
+            {
+                "id": "b",
+                "text": "Higher initial investment"
+            },
+            {
+                "id": "c",
+                "text": "Immediate liquidity"
+            },
+            {
+                "id": "d",
+                "text": "Guaranteed returns"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70077,
+        "question": "Which of the following is a type of commodity?",
+        "options": [{
+                "id": "a",
+                "text": "Equity stocks"
+            },
+            {
+                "id": "b",
+                "text": "Debt securities"
+            },
+            {
+                "id": "c",
+                "text": "Agricultural products"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70078,
+        "question": "What is the purpose of the SEBI guidelines on product labelling for mutual funds?",
+        "options": [{
+                "id": "a",
+                "text": "To increase marketing"
+            },
+            {
+                "id": "b",
+                "text": "To provide risk information to investors"
+            },
+            {
+                "id": "c",
+                "text": "To reduce costs"
+            },
+            {
+                "id": "d",
+                "text": "To simplify returns"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70079,
+        "question": "Which of the following is NOT a benefit of commodity derivative exchanges?",
+        "options": [{
+                "id": "a",
+                "text": "Price discovery"
+            },
+            {
+                "id": "b",
+                "text": "Risk management"
+            },
+            {
+                "id": "c",
+                "text": "Increased speculation"
+            },
+            {
+                "id": "d",
+                "text": "Guaranteed delivery"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70080,
+        "question": "What is the primary purpose of motor insurance?",
+        "options": [{
+                "id": "a",
+                "text": "To cover medical expenses"
+            },
+            {
+                "id": "b",
+                "text": "To protect against vehicle damage"
+            },
+            {
+                "id": "c",
+                "text": "To provide life coverage"
+            },
+            {
+                "id": "d",
+                "text": "To invest in commodities"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70081,
+        "question": "What is the primary purpose of Term Insurance?",
+        "options": [{
+                "id": "a",
+                "text": "To provide a lump sum after a specific term"
+            },
+            {
+                "id": "b",
+                "text": "To cover medical and surgical expenses"
+            },
+            {
+                "id": "c",
+                "text": "To provide a sum assured upon death during the policy term"
+            },
+            {
+                "id": "d",
+                "text": "To cover loss or theft of luggage"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70082,
+        "question": "When does Endowment Insurance pay the sum assured?",
+        "options": [{
+                "id": "a",
+                "text": "Only after a specific term"
+            },
+            {
+                "id": "b",
+                "text": "Only on the death of the policyholder"
+            },
+            {
+                "id": "c",
+                "text": "After a specific term or on death"
+            },
+            {
+                "id": "d",
+                "text": "Only on critical illness"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70083,
+        "question": "What is a feature of Whole Life Insurance?",
+        "options": [{
+                "id": "a",
+                "text": "Covers a fixed period"
+            },
+            {
+                "id": "b",
+                "text": "Matures after a specific term"
+            },
+            {
+                "id": "c",
+                "text": "Remains active as long as premiums are paid"
+            },
+            {
+                "id": "d",
+                "text": "Invests in equity and debt instruments"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70084,
+        "question": "Where is part of the premium invested in Unit Linked Insurance?",
+        "options": [{
+                "id": "a",
+                "text": "Only in equity instruments"
+            },
+            {
+                "id": "b",
+                "text": "Only in debt instruments"
+            },
+            {
+                "id": "c",
+                "text": "In equity and debt instruments"
+            },
+            {
+                "id": "d",
+                "text": "In government securities only"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70085,
+        "question": "What does Personal Accidental Cover provide?",
+        "options": [{
+                "id": "a",
+                "text": "Coverage for medical expenses"
+            },
+            {
+                "id": "b",
+                "text": "Monetary compensation for accidents"
+            },
+            {
+                "id": "c",
+                "text": "Coverage for vehicle damage"
+            },
+            {
+                "id": "d",
+                "text": "Coverage for travel cancellations"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70086,
+        "question": "What is another name for Motor Insurance?",
+        "options": [{
+                "id": "a",
+                "text": "Health Insurance"
+            },
+            {
+                "id": "b",
+                "text": "Vehicle Insurance"
+            },
+            {
+                "id": "c",
+                "text": "Travel Insurance"
+            },
+            {
+                "id": "d",
+                "text": "Property Insurance"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70087,
+        "question": "Who is the insured in Health Insurance?",
+        "options": [{
+                "id": "a",
+                "text": "The policyholder"
+            },
+            {
+                "id": "b",
+                "text": "The doctor"
+            },
+            {
+                "id": "c",
+                "text": "The hospital"
+            },
+            {
+                "id": "d",
+                "text": "The insurance company"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70088,
+        "question": "What does Travel Insurance cover?",
+        "options": [{
+                "id": "a",
+                "text": "Only lost luggage"
+            },
+            {
+                "id": "b",
+                "text": "Only medical costs abroad"
+            },
+            {
+                "id": "c",
+                "text": "Risks like lost luggage and medical costs"
+            },
+            {
+                "id": "d",
+                "text": "Only trip cancellations"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70089,
+        "question": "What does Property Insurance include?",
+        "options": [{
+                "id": "a",
+                "text": "Only homeowner’s insurance"
+            },
+            {
+                "id": "b",
+                "text": "Homeowner’s, renters, flood, and earthquake insurance"
+            },
+            {
+                "id": "c",
+                "text": "Only renters insurance"
+            },
+            {
+                "id": "d",
+                "text": "Only flood insurance"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70090,
+        "question": "Who does Group Insurance cover?",
+        "options": [{
+                "id": "a",
+                "text": "Only employees"
+            },
+            {
+                "id": "b",
+                "text": "A defined group of people"
+            },
+            {
+                "id": "c",
+                "text": "Only professional associations"
+            },
+            {
+                "id": "d",
+                "text": "Only society members"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70091,
+        "question": "What is the main aim of IRDAI?",
+        "options": [{
+                "id": "a",
+                "text": "To regulate the insurance sector"
+            },
+            {
+                "id": "b",
+                "text": "To provide health insurance"
+            },
+            {
+                "id": "c",
+                "text": "To sell insurance policies"
+            },
+            {
+                "id": "d",
+                "text": "To cover travel risks"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70092,
+        "question": "What are the two accounts under NPS?",
+        "options": [{
+                "id": "a",
+                "text": "Tier I and Tier II"
+            },
+            {
+                "id": "b",
+                "text": "Tier A and Tier B"
+            },
+            {
+                "id": "c",
+                "text": "Tier X and Tier Y"
+            },
+            {
+                "id": "d",
+                "text": "Tier P and Tier Q"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70093,
+        "question": "What investment options does NPS offer?",
+        "options": [{
+                "id": "a",
+                "text": "E, C, G, A"
+            },
+            {
+                "id": "b",
+                "text": "E, C, G, B"
+            },
+            {
+                "id": "c",
+                "text": "E, C, G, D"
+            },
+            {
+                "id": "d",
+                "text": "E, C, G, F"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70094,
+        "question": "What is a benefit of starting retirement planning at 25?",
+        "options": [{
+                "id": "a",
+                "text": "Higher risk investments"
+            },
+            {
+                "id": "b",
+                "text": "More collateral requirements"
+            },
+            {
+                "id": "c",
+                "text": "Longer investment period"
+            },
+            {
+                "id": "d",
+                "text": "Lower premiums"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70095,
+        "question": "What does estate planning refer to?",
+        "options": [{
+                "id": "a",
+                "text": "Distributing assets after death"
+            },
+            {
+                "id": "b",
+                "text": "Investing in equity"
+            },
+            {
+                "id": "c",
+                "text": "Buying insurance policies"
+            },
+            {
+                "id": "d",
+                "text": "Applying for loans"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70096,
+        "question": "What is required for obtaining a loan?",
+        "options": [{
+                "id": "a",
+                "text": "Only a passport"
+            },
+            {
+                "id": "b",
+                "text": "Proof of identity and residence"
+            },
+            {
+                "id": "c",
+                "text": "Only a PAN card"
+            },
+            {
+                "id": "d",
+                "text": "Only a utility bill"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70097,
+        "question": "Which of the following loans does not require collateral security?",
+        "options": [{
+                "id": "a",
+                "text": "Vehicle Loan"
+            },
+            {
+                "id": "b",
+                "text": "Gold Loan"
+            },
+            {
+                "id": "c",
+                "text": "Housing Loan"
+            },
+            {
+                "id": "d",
+                "text": "Personal Loan"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70098,
+        "question": "What is the primary purpose of a Vehicle Loan?",
+        "options": [{
+                "id": "a",
+                "text": "To fund higher education expenses"
+            },
+            {
+                "id": "b",
+                "text": "To purchase new or second-hand vehicles"
+            },
+            {
+                "id": "c",
+                "text": "To meet marriage expenses"
+            },
+            {
+                "id": "d",
+                "text": "To buy consumer durables"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70099,
+        "question": "Which of the following is NOT one of the 5 Cs in Credit?",
+        "options": [{
+                "id": "a",
+                "text": "Capacity"
+            },
+            {
+                "id": "b",
+                "text": "Character"
+            },
+            {
+                "id": "c",
+                "text": "Capital"
+            },
+            {
+                "id": "d",
+                "text": "Credit Score"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70100,
+        "question": "What does the 'Capacity' component in the 5 Cs of Credit refer to?",
+        "options": [{
+                "id": "a",
+                "text": "The lender's assessment of the borrower's trustworthiness"
+            },
+            {
+                "id": "b",
+                "text": "The borrower's ability to repay the loan"
+            },
+            {
+                "id": "c",
+                "text": "The amount of collateral provided"
+            },
+            {
+                "id": "d",
+                "text": "The borrower's capital investment"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70101,
+        "question": "Which of the following is a feature of the Pradhan Mantri Jan Dhan Yojana (PMJDY)?",
+        "options": [{
+                "id": "a",
+                "text": "Zero balance account"
+            },
+            {
+                "id": "b",
+                "text": "High-interest rates on deposits"
+            },
+            {
+                "id": "c",
+                "text": "Mandatory minimum balance"
+            },
+            {
+                "id": "d",
+                "text": "No overdraft facility"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70102,
+        "question": "What is the primary objective of the Sukanya Samrudhi Yojana?",
+        "options": [{
+                "id": "a",
+                "text": "To promote the welfare of the girl child"
+            },
+            {
+                "id": "b",
+                "text": "To provide housing loans"
+            },
+            {
+                "id": "c",
+                "text": "To fund agricultural activities"
+            },
+            {
+                "id": "d",
+                "text": "To offer education loans"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70103,
+        "question": "Which of the following is NOT a type of loan mentioned in the context?",
+        "options": [{
+                "id": "a",
+                "text": "Agriculture Loan"
+            },
+            {
+                "id": "b",
+                "text": "Consumer Durable Loan"
+            },
+            {
+                "id": "c",
+                "text": "Education Loan"
+            },
+            {
+                "id": "d",
+                "text": "Travel Loan"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70104,
+        "question": "What is the role of the Credit Information Bureau (India) Ltd (CIBIL)?",
+        "options": [{
+                "id": "a",
+                "text": "To provide loans to individuals"
+            },
+            {
+                "id": "b",
+                "text": "To collect and maintain credit records of individuals and non-individuals"
+            },
+            {
+                "id": "c",
+                "text": "To issue credit cards"
+            },
+            {
+                "id": "d",
+                "text": "To sanction loans"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70105,
+        "question": "Which of the following is a feature of the Pradhan Mantri Suraksha Bima Yojana?",
+        "options": [{
+                "id": "a",
+                "text": "Provides life insurance cover"
+            },
+            {
+                "id": "b",
+                "text": "Provides accidental insurance cover"
+            },
+            {
+                "id": "c",
+                "text": "Provides health insurance cover"
+            },
+            {
+                "id": "d",
+                "text": "Provides crop insurance cover"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70106,
+        "question": "What is the minimum age requirement to join the Atal Pension Yojana (APY)?",
+        "options": [{
+                "id": "a",
+                "text": "18 years"
+            },
+            {
+                "id": "b",
+                "text": "21 years"
+            },
+            {
+                "id": "c",
+                "text": "25 years"
+            },
+            {
+                "id": "d",
+                "text": "30 years"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70107,
+        "question": "Which of the following is a key feature of the Pradhan Mantri Mudra Yojana (PMMY)?",
+        "options": [{
+                "id": "a",
+                "text": "Provides loans only to corporate entities"
+            },
+            {
+                "id": "b",
+                "text": "Offers business loans under SHISHU, KISHOR, and TARUN categories"
+            },
+            {
+                "id": "c",
+                "text": "Provides loans only for agricultural purposes"
+            },
+            {
+                "id": "d",
+                "text": "Provides loans only to women entrepreneurs"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70108,
+        "question": "What is the primary objective of the Stand Up India scheme?",
+        "options": [{
+                "id": "a",
+                "text": "To facilitate bank loans to SC/ST and/or Women Entrepreneurs"
+            },
+            {
+                "id": "b",
+                "text": "To provide housing loans"
+            },
+            {
+                "id": "c",
+                "text": "To offer education loans"
+            },
+            {
+                "id": "d",
+                "text": "To fund agricultural activities"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70109,
+        "question": "Which of the following sections of the Income Tax Act allows deductions for medical insurance?",
+        "options": [{
+                "id": "a",
+                "text": "Section 80C"
+            },
+            {
+                "id": "b",
+                "text": "Section 80D"
+            },
+            {
+                "id": "c",
+                "text": "Section 80G"
+            },
+            {
+                "id": "d",
+                "text": "Section 80CCD"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70110,
+        "question": "What is the primary purpose of the National Savings Certificate (NSC)?",
+        "options": [{
+                "id": "a",
+                "text": "To provide life insurance cover"
+            },
+            {
+                "id": "b",
+                "text": "To offer tax benefits while saving"
+            },
+            {
+                "id": "c",
+                "text": "To fund higher education"
+            },
+            {
+                "id": "d",
+                "text": "To provide housing loans"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70111,
+        "question": "Which of the following is a feature of the Public Provident Fund (PPF)?",
+        "options": [{
+                "id": "a",
+                "text": "Joint accounts are allowed"
+            },
+            {
+                "id": "b",
+                "text": "Loans can be availed against PPF investments"
+            },
+            {
+                "id": "c",
+                "text": "Minimum balance is mandatory"
+            },
+            {
+                "id": "d",
+                "text": "No tax benefits are available"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70112,
+        "question": "What is the primary objective of the Pradhan Mantri Jeevan Jyoti Bima Yojana?",
+        "options": [{
+                "id": "a",
+                "text": "To provide accidental insurance cover"
+            },
+            {
+                "id": "b",
+                "text": "To provide life insurance cover"
+            },
+            {
+                "id": "c",
+                "text": "To provide health insurance cover"
+            },
+            {
+                "id": "d",
+                "text": "To provide crop insurance cover"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70113,
+        "question": "Which of the following is eligible for deduction under Section 80C of the Income Tax Act?",
+        "options": [{
+                "id": "a",
+                "text": "Medical insurance premium"
+            },
+            {
+                "id": "b",
+                "text": "Interest on housing loan"
+            },
+            {
+                "id": "c",
+                "text": "Donations to charitable institutions"
+            },
+            {
+                "id": "d",
+                "text": "Investment in NPS (Tier 1 account)"
+            }
+        ],
+        "correct_answer": "d"
+    },
+    {
+        "id": 70114,
+        "question": "What is the primary purpose of Section 80CCD(1B)?",
+        "options": [{
+                "id": "a",
+                "text": "Deduction for medical insurance"
+            },
+            {
+                "id": "b",
+                "text": "Deduction for donations"
+            },
+            {
+                "id": "c",
+                "text": "Additional deduction for NPS investment"
+            },
+            {
+                "id": "d",
+                "text": "Deduction for housing loan interest"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70115,
+        "question": "Who is eligible to claim deductions under Section 80D?",
+        "options": [{
+                "id": "a",
+                "text": "Individuals and HUF for self, spouse, and dependent children"
+            },
+            {
+                "id": "b",
+                "text": "Only individuals for self and spouse"
+            },
+            {
+                "id": "c",
+                "text": "Partnership firms for employee benefits"
+            },
+            {
+                "id": "d",
+                "text": "Companies for group health insurance"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70116,
+        "question": "Which of the following donations are deductible under Section 80G?",
+        "options": [{
+                "id": "a",
+                "text": "Donations to political parties"
+            },
+            {
+                "id": "b",
+                "text": "Donations to National Children Foundation"
+            },
+            {
+                "id": "c",
+                "text": "Donations to foreign charitable institutions"
+            },
+            {
+                "id": "d",
+                "text": "Donations to private trusts"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70117,
+        "question": "What is the key feature of Section 80TTA?",
+        "options": [{
+                "id": "a",
+                "text": "Deduction for interest on home loans"
+            },
+            {
+                "id": "b",
+                "text": "Deduction for interest on savings accounts"
+            },
+            {
+                "id": "c",
+                "text": "Exemption for donations"
+            },
+            {
+                "id": "d",
+                "text": "Deduction for medical expenses"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70118,
+        "question": "What type of accounts are applicable under Section 80TTA?",
+        "options": [{
+                "id": "a",
+                "text": "Current accounts"
+            },
+            {
+                "id": "b",
+                "text": "Savings bank accounts"
+            },
+            {
+                "id": "c",
+                "text": "Fixed deposit accounts"
+            },
+            {
+                "id": "d",
+                "text": "Recurring deposit accounts"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70119,
+        "question": "What is the main purpose of Section 24?",
+        "options": [{
+                "id": "a",
+                "text": "Deduction for medical insurance"
+            },
+            {
+                "id": "b",
+                "text": "Deduction for housing loan interest"
+            },
+            {
+                "id": "c",
+                "text": "Deduction for educational loans"
+            },
+            {
+                "id": "d",
+                "text": "Deduction for charitable donations"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70120,
+        "question": "When is Section 24 applicable for housing loans?",
+        "options": [{
+                "id": "a",
+                "text": "Loans availed before April 1, 1999"
+            },
+            {
+                "id": "b",
+                "text": "Loans availed after April 1, 1999"
+            },
+            {
+                "id": "c",
+                "text": "Loans availed on or after January 1, 2000"
+            },
+            {
+                "id": "d",
+                "text": "Loans availed before December 31, 1998"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70121,
+        "question": "What is a characteristic of a Ponzi scheme?",
+        "options": [{
+                "id": "a",
+                "text": "Investments are registered with regulators"
+            },
+            {
+                "id": "b",
+                "text": "Returns are consistent with market conditions"
+            },
+            {
+                "id": "c",
+                "text": "High returns with little risk"
+            },
+            {
+                "id": "d",
+                "text": "Transparent disclosure of investments"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70122,
+        "question": "How can one spot a Ponzi scheme?",
+        "options": [{
+                "id": "a",
+                "text": "Through guaranteed high returns"
+            },
+            {
+                "id": "b",
+                "text": "Through consistent market returns"
+            },
+            {
+                "id": "c",
+                "text": "Through registered investments"
+            },
+            {
+                "id": "d",
+                "text": "Through transparent disclosures"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70123,
+        "question": "What is required for an entity to act as an Investment Adviser?",
+        "options": [{
+                "id": "a",
+                "text": "Registration with SEBI"
+            },
+            {
+                "id": "b",
+                "text": "Registration with IRDA"
+            },
+            {
+                "id": "c",
+                "text": "Registration with RBI"
+            },
+            {
+                "id": "d",
+                "text": "No registration required"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70124,
+        "question": "What is illegal under SEBI regulations?",
+        "options": [{
+                "id": "a",
+                "text": "Acting as an Investment Adviser without registration"
+            },
+            {
+                "id": "b",
+                "text": "Providing investment advice through newspapers"
+            },
+            {
+                "id": "c",
+                "text": "Charging advisory fees"
+            },
+            {
+                "id": "d",
+                "text": "Offering financial planning services"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70125,
+        "question": "What should investors avoid when dealing with Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Asking for risk profiling"
+            },
+            {
+                "id": "b",
+                "text": "Paying advisory fees through banking channels"
+            },
+            {
+                "id": "c",
+                "text": "Dealing with unregistered entities"
+            },
+            {
+                "id": "d",
+                "text": "Seeking advice from SEBI-registered IAs"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70126,
+        "question": "What is a common malpractice of unregistered Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Providing transparent disclosures"
+            },
+            {
+                "id": "b",
+                "text": "Offering assured returns"
+            },
+            {
+                "id": "c",
+                "text": "Charging reasonable fees"
+            },
+            {
+                "id": "d",
+                "text": "Avoiding high-risk products"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70127,
+        "question": "Where can one find a list of SEBI-registered Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "https://www.irda.gov.in"
+            },
+            {
+                "id": "b",
+                "text": "https://www.sebi.gov.in"
+            },
+            {
+                "id": "c",
+                "text": "https://www.rbi.org.in"
+            },
+            {
+                "id": "d",
+                "text": "https://www.mca.gov.in"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70128,
+        "question": "What should investors do if they suspect a Ponzi scheme?",
+        "options": [{
+                "id": "a",
+                "text": "Invest more to gain higher returns"
+            },
+            {
+                "id": "b",
+                "text": "Inform SEBI immediately"
+            },
+            {
+                "id": "c",
+                "text": "Withdraw their investments slowly"
+            },
+            {
+                "id": "d",
+                "text": "Promote the scheme to others"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70129,
+        "question": "What should investors always check when dealing with Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "Their experience in the market"
+            },
+            {
+                "id": "b",
+                "text": "Their SEBI registration number"
+            },
+            {
+                "id": "c",
+                "text": "Their office location"
+            },
+            {
+                "id": "d",
+                "text": "Their client testimonials"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70130,
+        "question": "Where can investors find the list of SEBI registered Investment Advisers?",
+        "options": [{
+                "id": "a",
+                "text": "SEBI website"
+            },
+            {
+                "id": "b",
+                "text": "Company websites"
+            },
+            {
+                "id": "c",
+                "text": "Social media platforms"
+            },
+            {
+                "id": "d",
+                "text": "Local directories"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70131,
+        "question": "What should investors ensure about their Investment Adviser's registration?",
+        "options": [{
+                "id": "a",
+                "text": "It is from a local authority"
+            },
+            {
+                "id": "b",
+                "text": "It is valid and current"
+            },
+            {
+                "id": "c",
+                "text": "It is from a foreign country"
+            },
+            {
+                "id": "d",
+                "text": "It is not necessary"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70132,
+        "question": "How should advisory fees be paid?",
+        "options": [{
+                "id": "a",
+                "text": "Only through cash"
+            },
+            {
+                "id": "b",
+                "text": "Through banking channels"
+            },
+            {
+                "id": "c",
+                "text": "Via mobile wallets"
+            },
+            {
+                "id": "d",
+                "text": "Through intermediaries"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70133,
+        "question": "What should investors insist on before accepting investment advice?",
+        "options": [{
+                "id": "a",
+                "text": "A guaranteed return"
+            },
+            {
+                "id": "b",
+                "text": "Their risk profiling"
+            },
+            {
+                "id": "c",
+                "text": "A discount on fees"
+            },
+            {
+                "id": "d",
+                "text": "A quick investment"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70134,
+        "question": "What should investors assess before making investments?",
+        "options": [{
+                "id": "a",
+                "text": "Market trends only"
+            },
+            {
+                "id": "b",
+                "text": "Risk-return profile and liquidity"
+            },
+            {
+                "id": "c",
+                "text": "Stock tips"
+            },
+            {
+                "id": "d",
+                "text": "Broker recommendations"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70135,
+        "question": "What should investors avoid falling prey to?",
+        "options": [{
+                "id": "a",
+                "text": "Luring advertisements"
+            },
+            {
+                "id": "b",
+                "text": "Market rumours"
+            },
+            {
+                "id": "c",
+                "text": "Both A and B"
+            },
+            {
+                "id": "d",
+                "text": "Neither A nor B"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 70136,
+        "question": "What is the purpose of the SCORES system?",
+        "options": [{
+                "id": "a",
+                "text": "To provide investment advice"
+            },
+            {
+                "id": "b",
+                "text": "To redress investor grievances"
+            },
+            {
+                "id": "c",
+                "text": "To promote stock tips"
+            },
+            {
+                "id": "d",
+                "text": "To regulate mutual funds"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70137,
+        "question": "How long does an investor have to lodge a complaint on SCORES?",
+        "options": [{
+                "id": "a",
+                "text": "1 year"
+            },
+            {
+                "id": "b",
+                "text": "3 years"
+            },
+            {
+                "id": "c",
+                "text": "5 years"
+            },
+            {
+                "id": "d",
+                "text": "10 years"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70138,
+        "question": "What is required to file a complaint on SCORES?",
+        "options": [{
+                "id": "a",
+                "text": "Registration on SCORES"
+            },
+            {
+                "id": "b",
+                "text": "A lawyer"
+            },
+            {
+                "id": "c",
+                "text": "A broker's approval"
+            },
+            {
+                "id": "d",
+                "text": "A company's referral"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70139,
+        "question": "What can be attached to a complaint on SCORES?",
+        "options": [{
+                "id": "a",
+                "text": "Documents up to 2 MB in PDF"
+            },
+            {
+                "id": "b",
+                "text": "Only text files"
+            },
+            {
+                "id": "c",
+                "text": "Images only"
+            },
+            {
+                "id": "d",
+                "text": "Videos"
+            }
+        ],
+        "correct_answer": "a"
+    },
+    {
+        "id": 70140,
+        "question": "What is the toll-free SEBI helpline number?",
+        "options": [{
+                "id": "a",
+                "text": "1800 100 7575"
+            },
+            {
+                "id": "b",
+                "text": "1800 266 7575"
+            },
+            {
+                "id": "c",
+                "text": "1800 123 7575"
+            },
+            {
+                "id": "d",
+                "text": "1800 456 7575"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70141,
+        "question": "Which regulator handles grievances against insurance contracts?",
+        "options": [{
+                "id": "a",
+                "text": "SEBI"
+            },
+            {
+                "id": "b",
+                "text": "IRDAI"
+            },
+            {
+                "id": "c",
+                "text": "RBI"
+            },
+            {
+                "id": "d",
+                "text": "PFRDA"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70142,
+        "question": "Where is the SEBI head office located?",
+        "options": [{
+                "id": "a",
+                "text": "New Delhi"
+            },
+            {
+                "id": "b",
+                "text": "Mumbai"
+            },
+            {
+                "id": "c",
+                "text": "Chennai"
+            },
+            {
+                "id": "d",
+                "text": "Kolkata"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70143,
+        "question": "What is the website of the National Stock Exchange?",
+        "options": [{
+                "id": "a",
+                "text": "www.bseindia.com"
+            },
+            {
+                "id": "b",
+                "text": "www.nseindia.com"
+            },
+            {
+                "id": "c",
+                "text": "www.sebi.gov.in"
+            },
+            {
+                "id": "d",
+                "text": "www.mcxindia.com"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 70144,
+        "question": "Which depository's website is nsdl.co.in?",
+        "options": [{
+                "id": "a",
+                "text": "CDSL"
+            },
+            {
+                "id": "b",
+                "text": "NSDL"
+            },
+            {
+                "id": "c",
+                "text": "SEBI"
+            },
+            {
+                "id": "d",
+                "text": "SCORES"
+            }
+        ],
+        "correct_answer": "b"
+    }
+]
