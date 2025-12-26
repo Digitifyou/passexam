@@ -146,20 +146,7 @@ export default function LandingPage() {
               </Button>
             </div>
 
-            <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-12">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-6 w-6 text-yellow-300" />
-                <span className="text-lg font-semibold text-primary-foreground">Pass NISM Exam</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-6 w-6 text-yellow-300" />
-                <span className="text-lg font-semibold text-primary-foreground">Easy Preparation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-6 w-6 text-yellow-300" />
-                <span className="text-lg font-semibold text-primary-foreground">99% Track Record</span>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
