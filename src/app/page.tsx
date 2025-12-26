@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -146,13 +146,19 @@ export default function LandingPage() {
               </Button>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-primary-foreground">{stat.value}</div>
-                  <div className="text-sm text-primary-foreground/80">{stat.title}</div>
-                </div>
-              ))}
+            <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-12">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-6 w-6 text-yellow-300" />
+                <span className="text-lg font-semibold text-primary-foreground">Pass NISM Exam</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-6 w-6 text-yellow-300" />
+                <span className="text-lg font-semibold text-primary-foreground">Easy Preparation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-6 w-6 text-yellow-300" />
+                <span className="text-lg font-semibold text-primary-foreground">99% Track Record</span>
+              </div>
             </div>
           </div>
         </div>
