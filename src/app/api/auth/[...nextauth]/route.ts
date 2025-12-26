@@ -44,11 +44,11 @@ export const authOptions: NextAuthOptions = {
         // Ensure the returned object matches the structure expected by JWT/Session callbacks
         // It needs at least id, name, email. We also add mobile.
         return {
-             id: user.id.toString(), // Needs to be string for NextAuth User type
-             name: user.name,
-             email: user.email,
-             mobile: user.mobile, // Include mobile here
-             // image is optional, can be null
+          id: user.id.toString(), // Needs to be string for NextAuth User type
+          name: user.name,
+          email: user.email,
+          mobile: user.mobile, // Include mobile here
+          // image is optional, can be null
         };
       }
     })
@@ -79,7 +79,7 @@ export const authOptions: NextAuthOptions = {
           // Send welcome email... (code remains the same)
           sendEmail({
             to: newUser.email,
-            subject: 'Welcome to QuizMaster Pro!',
+            subject: 'Welcome to PassExam!',
             html: `<h1>Welcome, ${newUser.name}!</h1>...`
           });
         }
@@ -88,10 +88,10 @@ export const authOptions: NextAuthOptions = {
         // Add mobile if it exists in db (e.g., if they added it later)
         (user as any).mobile = dbUser.mobile;
       } else if (account?.provider === 'credentials') {
-          // For credentials, user object comes from `authorize`. We need dbUser for JWT.
-           if (!dbUser) return false; // Should not happen if authorize succeeded
-           // Ensure the user object passed to JWT has the mobile number from authorize/db
-           (user as any).mobile = dbUser.mobile;
+        // For credentials, user object comes from `authorize`. We need dbUser for JWT.
+        if (!dbUser) return false; // Should not happen if authorize succeeded
+        // Ensure the user object passed to JWT has the mobile number from authorize/db
+        (user as any).mobile = dbUser.mobile;
       }
       return true; // Allow sign in
     },

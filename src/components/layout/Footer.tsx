@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="container py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
-            <h3 className="text-lg font-bold">NISM Certify Pro</h3>
+            <h3 className="text-lg font-bold">PassExam</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Empowering financial professionals with world-class certification preparation.
             </p>
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-6 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} NISM Certify Pro. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PassExam. All rights reserved.</p>
         </div>
       </div>
     </footer>

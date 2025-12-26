@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
               <p>
-                Welcome to NISM Certify Pro ("we," "our," "us"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web application.
+                Welcome to PassExam ("we," "our," "us"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web application.
               </p>
             </CardContent>
           </Card>
@@ -37,14 +37,14 @@ export default function PrivacyPolicyPage() {
               </ul>
             </CardContent>
           </Card>
-          
+
           <Card className="mt-8">
             <CardHeader>
               <CardTitle>How We Use Your Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
               <p>We use the information we collect to:</p>
-               <ul className="list-disc pl-6 space-y-2">
+              <ul className="list-disc pl-6 space-y-2">
                 <li>Provide, operate, and maintain our services.</li>
                 <li>Improve, personalize, and expand our services.</li>
                 <li>Understand and analyze how you use our services.</li>

@@ -35,9 +35,9 @@ export async function POST(req: NextRequest) {
 
   try {
     await transporter.sendMail({
-      from: `QuizMaster Pro <${process.env.EMAIL_FROM}>`,
+      from: `PassExam <${process.env.EMAIL_FROM}>`,
       to: email,
-      subject: 'Your Password Reset Link for QuizMaster Pro',
+      subject: 'Your Password Reset Link for PassExam',
       html: `
         <h1>Password Reset Request</h1>
         <p>You are receiving this email because a password reset request was made for your account.</p>

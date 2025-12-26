@@ -42,12 +42,12 @@ export async function POST(req: NextRequest) {
   // Send a welcome email (don't wait for it to complete)
   sendEmail({
     to: newUser.email,
-    subject: 'Welcome to QuizMaster Pro!',
+    subject: 'Welcome to PassExam!',
     html: `
       <h1>Welcome, ${newUser.name}!</h1>
-      <p>Thank you for signing up for QuizMaster Pro. You can now log in and start practicing for your exams.</p>
+      <p>Thank you for signing up for PassExam. You can now log in and start practicing for your exams.</p>
       <p>Best of luck!</p>
-      <p>The QuizMaster Pro Team</p>
+      <p>The PassExam Team</p>
     `
   });
 

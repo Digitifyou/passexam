@@ -33,7 +33,7 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <BookOpen className="h-6 w-6 text-primary" />
-          <span className="font-bold">NISM Certify Pro</span>
+          <span className="font-bold">PassExam</span>
         </Link>
         <nav className="flex flex-1 items-center justify-end space-x-4">
           {status === "loading" ? (

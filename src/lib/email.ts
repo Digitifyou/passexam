@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async ({ to, subject, html }: MailOptions) => {
   try {
     await transporter.sendMail({
-      from: `QuizMaster Pro <${process.env.EMAIL_FROM}>`,
+      from: `PassExam <${process.env.EMAIL_FROM}>`,
       to,
       subject,
       html,

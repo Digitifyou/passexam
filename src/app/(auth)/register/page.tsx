@@ -47,12 +47,12 @@ export default function RegisterPage() {
     }
     // Add basic mobile validation check on client-side too
     if (!mobile || !/^[0-9]{10}$/.test(mobile)) { // Example: 10 digits
-        toast({
-            variant: "destructive",
-            title: "Registration Failed",
-            description: "Please enter a valid 10-digit mobile number.",
-        });
-        return;
+      toast({
+        variant: "destructive",
+        title: "Registration Failed",
+        description: "Please enter a valid 10-digit mobile number.",
+      });
+      return;
     }
 
     setIsLoading(true);
@@ -92,7 +92,7 @@ export default function RegisterPage() {
   return (
     <section className='auth-welcome-top auth-welcome-top-login'>
       <CardHeader className="items-center">
-        <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with QuizMaster Pro</CardTitle>
+        <CardTitle className="text-4xl font-bold text-primary">Start Your Journey with PassExam</CardTitle>
         <CardDescription className="text-lg text-muted-foreground pt-2">
           Create your free account to unlock mock tests, track your progress, and get exam-ready with confidence.
         </CardDescription>
@@ -150,8 +150,8 @@ export default function RegisterPage() {
                     disabled={isLoading}
                   />
                 </div>
-                 {/* --- Add Mobile Input --- */}
-                 <div className="grid gap-2">
+                {/* --- Add Mobile Input --- */}
+                <div className="grid gap-2">
                   <Input
                     id="mobile"
                     type="tel" // Use type="tel" for mobile numbers

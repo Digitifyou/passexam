@@ -44,8 +44,8 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <Link href="/dashboard" className="flex items-center space-x-2">
-           <BookOpen className="h-6 w-6 text-primary" />
-          <span className="inline-block font-bold">QuizMaster Pro</span>
+          <BookOpen className="h-6 w-6 text-primary" />
+          <span className="inline-block font-bold">PassExam</span>
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
@@ -69,17 +69,17 @@ export default function Header() {
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium leading-none">{user.name}</p>
-                       <p className="text-xs leading-none text-muted-foreground">
-                         {user.email}
-                       </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user.email}
+                      </p>
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                     <Link href="/profile">
-                       <User className="mr-2 h-4 w-4" />
-                       <span>Profile</span>
-                     </Link>
+                    <Link href="/profile">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
@@ -89,7 +89,7 @@ export default function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
-            
+
             {/* Show the login button when unauthenticated */}
             {status === 'unauthenticated' && (
               <Button asChild>

@@ -10,7 +10,7 @@ import { AuthStatusPopup } from '@/components/AuthStatusPopup'; // Import the ne
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NISM Certify Pro',
+  title: 'PassExam',
   description: 'A full-featured quiz platform for NISM certification.',
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
-          
+
         </SessionProvider>
       </body>
     </html>

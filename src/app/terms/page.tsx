@@ -20,7 +20,7 @@ export default function TermsOfServicePage() {
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
               <p>
-                By accessing and using NISM Certify Pro, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.
+                By accessing and using PassExam, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.
               </p>
             </CardContent>
           </Card>
@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
               </p>
             </CardContent>
           </Card>
-          
+
           <Card className="mt-8">
             <CardHeader>
               <CardTitle>3. Termination</CardTitle>

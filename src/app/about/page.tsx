@@ -7,7 +7,7 @@ export default function AboutPage() {
       <div className="container py-12 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            About NISM Certify Pro
+            About PassExam
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
             Empowering the next generation of financial professionals with comprehensive, expert-led NISM certification preparation.
@@ -42,7 +42,7 @@ export default function AboutPage() {
               </p>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader className="items-center">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
